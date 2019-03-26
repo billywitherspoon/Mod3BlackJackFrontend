@@ -9,12 +9,11 @@ function newHand() {
       PLAYERHAND[i] = DECK.shift();
       DEALERHAND[i] = DECK.shift();
       renderCard(PLAYERHAND[i], playerCards);
-      // if (i == 0) {
-		// 	DEALERHAND
-      //    renderCard(DEALERHAND[i], dealerCards);
-      // } else {
+      if (i == 0) {
+         renderCard(DEALERHAND[i], dealerCards, 'hidden', 'hidden-card');
+      } else {
          renderCard(DEALERHAND[i], dealerCards)
-      // }
+      }
    }
    console.log(DECK.length);
    console.log(DEALERHAND);
@@ -33,4 +32,6 @@ function playerHit() {
 function playerStay() {
    console.log('you stayed');
    dealer();
+	let showHiddenCard = document.getElementById('hidden-card')
+	showHiddenCard.className = 'card'
 }

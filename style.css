@@ -17,3 +17,17 @@
 .black{
   color: black
 }
+
+.hidden{
+   background-image: url("img/playing_card.png");
+   background-size: cover;
+   border-radius: 10px;
+   border: solid black 1px;
+   width: 120px;
+   height: 180px;
+   display: inline-block;
+   position: relative;
+   margin-left: 2px;
+   margin-right: 2px;
+   font-size: 0;
+}
