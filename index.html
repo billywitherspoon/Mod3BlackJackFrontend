@@ -10,25 +10,27 @@
    <title>BlackJack</title>
 </head>
 
-<body class='bg-success'>
-   <div class='container-fluid col-lg-10 bg-primary'>
-      <div id="betting-actions">
-         <button id='new-hand' onclick="newHand()">Deal Hand</button>
-         <button id='hit' onclick="playerHit()">Hit</button>
-         <button id='stay' onclick="playerStay()">Stay</button>
-      </div>
-      <div id='dealer-cards' class='row col-lg-6'>
-      </div>
-      <br>
-      <br>
-      <div id='player-cards' class = 'col-lg-6 row'>
+<body>
+   <div class='container-fluid bg-dark' id='page'>
+      <div class="row">
+         <div id='blackjack-table' class='col-lg-8 bg-success'>
+            <div id='dealer-cards' class=''>
+            </div>
+            <div id='player-cards' class=''>
+            </div>
+         </div>
+         <div id="betting-actions" class'col-lg-4 bg-primary'>
+            <button id='new-hand' onclick="newHand()">Deal Hand</button>
+            <button id='hit' onclick="playerHit()">Hit</button>
+            <button id='stay' onclick="playerStay()">Stay</button>
+         </div>
       </div>
    </div>
-               <script src="src/deck.js" defer> </script>
-               <script src="src/helpers.js" defer></script>
-               <script src="src/dealer.js" defer></script>
-               <script src="src/game.js" defer></script>
-               <script src="src/user.js" defer></script>
+   <script src="src/deck.js" defer> </script>
+   <script src="src/helpers.js" defer></script>
+   <script src="src/dealer.js" defer></script>
+   <script src="src/game.js" defer></script>
+   <script src="src/user.js" defer></script>
 </body>
 
 </html>
