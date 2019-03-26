@@ -29,7 +29,8 @@ function playerHit() {
 
 function playerStay() {
 	console.log('you stayed');
-	runDealer();
 	let showHiddenCard = document.getElementById('hidden-card');
+	showHiddenCard.removeAttribute("id");
 	showHiddenCard.className = 'card';
+	runDealer();
 }

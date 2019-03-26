@@ -8,17 +8,9 @@
   position: relative;
   margin-left: 2px;
   margin-right: 2px;
-}
 
-.red{
-  color: red
 }
-
-.black{
-  color: black
-}
-
-.hidden{
+#hidden-card{
    background-image: url("img/playing_card.png");
    background-size: cover;
    border-radius: 10px;
@@ -29,17 +21,49 @@
    position: relative;
    margin-left: 2px;
    margin-right: 2px;
-   font-size: 0;
+   color:transparent;
 }
 
-/* #page{
-   height: 500px
+.red{
+  color: red
+}
+
+
+.black{
+  color: black
+}
+
+
+#page{
+   height: 100vh;
 }
 
 #blackjack-table{
-   height: 100%
-} */
+   border-radius: 30px;
+}
 
-html{
-   height 100%;
+
+#main-section{
+   height: 100%;
+   padding: 5%;
+}
+#header{
+   height: 5%;
+}
+
+.center-text{
+   display: inline-block;
+   vertical-align: middle;
+   float: none;
+}
+
+#new-hand{
+   align-self: center;
+}
+#dealer-cards{
+   padding: 5%;
+}
+
+#player-cards{
+   padding: 5%;
 }

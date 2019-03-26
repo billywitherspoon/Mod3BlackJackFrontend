@@ -57,7 +57,7 @@ function shuffleDeck(deckArray) {
 	return deckArray;
 }
 
-function renderCard(cardObject, cardArea, className = 'card', id) {
+function renderCard(cardObject, cardArea, className = 'card', id ='rendered-card') {
 	let newDiv = document.createElement('div');
 	newDiv.textContent = `${cardObject.display}${cardObject.suit}`;
 	newDiv.className = className;
