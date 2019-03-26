@@ -23,7 +23,6 @@ function declareWinner() {
 	}
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
-	resetGame();
 }
 
 function whoWon() {
@@ -51,8 +50,11 @@ function whoWon() {
 }
 
 function resetGame() {
-	DEALERCARDSDIV.remove();
-	PLAYERCARDSDIV.remove();
-	PLAYERHAND = [];
-	DEALERHAND = [];
+	let cards = document.getElementsByClassName('card');
+	while (DEALERCARDSDIV.firstChild) {
+		DEALERCARDSDIV.removeChild(DEALERCARDSDIV.firstChild);
+	}
+	while (PLAYERCARDSDIV.firstChild) {
+		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
+	}
 }
