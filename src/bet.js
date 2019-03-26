@@ -12,7 +12,12 @@ function renderBetCard() {
 	betInput.type = 'text';
 	betInput.placeholder = `${betAmount}`;
 
-	colBet.appendChild();
+	colBet.appendChild(betInput);
+	row.appendChild(colBet);
+	form.appendChild(row);
+	cardBody.appendChild(form);
+	card.appendChild(cardHeader);
+	card.appendChild(cardBody);
 }
 
 // <form>
