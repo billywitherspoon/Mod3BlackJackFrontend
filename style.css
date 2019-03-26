@@ -47,6 +47,11 @@
    height: 100%;
    padding: 5%;
 }
+
+#betting-actions{
+   border-radius: 30px;
+}
+
 #header{
    height: 5%;
 }
@@ -66,4 +71,34 @@
 
 #player-cards{
    padding: 5%;
+}
+
+.bottom-right{
+position: absolute;
+bottom: 0;
+right: 0;
+padding: 4px;
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+}
+
+#bottom-right-hidden{
+position: absolute;
+bottom: 0;
+right: 0;
+padding: 4px;
+color:transparent;
+}
+
+#top-left-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  color:transparent;
 }
