@@ -3,6 +3,7 @@ let PLAYERHAND = [];
 let DEALERHAND = [];
 let DEALERCARDSDIV = document.getElementById('dealer-cards');
 let PLAYERCARDSDIV = document.getElementById('player-cards');
+renderBetCard();
 
 function blackJack() {
 	console.log('You got blackjack!');

@@ -62,3 +62,11 @@ function isTwentyOne(hand) {
 		return false;
 	}
 }
+
+function createHtmlElement(tag = '', className = '', textContent = '', id = '') {
+	let element = document.createElement(tag);
+	element.className = className;
+	element.textContent = textContent;
+	element.id = id;
+	return element;
+}
