@@ -21,6 +21,7 @@ function playerHit() {
 	addCard(PLAYERHAND);
 	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
 	console.log('you hit');
+	logCards('player', PLAYERHAND);
 	if (isBusted(PLAYERHAND)) {
 		console.log('you busted');
 		declareWinner();
@@ -30,7 +31,7 @@ function playerHit() {
 function playerStay() {
 	console.log('you stayed');
 	let showHiddenCard = document.getElementById('hidden-card');
-	showHiddenCard.removeAttribute("id");
+	showHiddenCard.removeAttribute('id');
 	showHiddenCard.className = 'card';
 	runDealer();
 }

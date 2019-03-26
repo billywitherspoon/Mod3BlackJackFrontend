@@ -22,7 +22,6 @@ function runDealer() {
 		logCards('dealer', DEALERHAND);
 		if (isBusted(DEALERHAND)) {
 			console.log('dealer busted');
-			logCards('dealer', DEALERHAND);
 			break;
 		}
 	}
