@@ -2,8 +2,13 @@ function newHand() {
 	for (let i = 0; i < 2; i++) {
 		PLAYERHAND[i] = DECK.shift();
 		DEALERHAND[i] = DECK.shift();
-		renderCard(PLAYERHAND[i], PLAYERCARDSDIV);
-		renderCard(DEALERHAND[i], DEALERCARDSDIV);
+		renderCard(PLAYERHAND[i], playerCards);
+		// if (i == 0) {
+		// 	DEALERHAND
+		//    renderCard(DEALERHAND[i], dealerCards);
+		// } else {
+		renderCard(DEALERHAND[i], dealerCards);
+		// }
 	}
 	console.log(DECK.length);
 	console.log(DEALERHAND);
@@ -12,16 +17,14 @@ function newHand() {
 
 function playerHit() {
 	addCard(PLAYERHAND);
-	let playerli = document.createElement('li');
-	playerli.textContent = PLAYERHAND[PLAYERHAND.length - 1].display;
-	PLAYERCARDS.appendChild(playerli);
+	renderCard(PLAYERHAND[PLAYERHAND.length - 1], playerCards);
 	if (isBusted(PLAYERHAND)) {
 		console.log('you busted');
-		declareWinner();
+		whoWon();
 	}
 }
 
 function playerStay() {
 	console.log('you stayed');
-	runDealer();
+	dealer();
 }
