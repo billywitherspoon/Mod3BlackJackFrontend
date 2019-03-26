@@ -8,17 +8,8 @@ function newHand() {
 	for (let i = 0; i < 2; i++) {
 		PLAYERHAND[i] = DECK.shift();
 		DEALERHAND[i] = DECK.shift();
-
-		let playerli = document.createElement('li');
-		let dealerli = document.createElement('li');
-
-		playerli.textContent = PLAYERHAND[i].display;
-		if (true) {
-			dealerli.textContent = DEALERHAND[i].display;
-		}
-
-		playerCards.appendChild(playerli);
-		dealerCards.appendChild(dealerli);
+		renderCard(PLAYERHAND[i], playerCards);
+		renderCard(DEALERHAND[i], dealerCards);
 	}
 	console.log(DECK.length);
 	console.log(DEALERHAND);
