@@ -1,6 +1,7 @@
 let DECK = shuffleDeck(createDeck());
 let PLAYERHAND = [];
 let DEALERHAND = [];
+let TABLE = document.getElementById('blackjack-table');
 let DEALERCARDSDIV = document.getElementById('dealer-cards');
 let PLAYERCARDSDIV = document.getElementById('player-cards');
 renderBetCard();
@@ -22,6 +23,7 @@ function declareWinner() {
 	}
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
+	resetGame()
 }
 
 function whoWon() {
@@ -46,4 +48,13 @@ function whoWon() {
 	} else {
 		console.log('something went wrong with determining result');
 	}
+}
+
+
+function resetGame(){
+	DEALERCARDSDIV.remove();
+	PLAYERCARDSDIV.remove();
+	PLAYERHAND = [];
+	DEALERHAND = [];
+	
 }
