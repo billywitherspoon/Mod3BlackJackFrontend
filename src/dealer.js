@@ -1,9 +1,9 @@
-function dealer() {
+function runDealer() {
 	while (isSoft(DEALERHAND)) {
 		if (handTotal(DEALERHAND) < 8) {
 			addCard(DEALERHAND);
 		} else if (handTotal(DEALERHAND) >= 8) {
-			whoWon();
+			declareWinner();
 			return;
 		}
 	}
@@ -16,5 +16,5 @@ function dealer() {
 			break;
 		}
 	}
-	whoWon();
+	declareWinner();
 }

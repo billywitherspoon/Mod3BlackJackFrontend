@@ -28,7 +28,7 @@ function handTotal(hand) {
 	return sumArray(handArray);
 }
 
-function whoWon() {
+function declareWinner() {
 	playerTotal = finalHandTotal(PLAYERHAND);
 	dealerTotal = finalHandTotal(DEALERHAND);
 
