@@ -31,3 +31,15 @@
    margin-right: 2px;
    font-size: 0;
 }
+
+/* #page{
+   height: 500px
+}
+
+#blackjack-table{
+   height: 100%
+} */
+
+html{
+   height 100%;
+}
