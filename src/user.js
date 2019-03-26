@@ -9,9 +9,12 @@ function newHand() {
 			renderCard(DEALERHAND[i], DEALERCARDSDIV);
 		}
 	}
-	console.log(DECK.length);
-	console.log(DEALERHAND);
-	console.log(PLAYERHAND);
+	console.log('deck size: ' + DECK.length);
+	logCards('dealer', DEALERHAND);
+	logCards('player', PLAYERHAND);
+	if (isTwentyOne(PLAYERHAND)) {
+		blackJack();
+	}
 }
 
 function playerHit() {
@@ -26,7 +29,6 @@ function playerHit() {
 
 function playerStay() {
 	console.log('you stayed');
-	console.log('running dealer');
 	runDealer();
 	let showHiddenCard = document.getElementById('hidden-card');
 	showHiddenCard.className = 'card';

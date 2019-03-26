@@ -54,3 +54,11 @@ function logCards(name, hand) {
 	});
 	console.log(`${name}: ` + cards);
 }
+
+function isTwentyOne(hand) {
+	if (finalHandTotal(hand) === 21) {
+		return true;
+	} else {
+		return false;
+	}
+}
