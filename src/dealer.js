@@ -1,4 +1,5 @@
 function runDealer() {
+	console.log('running dealer');
 	while (isSoft(DEALERHAND)) {
 		if (handTotal(DEALERHAND) < 8) {
 			addCard(DEALERHAND);
@@ -21,6 +22,6 @@ function runDealer() {
 			break;
 		}
 	}
-	console.log('dealer ended it's run);
+	console.log('dealer ended its run');
 	declareWinner();
 }

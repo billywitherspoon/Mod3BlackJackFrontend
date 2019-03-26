@@ -4,6 +4,14 @@ let DEALERHAND = [];
 let DEALERCARDSDIV = document.getElementById('dealer-cards');
 let PLAYERCARDSDIV = document.getElementById('player-cards');
 
+function blackJack() {
+	console.log('You got blackjack!');
+	if (DEALERHAND[0].value === 1 || DEALERHAND[0].value === 10) {
+		console.log('Do you want even money?');
+	}
+	declareWinner();
+}
+
 function declareWinner() {
 	let winner = whoWon();
 	if (winner === 'push') {

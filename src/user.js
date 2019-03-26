@@ -8,6 +8,9 @@ function newHand() {
 	console.log('deck size: ' + DECK.length);
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
+	if (isTwentyOne(PLAYERHAND)) {
+		blackJack();
+	}
 }
 
 function playerHit() {
@@ -22,6 +25,5 @@ function playerHit() {
 
 function playerStay() {
 	console.log('you stayed');
-	console.log('running dealer');
 	runDealer();
 }
