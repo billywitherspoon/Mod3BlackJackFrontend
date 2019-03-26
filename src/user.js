@@ -1,7 +1,6 @@
 let DECK = shuffleDeck(createDeck());
 let PLAYERHAND = [];
 let DEALERHAND = [];
-let WINNER = '';
 let dealerCards = document.getElementById('dealer-cards');
 let playerCards = document.getElementById('player-cards');
 
@@ -31,14 +30,13 @@ function playerHit() {
 	let playerli = document.createElement('li');
 	playerli.textContent = PLAYERHAND[PLAYERHAND.length - 1].display;
 	playerCards.appendChild(playerli);
-	if (checkForBust(PLAYERHAND)) {
-		console.log('busted');
-		WINNER = 'dealer won';
-		console.log(WINNER + ' won');
+	if (isBusted(PLAYERHAND)) {
+		console.log('you busted');
+		whoWon();
 	}
 }
 
 function playerStay() {
-	console.log('You Stayed');
+	console.log('you stayed');
 	dealer();
 }

@@ -1,4 +1,4 @@
-function checkForBust(hand) {
+function isBusted(hand) {
 	if (handTotal(hand) > 21) {
 		return true;
 	} else {
@@ -6,7 +6,7 @@ function checkForBust(hand) {
 	}
 }
 
-function checkForAce(hand) {
+function hasAce(hand) {
 	handDisplays = Object.values(hand).map((value) => {
 		return value.display;
 	});
@@ -26,41 +26,39 @@ function handTotal(hand) {
 		return value.value;
 	});
 	return sumArray(handArray);
-	// Object.values(hand).forEach((value) => {
-	// 	console.log(value.value);
-	// });
 }
 
 function whoWon() {
-	let playerTotal = handTotal(PLAYERHAND);
-	let dealerTotal = handTotal(DEALERHAND);
+	playerTotal = finalHandTotal(PLAYERHAND);
+	dealerTotal = finalHandTotal(DEALERHAND);
 
-	if (checkForSoft(PLAYERHAND)) {
-		playerTotal += 10;
-	}
-
-	if (checkForSoft(DEALERHAND)) {
-		dealerTotal += 10;
-	}
-
-	if (playerTotal > dealerTotal) {
-		WINNER = 'player';
+	if (playerTotal < 22) {
+		return 'dealer';
+	} else if (dealerTotal > 22) {
+		return 'player';
 	} else if (playerTotal < dealerTotal) {
-		WINNER = 'dealer';
+		return 'dealer';
+	} else if (playerTotal > dealerTotal) {
+		return 'player';
 	} else {
-		WINNER = 'push';
+		return 'push';
 	}
-	console.log(WINNER + ' won');
-	console.log(DEALERHAND);
-	console.log(PLAYERHAND);
+}
+
+function finalHandTotal(hand) {
+	let total = handTotal(hand);
+	if (isSoft(hand)) {
+		total += 10;
+	}
+	return total;
 }
 
 function addCard(hand) {
 	hand.push(DECK.shift());
 }
 
-function checkForSoft(hand) {
-	if (checkForAce(hand) && handTotal(hand) < 12) {
+function isSoft(hand) {
+	if (hasAce(hand) && handTotal(hand) < 12) {
 		return true;
 	} else {
 		return false;
