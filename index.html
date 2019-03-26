@@ -13,7 +13,9 @@
 <body class='bg-success'>
    <div class='container-fluid col-lg-2 bg-primary'>
       <div id="betting-actions">
-         <button id='new-hand' onclick="newHand()"> Deal Hand</button>
+         <button id='new-hand' onclick="newHand()">Deal Hand</button>
+         <button id='hit' onclick="playerHit()">Hit</button>
+         <button id='stay' onclick="playerStay()">Stay</button>
       </div>
       <div id='dealer-cards'>
       </div>
@@ -23,6 +25,8 @@
       </div>
    </div>
                <script src="src/deck.js" defer> </script>
+               <script src="src/helpers.js" defer></script>
+               <script src="src/dealer.js" defer></script>
                <script src="src/engine.js" defer></script>
 </body>
 
