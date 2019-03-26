@@ -6,17 +6,35 @@ let PLAYERCARDSDIV = document.getElementById('player-cards');
 
 function declareWinner() {
 	let winner = whoWon();
-	let playerLogCards = PLAYERHAND.map((card) => {
-		return card.value;
-	});
-	let dealerLogCards = DEALERHAND.map((card) => {
-		return card.value;
-	});
 	if (winner === 'push') {
 		console.log('push');
 	} else {
 		console.log(winner + ' won!');
 	}
-	console.log('player cards: ' + playerLogCards);
-	console.log('dealer cards: ' + dealerLogCards);
+	logCards('dealer', DEALERHAND);
+	logCards('player', PLAYERHAND);
+}
+
+function whoWon() {
+	playerTotal = finalHandTotal(PLAYERHAND);
+	dealerTotal = finalHandTotal(DEALERHAND);
+
+	if (playerTotal > 21) {
+		console.log('result: player greater than 21');
+		return 'dealer';
+	} else if (dealerTotal > 21) {
+		console.log('result: dealer greater than 21');
+		return 'player';
+	} else if (playerTotal < dealerTotal) {
+		console.log('result: dealer greater than player');
+		return 'dealer';
+	} else if (playerTotal > dealerTotal) {
+		console.log('result: player greater than dealer');
+		return 'player';
+	} else if (playerTotal === dealerTotal) {
+		console.log('result: player === dealer');
+		return 'push';
+	} else {
+		console.log('something went wrong with determining result');
+	}
 }

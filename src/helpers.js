@@ -28,23 +28,6 @@ function handTotal(hand) {
 	return sumArray(handArray);
 }
 
-function declareWinner() {
-	playerTotal = finalHandTotal(PLAYERHAND);
-	dealerTotal = finalHandTotal(DEALERHAND);
-
-	if (playerTotal < 22) {
-		return 'dealer';
-	} else if (dealerTotal > 22) {
-		return 'player';
-	} else if (playerTotal < dealerTotal) {
-		return 'dealer';
-	} else if (playerTotal > dealerTotal) {
-		return 'player';
-	} else {
-		return 'push';
-	}
-}
-
 function finalHandTotal(hand) {
 	let total = handTotal(hand);
 	if (isSoft(hand)) {
@@ -63,4 +46,11 @@ function isSoft(hand) {
 	} else {
 		return false;
 	}
+}
+
+function logCards(name, hand) {
+	let cards = hand.map((card) => {
+		return card.value;
+	});
+	console.log(`${name}: ` + cards);
 }
