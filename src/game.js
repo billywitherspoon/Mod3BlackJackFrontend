@@ -11,6 +11,7 @@ function blackJack() {
 	if (DEALERHAND[0].value === 1 || DEALERHAND[0].value === 10) {
 		console.log('Do you want even money?');
 	}
+	showDealer();
 	declareWinner();
 }
 
@@ -56,5 +57,10 @@ function resetGame() {
 	}
 	while (PLAYERCARDSDIV.firstChild) {
 		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
+	}
+	PLAYERHAND = [];
+	DEALERHAND = [];
+	if (DECK.length < 18) {
+		DECK = shuffleDeck(createDeck());
 	}
 }

@@ -32,12 +32,18 @@ function playerHit() {
 	logCards('player', PLAYERHAND);
 	if (isBusted(PLAYERHAND)) {
 		console.log('you busted');
+		showDealer();
 		declareWinner();
 	}
 }
 
 function playerStay() {
 	console.log('you stayed');
+	showDealer();
+	runDealer();
+}
+
+function showDealer() {
 	let showTopLeft = document.getElementById('top-left-hidden');
 	let showBottomRight = document.getElementById('bottom-right-hidden');
 	let showCard = document.getElementById('hidden-card');
@@ -45,5 +51,4 @@ function playerStay() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'card';
-	runDealer();
 }

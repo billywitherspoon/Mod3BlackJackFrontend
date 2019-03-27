@@ -70,3 +70,8 @@ function createHtmlElement(tag = '', className = '', textContent = '', id = '') 
 	element.id = id;
 	return element;
 }
+
+function isInteger(value) {
+	let regex = /\D/;
+	return !regex.test(value);
+}

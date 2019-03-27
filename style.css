@@ -8,76 +8,72 @@
   position: relative;
   margin-left: 2px;
   margin-right: 2px;
-
 }
-#hidden-card{
-   background-image: url("img/playing_card.png");
-   background-size: cover;
-   border-radius: 10px;
-   border: solid black 1px;
-   width: 120px;
-   height: 180px;
-   display: inline-block;
-   position: relative;
-   margin-left: 2px;
-   margin-right: 2px;
-   color:transparent;
-}
-
-.red{
-  color: red
+#hidden-card {
+  background-image: url("img/playing_card.png");
+  background-size: cover;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 120px;
+  height: 180px;
+  display: inline-block;
+  position: relative;
+  margin-left: 2px;
+  margin-right: 2px;
+  color: transparent;
 }
 
-
-.black{
-  color: black
+.red {
+  color: red;
 }
 
-
-#page{
-   height: 100vh;
+.black {
+  color: black;
 }
 
-#blackjack-table{
-   border-radius: 30px;
+#page {
+  height: 100vh;
 }
 
-
-#main-section{
-   height: 100%;
-   padding: 5%;
+#blackjack-table {
+  border-radius: 30px;
 }
 
-#betting-actions{
-   border-radius: 30px;
+#main-section {
+  height: 100%;
+  padding: 5%;
 }
 
-#header{
-   height: 5%;
+#betting-actions {
+  border-radius: 30px;
 }
 
-.center-text{
-   display: inline-block;
-   vertical-align: middle;
-   float: none;
+#header {
+  height: 5%;
 }
 
-#new-hand{
-   align-self: center;
-}
-#dealer-cards{
-   padding: 5%;
-}
-
-#player-cards{
-   padding: 5%;
+.center-text {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
 }
 
-.bottom-right{
-position: absolute;
-bottom: 0;
-right: 0;
-padding: 4px;
+#new-hand {
+  align-self: center;
+}
+#dealer-cards {
+  padding: 5%;
+}
+
+#player-cards {
+  padding: 5%;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
 }
 
 .top-left {
@@ -87,12 +83,12 @@ padding: 4px;
   padding: 4px;
 }
 
-#bottom-right-hidden{
-position: absolute;
-bottom: 0;
-right: 0;
-padding: 4px;
-color:transparent;
+#bottom-right-hidden {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
+  color: transparent;
 }
 
 #top-left-hidden {
@@ -100,5 +96,9 @@ color:transparent;
   top: 0;
   left: 0;
   padding: 4px;
-  color:transparent;
+  color: transparent;
 }
+
+/* #increase-button {
+  font-size: 2em;
+} */
