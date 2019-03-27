@@ -1,54 +1,9 @@
-function newHand() {
-	resetGame();
-	renderBetActions();
-	for (let i = 0; i < 2; i++) {
-		PLAYERHAND[i] = DECK.shift();
-		DEALERHAND[i] = DECK.shift();
-		renderCard(PLAYERHAND[i], PLAYERCARDSDIV);
-		if (i == 0) {
-			renderCard(
-				DEALERHAND[i],
-				DEALERCARDSDIV,
-				'hidden',
-				'hidden-card',
-				'bottom-right-hidden',
-				'top-left-hidden'
-			);
-		} else {
-			renderCard(DEALERHAND[i], DEALERCARDSDIV);
-		}
-	}
-	console.log('deck size: ' + DECK.length);
-	logCards('dealer', DEALERHAND);
-	logCards('player', PLAYERHAND);
-	if (isTwentyOne(PLAYERHAND)) {
-		blackJack();
-	}
-	currentPlayerTotal = accurateTotal(PLAYERHAND);
-	currentDealerTotal = accurateTotal(DEALERHAND);
-	// document.getElementById('player-score').textContent = currentPlayerTotal;
-	// document.getElementById('dealer-score').textContent = currentDealerTotal;
-}
-
-function playerHit() {
-	addCard(PLAYERHAND);
-	currentTotal = accurateTotal(PLAYERHAND);
-	// document.getElementById('player-score').textContent = currentTotal;
-	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
-	console.log('you hit');
-	logCards('player', PLAYERHAND);
-	if (isBusted(PLAYERHAND)) {
-		console.log('you busted');
-		showDealer();
-		declareWinner();
-	}
-}
-
-function playerStay() {
-	console.log('you stayed');
-	showDealer();
-	runDealer();
-}
+let TABLE = document.getElementById('blackjack-table');
+let DEALERCARDSDIV = document.getElementById('dealer-cards');
+let PLAYERCARDSDIV = document.getElementById('player-cards');
+let BETTINGACTIONS = document.getElementById('betting-actions');
+renderBetCard();
+renderHeader();
 
 function showDealer() {
 	let showTopLeft = document.getElementById('top-left-hidden');
@@ -61,4 +16,28 @@ function showDealer() {
 	// let dealerScoreTotal = document.getElementById('dealer-score-hidden');
 	// dealerScoreTotal.id = 'dealer-score';
 	// dealerScoreTotal.textContent = accurateTotal(DEALERHAND);
+}
+
+function renderHeader() {
+	let login = createHtmlElement('div', 'col-3 center-text', 'Please Enter Username:', 'username-prompt');
+	let loginInput = createHtmlElement('input', 'form-control', '', 'login-input');
+	let loginButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Login', 'login-button');
+
+	loginButton.loginInput.placeholder = 'username';
+}
+
+// let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
+// let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
+// <div id='username' class="col-3 center-text">NAME</div>
+// <!-- for merge -->
+// <div id='user-balance' class="col-3 text-center"> Balance: $150</div>
+
+function retrieveUserInfo() {
+	fetch('URL')
+		.then((response) => {
+			return response.json();
+		})
+		.then((json) => {
+			console.log(json);
+		});
 }

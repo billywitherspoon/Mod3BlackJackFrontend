@@ -1,10 +1,55 @@
 let DECK = shuffleDeck(createDeck());
 let PLAYERHAND = [];
 let DEALERHAND = [];
-let TABLE = document.getElementById('blackjack-table');
-let DEALERCARDSDIV = document.getElementById('dealer-cards');
-let PLAYERCARDSDIV = document.getElementById('player-cards');
-renderBetCard();
+
+function newHand() {
+	resetGame();
+	renderBetActions();
+	for (let i = 0; i < 2; i++) {
+		PLAYERHAND[i] = DECK.shift();
+		DEALERHAND[i] = DECK.shift();
+		renderCard(PLAYERHAND[i], PLAYERCARDSDIV);
+		if (i == 0) {
+			renderCard(
+				DEALERHAND[i],
+				DEALERCARDSDIV,
+				'hidden',
+				'hidden-card',
+				'bottom-right-hidden',
+				'top-left-hidden'
+			);
+		} else {
+			renderCard(DEALERHAND[i], DEALERCARDSDIV);
+		}
+	}
+	console.log('deck size: ' + DECK.length);
+	logCards('dealer', DEALERHAND);
+	logCards('player', PLAYERHAND);
+	if (isTwentyOne(PLAYERHAND)) {
+		blackJack();
+	}
+	currentPlayerTotal = accurateTotal(PLAYERHAND);
+	currentDealerTotal = accurateTotal(DEALERHAND);
+	// document.getElementById('player-score').textContent = currentPlayerTotal;
+	// document.getElementById('dealer-score').textContent = currentDealerTotal;
+}
+
+function resetGame() {
+	let result = document.getElementById('result');
+	result.textContent = '';
+	// let cards = document.getElementsByClassName("card");
+	while (DEALERCARDSDIV.firstChild) {
+		DEALERCARDSDIV.removeChild(DEALERCARDSDIV.firstChild);
+	}
+	while (PLAYERCARDSDIV.firstChild) {
+		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
+	}
+	PLAYERHAND = [];
+	DEALERHAND = [];
+	if (DECK.length < 18) {
+		DECK = shuffleDeck(createDeck());
+	}
+}
 
 function blackJack() {
 	console.log('You got blackjack!');
@@ -51,22 +96,5 @@ function whoWon() {
 		return 'push';
 	} else {
 		console.log('something went wrong with determining result');
-	}
-}
-
-function resetGame() {
-	let result = document.getElementById('result');
-	result.textContent = '';
-	// let cards = document.getElementsByClassName("card");
-	while (DEALERCARDSDIV.firstChild) {
-		DEALERCARDSDIV.removeChild(DEALERCARDSDIV.firstChild);
-	}
-	while (PLAYERCARDSDIV.firstChild) {
-		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
-	}
-	PLAYERHAND = [];
-	DEALERHAND = [];
-	if (DECK.length < 18) {
-		DECK = shuffleDeck(createDeck());
 	}
 }

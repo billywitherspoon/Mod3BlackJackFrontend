@@ -1,6 +1,4 @@
 function renderBetCard() {
-	let bettingActions = document.getElementById('betting-actions');
-
 	let card = createHtmlElement('div', 'card text-center', '', 'bet-card');
 	let cardHeader = createHtmlElement('div', 'card-header', 'Place a Bet', 'card-header');
 	let cardBody = createHtmlElement('div', 'card-body', '', 'card-body');
@@ -35,7 +33,7 @@ function renderBetCard() {
 	cardBody.appendChild(form);
 	card.appendChild(cardHeader);
 	card.appendChild(cardBody);
-	bettingActions.appendChild(card);
+	BETTINGACTIONS.appendChild(card);
 }
 
 // function convertToInt(value) {
@@ -68,13 +66,12 @@ function setBetInput() {
 }
 
 function makeBet(ev) {
-	console.log(ev);
 	ev.preventDefault();
-	newHand();
-	clearBetCard();
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
 	if (isInteger(betInput)) {
+		clearBetCard();
+		newHand();
 		// updateAccount();
 	} else {
 		alert('Please enter a number greater than 0');
@@ -83,13 +80,12 @@ function makeBet(ev) {
 }
 
 function renderBetActions() {
-	let bettingActions = document.getElementById('betting-actions');
 	let hitButton = createHtmlElement('button', '', 'Hit', 'hit');
 	let stayButton = createHtmlElement('button', '', 'Stay', 'stay');
 	hitButton.onclick = playerHit;
 	stayButton.onclick = playerStay;
-	bettingActions.appendChild(hitButton);
-	bettingActions.appendChild(stayButton);
+	BETTINGACTIONS.appendChild(hitButton);
+	BETTINGACTIONS.appendChild(stayButton);
 }
 
 function clearBetActions() {
@@ -104,3 +100,25 @@ function clearBetCard() {
 	let betCard = document.getElementById('bet-card');
 	betCard.remove();
 }
+
+function playerHit() {
+	addCard(PLAYERHAND);
+	currentTotal = accurateTotal(PLAYERHAND);
+	// document.getElementById('player-score').textContent = currentTotal;
+	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
+	console.log('you hit');
+	logCards('player', PLAYERHAND);
+	if (isBusted(PLAYERHAND)) {
+		console.log('you busted');
+		showDealer();
+		declareWinner();
+	}
+}
+
+function playerStay() {
+	console.log('you stayed');
+	showDealer();
+	runDealer();
+}
+
+// function updateAccount() {}
