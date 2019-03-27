@@ -13,10 +13,10 @@ function showDealer() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'playing-card';
-
-	// let dealerScoreTotal = document.getElementById('dealer-score-hidden');
-	// dealerScoreTotal.id = 'dealer-score';
-	// dealerScoreTotal.textContent = accurateTotal(DEALERHAND);
+	let dealerScore = createHtmlElement('h1', '', '', 'dealer-score');
+	let bjTable = document.getElementById('blackjack-table');
+	dealerScore.textContent = accurateTotal(DEALERHAND);
+	bjTable.appendChild(dealerScore);
 }
 
 function renderHeader() {
