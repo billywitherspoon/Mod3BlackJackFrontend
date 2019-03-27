@@ -126,3 +126,15 @@
    right: 1em;
    bottom: .25em;
 }
+#dealer-score-hidden{
+   position: absolute;
+   right: 1em;
+   top: .25em;
+   color: transparent;
+}
+
+#dealer-score{
+   position: absolute;
+   right: 1em;
+   top: .25em;
+}

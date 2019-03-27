@@ -23,10 +23,16 @@ function newHand() {
 	if (isTwentyOne(PLAYERHAND)) {
 		blackJack();
 	}
+	currentPlayerTotal = accurateTotal(PLAYERHAND);
+	currentDealerTotal = accurateTotal(DEALERHAND)
+	document.getElementById('player-score').textContent = currentPlayerTotal
+	document.getElementById('dealer-score').textContent = currentDealerTotal
 }
 
 function playerHit() {
 	addCard(PLAYERHAND);
+	currentTotal = accurateTotal(PLAYERHAND);
+	document.getElementById('player-score').textContent = currentTotal
 	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
 	console.log('you hit');
 	logCards('player', PLAYERHAND);
@@ -51,4 +57,7 @@ function showDealer() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'playing-card';
+	let dealerScoreTotal = document.getElementById('dealer-score-hidden')
+	dealerScoreTotal.id = 'dealer-score'
+	dealerScoreTotal.textContent = accurateTotal(DEALERHAND)
 }
