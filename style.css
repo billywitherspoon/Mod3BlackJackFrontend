@@ -1,6 +1,9 @@
 .card {
   border-radius: 10px;
-  background-color: white;
+  background-image: url("img/logo.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   border: solid black 1px;
   width: 120px;
   height: 180px;
@@ -9,6 +12,13 @@
   margin-left: 2px;
   margin-right: 2px;
 }
+
+/* .logo{
+   max-width: 30%
+   position: absolute;
+   padding: 30%
+} */
+
 #hidden-card {
   background-image: url("img/playing_card.png");
   background-size: cover;
@@ -70,6 +80,7 @@
 }
 
 .bottom-right {
+  font-size: 1.5em;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -77,6 +88,7 @@
 }
 
 .top-left {
+  font-size: 1.5em;
   position: absolute;
   top: 0;
   left: 0;
