@@ -128,7 +128,6 @@ function updateAccount(amount) {
 		.then((json) => {
 			console.log(json);
 		})
-		.catch(alert('Server Error'));
 }
 
 // let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
