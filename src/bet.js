@@ -73,25 +73,27 @@ function makeBet(ev) {
 	ev.preventDefault();
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
-	if (isInteger(betInput)) {
+	if (isInteger(betInput) && hasEnoughMoney(betInput)) {
 		betInput = parseInt(betInput);
 		clearBetCard();
 		updateAccount(betInput);
 		sessionStorage.setItem('amount', `${betInput}`);
 		newHand();
 	} else {
-		alert('Please enter a number greater than 0');
+		alert('Invalid Bet');
 		betInputElement.value = '0';
 	}
 }
 
 function renderBetActions() {
-	let hitButton = createHtmlElement('button', '', 'Hit', 'hit');
-	let stayButton = createHtmlElement('button', '', 'Stay', 'stay');
+	let buttonGroup = createHtmlElement('div', 'btn-group-vertical', '', '');
+	let hitButton = createHtmlElement('button', 'hit-stay', 'Hit', 'hit');
+	let stayButton = createHtmlElement('button', 'hit-stay', 'Stay', 'stay');
 	hitButton.onclick = playerHit;
 	stayButton.onclick = playerStay;
-	BETTINGACTIONS.appendChild(hitButton);
-	BETTINGACTIONS.appendChild(stayButton);
+	buttonGroup.appendChild(hitButton);
+	buttonGroup.appendChild(stayButton);
+	BETTINGACTIONS.appendChild(buttonGroup);
 }
 
 function clearBetActions() {

@@ -64,20 +64,19 @@ function declareWinner(winType = '') {
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	if (winType === 'blackjack') {
-		updateAccount(amount * -2.5);
-		result.textContent = 'BLACKJACK';
+		updateAccount(Math.round(amount * -2.5));
+		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
 	} else {
 		if (winner === 'Push') {
-			updateAccount(amount * -1);
+			updateAccount(Math.round(amount * -1));
 			result.textContent = 'PUSH';
 			console.log('push');
 		} else if (winner === 'Dealer') {
-			updateAccount(amount);
 			result.textContent = `${winner} won!`;
 			console.log(winner + ' won!');
 		} else {
-			updateAccount(amount * -2);
-			result.textContent = `${winner} won!`;
+			updateAccount(Math.round(amount * -2));
+			result.textContent = `${winner} won $${amount}!`;
 			console.log(winner + ' won!');
 		}
 	}

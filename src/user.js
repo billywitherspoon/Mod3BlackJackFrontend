@@ -89,7 +89,10 @@ function loginUser(userInfo) {
 function renderUserBar(userInfo) {
 	clearHeader();
 	let usernameDiv = createHtmlElement('div', 'col-2 bg-primary', `${userInfo.username} `, 'username');
-	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-id');
+
+	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-balance');
+	sessionStorage.setItem('balance', `${userInfo.balance}`);
+
 	let logOutButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Logout', 'logout-button');
 
 	logOutButton.onclick = logOut;
@@ -127,16 +130,9 @@ function updateAccount(amount) {
 		.then((response) => response.json())
 		.then((json) => {
 			console.log(json);
-		})
-		.catch(alert('Server Error'));
+			let userBalance = document.getElementById('user-balance');
+			userBalance.textContent = `$ ${json.balance}`;
+			sessionStorage.setItem('balance', `${json.balance}`);
+		});
+	// .catch(alert('Server Error'));
 }
-
-// let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
-// 	let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
-
-// 	loginInput.placeholder = 'username';
-
-// 	loginButton.onclick = retrieveUserInfo;
-
-// 	header.appendChild(loginInput);
-// 	header.appendChild(loginButton);
