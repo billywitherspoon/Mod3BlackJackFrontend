@@ -9,7 +9,7 @@
   height: 180px;
   display: inline-block;
   position: relative;
-  margin-left: 2px;
+  margin-left: -40px;
   margin-right: 2px;
   background-color: white;
 }
@@ -29,7 +29,7 @@
   height: 180px;
   display: inline-block;
   position: relative;
-  margin-left: 2px;
+  margin-left: -40px;
   margin-right: 2px;
   color: transparent;
 }
@@ -74,10 +74,12 @@
 }
 #dealer-cards {
   padding: 5%;
+  padding-left: 15%;
 }
 
 #player-cards {
   padding: 5%;
+  padding-left: 15%;
 }
 
 .bottom-right {
@@ -115,3 +117,6 @@
 /* #increase-button {
   font-size: 2em;
 } */
+#bet-card{
+   margin-top: 50%;
+}
