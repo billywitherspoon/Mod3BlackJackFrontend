@@ -56,19 +56,32 @@ function blackJack() {
 		console.log('Do you want even money?');
 	}
 	showDealer();
-	declareWinner();
+	declareWinner('blackjack');
 }
 
-function declareWinner() {
+function declareWinner(winType = '') {
 	let result = document.getElementById('result');
 	let winner = whoWon();
-	if (winner === 'push') {
-		result.textContent = 'PUSH';
-		console.log('push');
+	let amount = parseInt(sessionStorage.getItem('amount'));
+	if (winType === 'blackjack') {
+		updateAccount(amount * -2.5);
+		result.textContent = 'BLACKJACK';
 	} else {
-		result.textContent = `${winner} won!`;
-		console.log(winner + ' won!');
+		if (winner === 'Push') {
+			updateAccount(amount * -1);
+			result.textContent = 'PUSH';
+			console.log('push');
+		} else if (winner === 'Dealer') {
+			updateAccount(amount);
+			result.textContent = `${winner} won!`;
+			console.log(winner + ' won!');
+		} else {
+			updateAccount(amount * -2);
+			result.textContent = `${winner} won!`;
+			console.log(winner + ' won!');
+		}
 	}
+	sessionStorage.setItem('amount', '');
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
 	clearBetActions();
@@ -92,7 +105,7 @@ function whoWon() {
 		return 'You';
 	} else if (playerTotal === dealerTotal) {
 		console.log('result: player === dealer');
-		return 'push';
+		return 'Push';
 	} else {
 		console.log('something went wrong with determining result');
 	}

@@ -112,6 +112,25 @@ function clearHeader() {
 	}
 }
 
+function updateAccount(amount) {
+	let user = sessionStorage.getItem('user');
+	fetch(`http://localhost:3000/api/v1/users/${user}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
+		body: JSON.stringify({
+			bet_amount: amount
+		})
+	})
+		.then((response) => response.json())
+		.then((json) => {
+			console.log(json);
+		})
+		.catch(alert('Server Error'));
+}
+
 // let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
 // 	let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
 
