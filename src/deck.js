@@ -63,12 +63,16 @@ function renderCard(cardObject, cardArea, className = 'card', id ='rendered-card
 	newDiv.id = id;
    let topLeft = document.createElement('div')
    let bottomRight = document.createElement('div')
+   // let logo = document.createElement('img')
+   // logo.src = 'img/logo.png'
+   // logo.className = 'logo'
    bottomRight.textContent = `${cardObject.display}${cardObject.suit}`;
    topLeft.textContent = `${cardObject.display}${cardObject.suit}`;
    bottomRight.className = 'bottom-right'
    topLeft.className = 'top-left'
    bottomRight.id = bR
    topLeft.id = tL
+   // newDiv.appendChild(logo)
    newDiv.appendChild(bottomRight)
    newDiv.appendChild(topLeft)
 
