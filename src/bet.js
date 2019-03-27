@@ -74,6 +74,7 @@ function makeBet(ev) {
    let betInputElement = setBetInput();
    let betInput = betInputElement.value;
    if (isInteger(betInput)) {
+		betInput = parseInt(betInput);
       clearBetCard();
 		updateAccount(betInput);
       newHand();
@@ -127,7 +128,7 @@ function playerStay() {
 
 function updateAccount(amount) {
    let user = sessionStorage.getItem("user");
-   fetch(`http://localhost:3000/users/${user}`, {
+   fetch(`http://localhost:3000/api/v1/users/${user}`, {
          method: 'PATCH',
          headers: {
             'Content-Type': 'application/json',
@@ -138,6 +139,7 @@ function updateAccount(amount) {
          })
       })
       .then(response => response.json())
-      .then(json => console.log(json))
-		.catch(alert("Server Error"))
+      .then(json => {
+			document.getElementById('user-id').textContent = `$ ${json.balance}`
+		})
 }
