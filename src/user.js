@@ -26,14 +26,13 @@ function newHand() {
 	}
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	currentDealerTotal = accurateTotal(DEALERHAND);
-	// document.getElementById('player-score').textContent = currentPlayerTotal;
-	// document.getElementById('dealer-score').textContent = currentDealerTotal;
+	document.getElementById('player-score').textContent = currentPlayerTotal;
 }
 
 function playerHit() {
 	addCard(PLAYERHAND);
 	currentTotal = accurateTotal(PLAYERHAND);
-	// document.getElementById('player-score').textContent = currentTotal;
+	document.getElementById('player-score').textContent = currentTotal;
 	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
 	console.log('you hit');
 	logCards('player', PLAYERHAND);
@@ -58,8 +57,8 @@ function showDealer() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'playing-card';
-
-	// let dealerScoreTotal = document.getElementById('dealer-score-hidden');
-	// dealerScoreTotal.id = 'dealer-score';
-	// dealerScoreTotal.textContent = accurateTotal(DEALERHAND);
+	let dealerScore = createHtmlElement('h1','','','dealer-score')
+	let bjTable = document.getElementById('blackjack-table')
+	dealerScore.textContent = accurateTotal(DEALERHAND)
+	bjTable.appendChild(dealerScore)
 }

@@ -55,6 +55,10 @@ function whoWon() {
 }
 
 function resetGame() {
+	if (document.getElementById('dealer-score')){
+		document.getElementById('dealer-score').remove()
+	}
+	document.getElementById('player-score').textContent = '';
 	let result = document.getElementById('result');
 	result.textContent = '';
 	// let cards = document.getElementsByClassName("card");
