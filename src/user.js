@@ -13,6 +13,7 @@ function showDealer() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'playing-card';
+
 	// let dealerScoreTotal = document.getElementById('dealer-score-hidden');
 	// dealerScoreTotal.id = 'dealer-score';
 	// dealerScoreTotal.textContent = accurateTotal(DEALERHAND);
