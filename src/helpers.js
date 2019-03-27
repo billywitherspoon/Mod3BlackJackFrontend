@@ -1,5 +1,5 @@
 function isBusted(hand) {
-	if (handTotal(hand) > 21) {
+	if (hardTotal(hand) > 21) {
 		return true;
 	} else {
 		return false;
@@ -21,15 +21,15 @@ function sumArray(array) {
 	return array.reduce((a, b) => a + b, 0);
 }
 
-function handTotal(hand) {
+function hardTotal(hand) {
 	handArray = Object.values(hand).map((value) => {
 		return value.value;
 	});
 	return sumArray(handArray);
 }
 
-function finalHandTotal(hand) {
-	let total = handTotal(hand);
+function accurateTotal(hand) {
+	let total = hardTotal(hand);
 	if (isSoft(hand)) {
 		total += 10;
 	}
@@ -41,7 +41,7 @@ function addCard(hand) {
 }
 
 function isSoft(hand) {
-	if (hasAce(hand) && handTotal(hand) < 12) {
+	if (hasAce(hand) && hardTotal(hand) < 12) {
 		return true;
 	} else {
 		return false;
@@ -56,7 +56,7 @@ function logCards(name, hand) {
 }
 
 function isTwentyOne(hand) {
-	if (finalHandTotal(hand) === 21) {
+	if (accurateTotal(hand) === 21) {
 		return true;
 	} else {
 		return false;
