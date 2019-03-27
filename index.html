@@ -17,12 +17,14 @@
       <div class='container-fluid bg-dark' id='page'>
          <div class='row bg-white justify-content-end text-center' id='header'>
             <div class="col-3 center-text">NAME</div>
-            <div class="col-2 text-center"> Balance: $150</div>
+            <!-- for merge -->
+            <div class="col-3 text-center"> Balance: $150</div>
          </div>
          <div class='row' id='main-section'>
             <div id='blackjack-table' class='col-7 bg-success'>
                <div id='dealer-cards' class=''>
                </div>
+               <div> <h1 id='result'></h1> </div>
                <div id='player-cards' class=''>
                </div>
             </div>
@@ -33,14 +35,15 @@
                <button id='hit' onclick="playerHit()">Hit</button>
                <button id='stay' onclick="playerStay()">Stay</button>
             </div>
+            <!-- <div hclass="col-lg-1 bg-dark"> </div> -->
          </div>
       </div>
       <script src="src/helpers.js" defer></script>
-      <script src="src/bet.js" defer> </script>
       <script src="src/deck.js" defer> </script>
       <script src="src/dealer.js" defer></script>
       <script src="src/game.js" defer></script>
       <script src="src/user.js" defer></script>
+
    </body>
 
 </html>

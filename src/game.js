@@ -56,7 +56,7 @@ function whoWon() {
 function resetGame() {
 	let result = document.getElementById('result');
 	result.textContent = '';
-	// let cards = document.getElementsByClassName('card');
+	// let cards = document.getElementsByClassName("card");
 	while (DEALERCARDSDIV.firstChild) {
 		DEALERCARDSDIV.removeChild(DEALERCARDSDIV.firstChild);
 	}
