@@ -93,8 +93,8 @@ function makeBet(ev) {
 }
 
 function renderBetActions() {
-	let hitButton = createHtmlElement('button', '', 'Hit', 'hit');
-	let stayButton = createHtmlElement('button', '', 'Stay', 'stay');
+	let hitButton = createHtmlElement('button', 'btn-dark', 'Hit', 'hit');
+	let stayButton = createHtmlElement('button', 'btn-dark', 'Stay', 'stay');
 	hitButton.onclick = playerHit;
 	stayButton.onclick = playerStay;
 	BETTINGACTIONS.appendChild(hitButton);
