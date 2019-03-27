@@ -3,7 +3,7 @@ let DEALERCARDSDIV = document.getElementById('dealer-cards');
 let PLAYERCARDSDIV = document.getElementById('player-cards');
 let BETTINGACTIONS = document.getElementById('betting-actions');
 renderBetCard();
-renderHeader();
+renderLogin();
 
 function showDealer() {
 	let showTopLeft = document.getElementById('top-left-hidden');
@@ -19,20 +19,25 @@ function showDealer() {
 	bjTable.appendChild(dealerScore);
 }
 
-function renderHeader() {
-	let header = document.getElementById('header');
+function renderLogin() {
+	clearHeader();
+	if (sessionStorage.getItem('username')) {
+		retrieveUserInfo(sessionStorage.getItem('username'));
+	} else {
+		let header = document.getElementById('header');
 
-	let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
-	let blankColumn = createHtmlElement('div', 'col-1', '', '');
-	let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
+		let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
+		let blankColumn = createHtmlElement('div', 'col-1', '', '');
+		let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
 
-	loginInput.placeholder = 'username';
+		loginInput.placeholder = 'username';
 
-	loginButton.onclick = retrieveUserInfo;
+		loginButton.onclick = signUp;
 
-	header.appendChild(loginInput);
-	header.appendChild(blankColumn);
-	header.appendChild(loginButton);
+		header.appendChild(loginInput);
+		header.appendChild(blankColumn);
+		header.appendChild(loginButton);
+	}
 	//for git
 }
 
@@ -46,36 +51,73 @@ function renderHeader() {
 // <!-- for merge -->
 // <div id='user-balance' class="col-3 text-center"> Balance: $150</div>
 
-function retrieveUserInfo() {
+function signUp() {
 	let loginInput = document.getElementById('login-input').value;
 	if (validUsername(loginInput)) {
-		fetch('http://localhost:3000/api/v1/users', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify({
-				username: `${loginInput}`
-			})
-		})
-			.then((response) => {
-				return response.json();
-			})
-			.then((json) => {
-				console.log(json);
-				// loginUser(json);
-			});
+		retrieveUserInfo(loginInput);
 	} else {
 		alert('Please enter a valid username');
 	}
 }
 
-// function loginUser(json) {
-// 	document.cookie = `user=${userID}`;
-// 	renderUserBar(){}
-// }
+function retrieveUserInfo(username) {
+	fetch('http://localhost:3000/api/v1/users', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
+		body: JSON.stringify({
+			username: `${username}`
+		})
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.then((json) => {
+			console.log(json);
+			loginUser(json);
+		});
+}
 
-// function renderUserbar() {
+function loginUser(userInfo) {
+	sessionStorage.setItem('user', `${userInfo.id}`);
+	sessionStorage.setItem('username', `${userInfo.username}`);
+	renderUserBar(userInfo);
+}
 
-// }
+function renderUserBar(userInfo) {
+	clearHeader();
+	let usernameDiv = createHtmlElement('div', 'col-2 bg-primary', `${userInfo.username} `, 'username');
+	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-id');
+	let logOutButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Logout', 'logout-button');
+
+	logOutButton.onclick = logOut;
+
+	usernameDiv.appendChild(balanceSpan);
+	header.appendChild(usernameDiv);
+	header.appendChild(logOutButton);
+}
+
+function logOut() {
+	sessionStorage.removeItem('user');
+	sessionStorage.removeItem('username');
+	renderLogin();
+}
+
+function clearHeader() {
+	let header = document.getElementById('header');
+	while (header.firstChild) {
+		header.firstChild.remove();
+	}
+}
+
+// let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
+// 	let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
+
+// 	loginInput.placeholder = 'username';
+
+// 	loginButton.onclick = retrieveUserInfo;
+
+// 	header.appendChild(loginInput);
+// 	header.appendChild(loginButton);

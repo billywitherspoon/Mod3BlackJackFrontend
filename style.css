@@ -141,3 +141,10 @@
   text-align: center;
   vertical-align: middle;
 }
+
+#username {
+  height: 2em;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 0.5em;
+}
