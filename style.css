@@ -148,3 +148,21 @@
   border-style: solid;
   border-radius: 0.5em;
 }
+
+#hit {
+  width: 50%;
+  position: absolute;
+  margin-right: 20%;
+  margin-top: 50%;
+  right: 1em;
+  top: 0.25em;
+}
+
+#stay {
+  width: 50%;
+  position: absolute;
+  margin-right: 20%;
+  margin-bottom: 50%;
+  right: 1em;
+  bottom: 0.25em;
+}

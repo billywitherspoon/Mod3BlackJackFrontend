@@ -86,14 +86,12 @@ function makeBet(ev) {
 }
 
 function renderBetActions() {
-	let buttonGroup = createHtmlElement('div', 'btn-group-vertical', '', '');
-	let hitButton = createHtmlElement('button', 'hit-stay', 'Hit', 'hit');
-	let stayButton = createHtmlElement('button', 'hit-stay', 'Stay', 'stay');
+	let hitButton = createHtmlElement('button', '', 'Hit', 'hit');
+	let stayButton = createHtmlElement('button', '', 'Stay', 'stay');
 	hitButton.onclick = playerHit;
 	stayButton.onclick = playerStay;
-	buttonGroup.appendChild(hitButton);
-	buttonGroup.appendChild(stayButton);
-	BETTINGACTIONS.appendChild(buttonGroup);
+	BETTINGACTIONS.appendChild(hitButton);
+	BETTINGACTIONS.appendChild(stayButton);
 }
 
 function clearBetActions() {
