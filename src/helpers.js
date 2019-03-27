@@ -75,3 +75,11 @@ function isInteger(value) {
 	let regex = /\D/;
 	return !regex.test(value);
 }
+
+function validUsername(input) {
+	if (input !== '') {
+		return true;
+	} else {
+		return false;
+	}
+}

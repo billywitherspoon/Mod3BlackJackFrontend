@@ -20,13 +20,25 @@ function showDealer() {
 }
 
 function renderHeader() {
-	let login = createHtmlElement('div', 'col-3 center-text', 'Please Enter Username:', 'username-prompt');
-	let loginInput = createHtmlElement('input', 'form-control', '', 'login-input');
-	let loginButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Login', 'login-button');
+	let header = document.getElementById('header');
+
+	let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
+	let blankColumn = createHtmlElement('div', 'col-1', '', '');
+	let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
 
 	loginInput.placeholder = 'username';
+
+	loginButton.onclick = retrieveUserInfo;
+
+	header.appendChild(loginInput);
+	header.appendChild(blankColumn);
+	header.appendChild(loginButton);
 	//for git
 }
+
+// <div class="col-3 center-text">NAME</div>
+// <!-- for merge -->
+// <div class="col-3 text-center"> Balance: $150</div>
 
 // let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
 // let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
@@ -35,11 +47,35 @@ function renderHeader() {
 // <div id='user-balance' class="col-3 text-center"> Balance: $150</div>
 
 function retrieveUserInfo() {
-	fetch('URL')
-		.then((response) => {
-			return response.json();
+	let loginInput = document.getElementById('login-input').value;
+	if (validUsername(loginInput)) {
+		fetch('http://localhost:3000/api/v1/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				username: `${loginInput}`
+			})
 		})
-		.then((json) => {
-			console.log(json);
-		});
+			.then((response) => {
+				return response.json();
+			})
+			.then((json) => {
+				console.log(json);
+				// loginUser(json);
+			});
+	} else {
+		alert('Please enter a valid username');
+	}
 }
+
+// function loginUser(json) {
+// 	document.cookie = `user=${userID}`;
+// 	renderUserBar(){}
+// }
+
+// function renderUserbar() {
+
+// }

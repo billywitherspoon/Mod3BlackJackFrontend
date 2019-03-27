@@ -52,7 +52,7 @@
 
 #main-section {
   height: 100%;
-  padding: 5%;
+  padding: 4%;
 }
 
 #betting-actions {
@@ -60,7 +60,9 @@
 }
 
 #header {
-  height: 5%;
+  margin-top: 1%;
+  height: 1%;
+  padding-right: 4%;
 }
 
 .center-text {
@@ -121,21 +123,21 @@
   margin-top: 50%;
 }
 
-#player-score{
-   position: absolute;
-   right: 1em;
-   bottom: .25em;
+#player-score {
+  position: absolute;
+  right: 1em;
+  bottom: 0.25em;
 }
 
-#dealer-score{
-   position: absolute;
-   right: 1em;
-   top: .25em;
+#dealer-score {
+  position: absolute;
+  right: 1em;
+  top: 0.25em;
 }
 
-#result{
-   min-height: 12%;
-   font-size: 1.75em;
-   text-align: center;
-   vertical-align: middle;
+#result {
+  min-height: 12%;
+  font-size: 1.75em;
+  text-align: center;
+  vertical-align: middle;
 }
