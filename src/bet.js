@@ -11,8 +11,15 @@ function renderBetCard() {
 	let decreaseButton = createHtmlElement('button', 'btn btn-warning rounded-circle xl h1', '-', '');
 	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
 
+	previousBet = sessionStorage.getItem('amount');
+
+	if (previousBet) {
+		betInput.value = `${previousBet}`;
+	} else {
+		betInput.value = `0`;
+	}
+
 	betInput.type = 'text';
-	betInput.value = '0';
 
 	increaseButton.type = 'button';
 	increaseButton.onclick = increaseBet;

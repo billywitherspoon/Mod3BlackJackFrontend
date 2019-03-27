@@ -2,7 +2,6 @@ let TABLE = document.getElementById('blackjack-table');
 let DEALERCARDSDIV = document.getElementById('dealer-cards');
 let PLAYERCARDSDIV = document.getElementById('player-cards');
 let BETTINGACTIONS = document.getElementById('betting-actions');
-renderBetCard();
 renderLogin();
 
 function showDealer() {
@@ -93,19 +92,25 @@ function renderUserBar(userInfo) {
 	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-balance');
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
-	let logOutButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Logout', 'logout-button');
+	let logoutButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Logout', 'logout-button');
 
-	logOutButton.onclick = logOut;
+	logoutButton.onclick = logout;
 
 	usernameDiv.appendChild(balanceSpan);
 	header.appendChild(usernameDiv);
-	header.appendChild(logOutButton);
+	header.appendChild(logoutButton);
+
+	renderBetCard();
 }
 
-function logOut() {
+function logout() {
 	sessionStorage.removeItem('user');
 	sessionStorage.removeItem('username');
+	sessionStorage.removeItem('amount');
 	renderLogin();
+	while (BETTINGACTIONS.firstChild) {
+		BETTINGACTIONS.firstChild.remove();
+	}
 }
 
 function clearHeader() {

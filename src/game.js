@@ -80,7 +80,6 @@ function declareWinner(winType = '') {
 			console.log(winner + ' won!');
 		}
 	}
-	sessionStorage.setItem('amount', '');
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
 	clearBetActions();
