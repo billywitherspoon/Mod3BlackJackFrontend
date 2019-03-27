@@ -57,31 +57,38 @@ function shuffleDeck(deckArray) {
 	return deckArray;
 }
 
-function renderCard(cardObject, cardArea, className = 'card', id ='rendered-card', bR = 'bottom-right', tL = 'top-left') {
+function renderCard(
+	cardObject,
+	cardArea,
+	className = 'playing-card',
+	id = 'rendered-card',
+	bR = 'bottom-right',
+	tL = 'top-left'
+) {
 	let newDiv = document.createElement('div');
 	newDiv.className = className;
 	newDiv.id = id;
-   let topLeft = document.createElement('div')
-   let bottomRight = document.createElement('div')
-   // let logo = document.createElement('img')
-   // logo.src = 'img/logo.png'
-   // logo.className = 'logo'
-   bottomRight.textContent = `${cardObject.display}${cardObject.suit}`;
-   topLeft.textContent = `${cardObject.display}${cardObject.suit}`;
-   bottomRight.className = 'bottom-right'
-   topLeft.className = 'top-left'
-   bottomRight.id = bR
-   topLeft.id = tL
-   // newDiv.appendChild(logo)
-   newDiv.appendChild(bottomRight)
-   newDiv.appendChild(topLeft)
+	let topLeft = document.createElement('div');
+	let bottomRight = document.createElement('div');
+	// let logo = document.createElement('img')
+	// logo.src = 'img/logo.png'
+	// logo.className = 'logo'
+	bottomRight.textContent = `${cardObject.display}${cardObject.suit}`;
+	topLeft.textContent = `${cardObject.display}${cardObject.suit}`;
+	bottomRight.className = 'bottom-right';
+	topLeft.className = 'top-left';
+	bottomRight.id = bR;
+	topLeft.id = tL;
+	// newDiv.appendChild(logo)
+	newDiv.appendChild(bottomRight);
+	newDiv.appendChild(topLeft);
 
 	if ([ '♥', '♦' ].includes(cardObject.suit)) {
 		bottomRight.classList.add('red');
-      topLeft.classList.add('red');
+		topLeft.classList.add('red');
 	} else {
 		bottomRight.classList.add('black');
-      topLeft.classList.add('black');
+		topLeft.classList.add('black');
 	}
 	if (cardArea.id == 'player-cards') {
 		cardArea.appendChild(newDiv);

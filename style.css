@@ -1,4 +1,4 @@
-.card {
+.playing-card {
   border-radius: 10px;
   background-image: url("img/logo.png");
   background-size: 100%;
@@ -11,6 +11,7 @@
   position: relative;
   margin-left: 2px;
   margin-right: 2px;
+  background-color: white;
 }
 
 /* .logo{

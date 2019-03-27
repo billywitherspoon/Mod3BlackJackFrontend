@@ -50,5 +50,5 @@ function showDealer() {
 	showTopLeft.removeAttribute('id');
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
-	showCard.className = 'card';
+	showCard.className = 'playing-card';
 }
