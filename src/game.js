@@ -30,8 +30,8 @@ function declareWinner() {
 }
 
 function whoWon() {
-	playerTotal = finalHandTotal(PLAYERHAND);
-	dealerTotal = finalHandTotal(DEALERHAND);
+	playerTotal = accurateTotal(PLAYERHAND);
+	dealerTotal = accurateTotal(DEALERHAND);
 
 	if (playerTotal > 21) {
 		console.log('result: player greater than 21');
