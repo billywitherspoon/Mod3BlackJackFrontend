@@ -24,7 +24,7 @@ function renderHeader() {
 	let loginInput = createHtmlElement('input', 'form-control', '', 'login-input');
 	let loginButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Login', 'login-button');
 
-	loginButton.loginInput.placeholder = 'username';
+	loginInput.placeholder = 'username';
 }
 
 // let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
