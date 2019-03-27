@@ -13,19 +13,16 @@ function renderBetCard() {
 	let decreaseButton = createHtmlElement('button', 'btn btn-warning rounded-circle xl h1', '-', '');
 	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
 
-	// <button type="submit" class="btn btn-primary mb-2">
-	// 	Confirm identity
-	// </button>;
-
 	betInput.type = 'text';
 	betInput.value = '0';
 
 	increaseButton.type = 'button';
 	increaseButton.onclick = increaseBet;
-	// increaseButton.id = 'increase-button';
+
 	decreaseButton.type = 'button';
 	decreaseButton.onclick = decreaseBet;
-	// decreaseButton.cl: 'bet-button';
+
+	dealButton.type = 'submit';
 	dealButton.onclick = makeBet;
 
 	colBetButtons.appendChild(increaseButton);
@@ -71,7 +68,10 @@ function setBetInput() {
 }
 
 function makeBet(ev) {
+	console.log(ev);
 	ev.preventDefault();
+	newHand();
+	clearBetCard();
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
 	if (isInteger(betInput)) {
@@ -80,4 +80,27 @@ function makeBet(ev) {
 		alert('Please enter a number greater than 0');
 		betInputElement.value = '0';
 	}
+}
+
+function renderBetActions() {
+	let bettingActions = document.getElementById('betting-actions');
+	let hitButton = createHtmlElement('button', '', 'Hit', 'hit');
+	let stayButton = createHtmlElement('button', '', 'Stay', 'stay');
+	hitButton.onclick = playerHit;
+	stayButton.onclick = playerStay;
+	bettingActions.appendChild(hitButton);
+	bettingActions.appendChild(stayButton);
+}
+
+function clearBetActions() {
+	let hitButton = document.getElementById('hit');
+	let stayButton = document.getElementById('stay');
+	hitButton.remove();
+	stayButton.remove();
+	renderBetCard();
+}
+
+function clearBetCard() {
+	let betCard = document.getElementById('bet-card');
+	betCard.remove();
 }
