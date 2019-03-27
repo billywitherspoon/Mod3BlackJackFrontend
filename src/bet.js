@@ -66,6 +66,10 @@ function setBetInput() {
 }
 
 function makeBet(ev) {
+	if (document.getElementById('dealer-score')){
+		document.getElementById('dealer-score').remove()
+	}
+	document.getElementById('player-score').textContent = '';
 	ev.preventDefault();
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
@@ -104,7 +108,7 @@ function clearBetCard() {
 function playerHit() {
 	addCard(PLAYERHAND);
 	currentTotal = accurateTotal(PLAYERHAND);
-	// document.getElementById('player-score').textContent = currentTotal;
+	document.getElementById('player-score').textContent = currentTotal;
 	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
 	console.log('you hit');
 	logCards('player', PLAYERHAND);

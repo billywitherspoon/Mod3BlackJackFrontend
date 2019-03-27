@@ -30,8 +30,7 @@ function newHand() {
 	}
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	currentDealerTotal = accurateTotal(DEALERHAND);
-	// document.getElementById('player-score').textContent = currentPlayerTotal;
-	// document.getElementById('dealer-score').textContent = currentDealerTotal;
+	document.getElementById('player-score').textContent = currentPlayerTotal;
 }
 
 function resetGame() {
