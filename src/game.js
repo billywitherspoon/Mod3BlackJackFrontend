@@ -27,6 +27,7 @@ function declareWinner() {
 	}
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
+	clearBetActions();
 }
 
 function whoWon() {

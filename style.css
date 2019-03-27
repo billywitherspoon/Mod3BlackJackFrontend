@@ -69,7 +69,7 @@
   float: none;
 }
 
-#new-hand {
+#deal-button {
   align-self: center;
 }
 #dealer-cards {
@@ -117,8 +117,8 @@
 /* #increase-button {
   font-size: 2em;
 } */
-#bet-card{
-   margin-top: 50%;
+#bet-card {
+  margin-top: 50%;
 }
 
 #player-score{
