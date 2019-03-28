@@ -148,13 +148,14 @@ function zeroBalance() {
 		let addMoreChips = createHtmlElement('button', 'col-2 bg-secondary', 'Add Chips', 'add-chips');
 		addMoreChips.onclick = addChips;
 		header.appendChild(addMoreChips);
-		clearBetCard();
+		clearBetActions();
 	}
 }
 
 function addChips() {
 	let user = sessionStorage.getItem('user');
 	let newBalance = 1000;
+
 	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
@@ -172,9 +173,10 @@ function addChips() {
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
+			renderBetCard();
+			resetGame();
 			return 'Account Updated';
 		});
-	renderBetCard();
 }
 
 function updatePlayerTotalDisplay() {

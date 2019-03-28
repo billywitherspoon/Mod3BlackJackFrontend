@@ -82,7 +82,7 @@ function makeBet(ev) {
 	let betInput = betInputElement.value;
 	if (isInteger(betInput) && hasEnoughMoney(betInput)) {
 		betInput = parseInt(betInput);
-		clearBetCard();
+		clearBetActions();
 		sessionStorage.setItem('amount', `${betInput}`);
 		// updateAccount(betInput);
 		// newHand();
@@ -110,13 +110,12 @@ function clearBetActions() {
 	while (BETTINGACTIONS.firstChild) {
 		BETTINGACTIONS.firstChild.remove();
 	}
-	renderBetCard();
 }
 
-function clearBetCard() {
-	let betCard = document.getElementById('bet-card');
-	betCard.remove();
-}
+// function clearBetCard() {
+// 	let betCard = document.getElementById('bet-card');
+// 	betCard.remove();
+// }
 
 function playerHit() {
 	let doubleDownButton = document.getElementById('double-down-button');

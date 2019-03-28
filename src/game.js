@@ -82,6 +82,8 @@ function doubleBlackJack() {
 }
 
 function declareWinner(winType = '') {
+	clearBetActions();
+	renderBetCard();
 	let result = document.getElementById('result');
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
@@ -112,7 +114,6 @@ function declareWinner(winType = '') {
 	}
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
-	clearBetActions();
 }
 
 function whoWon() {
