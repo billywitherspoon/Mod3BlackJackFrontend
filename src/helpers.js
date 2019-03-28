@@ -36,10 +36,6 @@ function accurateTotal(hand) {
 	return total;
 }
 
-function addCard(hand) {
-	hand.push(DECK.shift());
-}
-
 function isSoft(hand) {
 	if (hasAce(hand) && hardTotal(hand) < 12) {
 		return true;
@@ -57,6 +53,14 @@ function logCards(name, hand) {
 
 function isTwentyOne(hand) {
 	if (accurateTotal(hand) === 21) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function isEleven(hand) {
+	if (hardTotal(hand) === 11) {
 		return true;
 	} else {
 		return false;

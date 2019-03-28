@@ -52,7 +52,7 @@
 
 #main-section {
   height: 100%;
-  padding: 4%;
+  padding: 3em;
 }
 
 #betting-actions {
@@ -171,7 +171,7 @@
   border-radius: 1em;
 }
 
-#logout-button{
-   position: absolute;
-   left: 1em;
+#logout-button {
+  position: absolute;
+  left: 3em;
 }

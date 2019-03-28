@@ -115,12 +115,12 @@ function clearBetCard() {
 }
 
 function playerHit() {
-	addCard(PLAYERHAND);
-	currentTotal = accurateTotal(PLAYERHAND);
-	document.getElementById('player-score').textContent = currentTotal;
-	renderCard(PLAYERHAND[PLAYERHAND.length - 1], PLAYERCARDSDIV);
-	console.log('you hit');
-	logCards('player', PLAYERHAND);
+	let doubleDownButton = document.getElementById('double-down-button');
+	if (doubleDownButton) {
+		doubleDownButton.remove();
+	}
+	addCard(PLAYERHAND, PLAYERCARDSDIV);
+	updatePlayerTotalDisplay();
 	if (isBusted(PLAYERHAND)) {
 		console.log('you busted');
 		showDealer();
@@ -130,6 +130,21 @@ function playerHit() {
 
 function playerStay() {
 	console.log('you stayed');
-	showDealer();
+	runDealer();
+}
+
+function doubleDown() {
+	let doubleDownButton = createHtmlElement('button', '', 'Double Down', 'double-down-button');
+	doubleDownButton.onclick = doubleBet;
+	BETTINGACTIONS.appendChild(doubleDownButton);
+}
+
+function doubleBet() {
+	clearBetActions();
+	let amount = parseInt(sessionStorage.getItem('amount'));
+	updateAccount(amount);
+	sessionStorage.setItem('amount', `${amount * 2}`);
+	addCard(PLAYERHAND, PLAYERCARDSDIV);
+	updatePlayerTotalDisplay();
 	runDealer();
 }

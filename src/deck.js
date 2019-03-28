@@ -38,6 +38,20 @@ function createDeck() {
 	return newDeck;
 }
 
+function makeAce() {
+	return new Card('A', '♠', 1);
+}
+
+function makeTen() {
+	return new Card('10', '♠', 10);
+}
+function makeSix() {
+	return new Card('5', '♠', 5);
+}
+function makeFive() {
+	return new Card('6', '♠', 6);
+}
+
 function shuffleDeck(deckArray) {
 	let counter = deckArray.length;
 

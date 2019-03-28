@@ -1,4 +1,8 @@
 let DECK = shuffleDeck(createDeck());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeFive());
+// DECK.unshift(makeAce();
+// DECK.unshift(makeTen());
 let PLAYERHAND = [];
 let DEALERHAND = [];
 
@@ -25,12 +29,15 @@ function newHand() {
 	console.log('deck size: ' + DECK.length);
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
-	if (isTwentyOne(PLAYERHAND)) {
-		blackJack();
-	}
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	currentDealerTotal = accurateTotal(DEALERHAND);
 	document.getElementById('player-score').textContent = currentPlayerTotal;
+	if (isTwentyOne(PLAYERHAND)) {
+		blackJack();
+	}
+	if (isEleven(PLAYERHAND)) {
+		doubleDown();
+	}
 }
 
 function resetGame() {
@@ -107,4 +114,17 @@ function whoWon() {
 	} else {
 		console.log('something went wrong with determining result');
 	}
+}
+
+function addCard(hand, div) {
+	hand.push(DECK.shift());
+	renderCard(hand[hand.length - 1], div);
+	console.log('added a card');
+	logCards('player', PLAYERHAND);
+	logCards('dealer', DEALERHAND);
+}
+
+function updatePlayerTotalDisplay() {
+	currentTotal = accurateTotal(PLAYERHAND);
+	document.getElementById('player-score').textContent = currentTotal;
 }

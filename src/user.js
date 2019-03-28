@@ -87,12 +87,12 @@ function loginUser(userInfo) {
 
 function renderUserBar(userInfo) {
 	clearHeader();
-	let usernameDiv = createHtmlElement('div', 'col-2 bg-primary', `${userInfo.username} `, 'username');
+	let usernameDiv = createHtmlElement('div', 'col-2 bg-secondary', `${userInfo.username} `, 'username');
 
 	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-balance');
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
-	let logoutButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Logout', 'logout-button');
+	let logoutButton = createHtmlElement('button', 'col-1 btn btn-danger mb-2', 'Logout', 'logout-button');
 
 	logoutButton.onclick = logout;
 

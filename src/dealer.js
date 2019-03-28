@@ -1,9 +1,11 @@
 function runDealer() {
 	console.log('running dealer');
+	showDealer();
 	while (isSoft(DEALERHAND)) {
 		if (hardTotal(DEALERHAND) < 8) {
-			addCard(DEALERHAND);
-			renderCard(DEALERHAND[DEALERHAND.length - 1], DEALERCARDSDIV);
+			addCard(DEALERHAND, DEALERCARDSDIV);
+			updateDealerTotalDisplay();
+			// renderCard(DEALERHAND[DEALERHAND.length - 1], DEALERCARDSDIV);
 			console.log('dealer hit on soft hand');
 			logCards('dealer', DEALERHAND);
 		} else if (hardTotal(DEALERHAND) >= 8) {
@@ -13,8 +15,9 @@ function runDealer() {
 		}
 	}
 	while (hardTotal(DEALERHAND) < 17 && !isSoft(DEALERHAND)) {
-		addCard(DEALERHAND);
-		renderCard(DEALERHAND[DEALERHAND.length - 1], DEALERCARDSDIV);
+		addCard(DEALERHAND, DEALERCARDSDIV);
+		updateDealerTotalDisplay();
+		// renderCard(DEALERHAND[DEALERHAND.length - 1], DEALERCARDSDIV);
 		console.log('dealer hit on hard hand');
 		logCards('dealer', DEALERHAND);
 		if (isBusted(DEALERHAND)) {
@@ -23,6 +26,10 @@ function runDealer() {
 		}
 	}
 	console.log('dealer ended its run');
-	document.getElementById('dealer-score').textContent = accurateTotal(DEALERHAND);
 	declareWinner();
+}
+
+function updateDealerTotalDisplay() {
+	dealerScore = document.getElementById('dealer-score');
+	dealerScore.textContent = accurateTotal(DEALERHAND);
 }
