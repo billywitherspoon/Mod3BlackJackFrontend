@@ -1,10 +1,9 @@
 #add-chips {
-   width: 20%;
-   position: absolute;
-   right: 45%;
-   font-size: 1.2em;
-   border-radius: .5em;
-
+  width: 20%;
+  position: absolute;
+  right: 45%;
+  font-size: 1.2em;
+  border-radius: 0.5em;
 }
 
 .playing-card {
@@ -71,7 +70,8 @@
 #header {
   margin-top: 1%;
   height: 1%;
-  padding-right: 4%;
+  /* padding-right: 4%; */
+  padding-left: 2em;
 }
 
 .center-text {
@@ -92,6 +92,10 @@
   padding: 2%;
   padding-left: 15%;
 }
+
+/* #bet-amount-button {
+  border-color: white;
+} */
 
 .bottom-right {
   font-size: 1.5em;

@@ -1,5 +1,5 @@
 function renderBetCard() {
-	let card = createHtmlElement('div', 'card text-center', '', 'bet-card');
+	let card = createHtmlElement('div', 'card text-center bg-dark text-white', '', 'bet-card');
 	let cardHeader = createHtmlElement('div', 'card-header', 'Place a Bet', 'card-header');
 	let cardBody = createHtmlElement('div', 'card-body', '', 'card-body');
 	let form = createHtmlElement('form', '', '', 'bet-form');
@@ -7,16 +7,19 @@ function renderBetCard() {
 	let colBetInput = createHtmlElement('div', 'col', '', '');
 	let colBetButtons = createHtmlElement('div', 'col', '', '');
 	let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
-	let increaseButton = createHtmlElement('button', 'btn btn-warning rounded-circle xl h1', '+', '');
-	let decreaseButton = createHtmlElement('button', 'btn btn-warning rounded-circle xl h1', '-', '');
 	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
+	let increaseButtonDiv = createHtmlElement('div', '', '', 'increase-button-div');
+	let decreaseButtonDiv = createHtmlElement('div', '', '', 'decrease-button-div');
+	let increaseButton = createHtmlElement('button', 'btn btn-danger rounded-circle-lg h1', '+', '');
+	let decreaseButton = createHtmlElement('button', 'btn btn-danger rounded-circle-lg h1', '-', '');
+	// let dollarInput = createHtmlElement('span', 'className', 'textContent', 'id');
 
 	previousBet = sessionStorage.getItem('amount');
 
 	if (previousBet) {
 		betInput.value = `${previousBet}`;
 	} else {
-		betInput.value = `0`;
+		betInput.value = `1`;
 	}
 
 	betInput.type = 'text';
@@ -30,8 +33,10 @@ function renderBetCard() {
 	dealButton.type = 'submit';
 	dealButton.onclick = makeBet;
 
-	colBetButtons.appendChild(increaseButton);
-	colBetButtons.appendChild(decreaseButton);
+	decreaseButtonDiv.appendChild(decreaseButton);
+	increaseButtonDiv.appendChild(increaseButton);
+	colBetButtons.appendChild(increaseButtonDiv);
+	colBetButtons.appendChild(decreaseButtonDiv);
 	colBetInput.appendChild(betInput);
 	row.appendChild(colBetInput);
 	row.appendChild(colBetButtons);
@@ -54,17 +59,17 @@ function increaseBet() {
 	if (isInteger(betInput)) {
 		betInputElement.value = `${parseInt(betInput) + 1}`;
 	} else {
-		betInputElement.value = '0';
+		betInputElement.value = '1';
 	}
 }
 
 function decreaseBet() {
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
-	if (isInteger(betInput) && betInput > 0) {
+	if (isInteger(betInput) && betInput > 1) {
 		betInputElement.value = `${parseInt(betInput) - 1}`;
 	} else {
-		betInputElement.value = '0';
+		betInputElement.value = '1';
 	}
 }
 
@@ -80,7 +85,7 @@ function makeBet(ev) {
 	ev.preventDefault();
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
-	if (isInteger(betInput) && hasEnoughMoney(betInput)) {
+	if (isInteger(betInput) && hasEnoughMoney(betInput) && parseInt(betInput) > 0) {
 		betInput = parseInt(betInput);
 		clearBetActions();
 		sessionStorage.setItem('amount', `${betInput}`);
@@ -92,8 +97,8 @@ function makeBet(ev) {
 			newHand();
 		});
 	} else {
-		alert('Invalid Bet');
-		betInputElement.value = '0';
+		alert('Please enter a valid bet');
+		betInputElement.value = '1';
 	}
 }
 

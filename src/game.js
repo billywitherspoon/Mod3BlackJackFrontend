@@ -8,9 +8,9 @@ let PLAYERHAND = [];
 let DEALERHAND = [];
 
 function newHand() {
+	resetGame();
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	let balance = parseInt(sessionStorage.getItem('balance'));
-	resetGame();
 	renderBetActions();
 	for (let i = 0; i < 2; i++) {
 		PLAYERHAND[i] = DECK.shift();
@@ -47,19 +47,29 @@ function newHand() {
 }
 
 function resetGame() {
+	// let blackJackTable = document.getElementById('blackjack-table');
+	// while (blackJackTable.firstChild) {
+	// 	blackJackTable.firstChild.remove();
+	// }
 	let result = document.getElementById('result');
 	result.textContent = '';
-	// let cards = document.getElementsByClassName("card");
 	while (DEALERCARDSDIV.firstChild) {
 		DEALERCARDSDIV.removeChild(DEALERCARDSDIV.firstChild);
 	}
 	while (PLAYERCARDSDIV.firstChild) {
 		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
 	}
+
 	PLAYERHAND = [];
 	DEALERHAND = [];
 	if (DECK.length < 18) {
 		DECK = shuffleDeck(createDeck());
+	}
+	if (document.getElementById('player-score')) {
+		document.getElementById('player-score').textContent = '';
+	}
+	if (document.getElementById('dealer-score')) {
+		document.getElementById('dealer-score').textContent = '';
 	}
 }
 
