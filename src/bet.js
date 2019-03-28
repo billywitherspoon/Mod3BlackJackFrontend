@@ -143,6 +143,7 @@ function playerStay() {
 
 function doubleDown() {
 	let doubleDownButton = createHtmlElement('button', '', 'Double Down', 'double-down-button');
+	
 	doubleDownButton.onclick = doubleBet;
 	BETTINGACTIONS.appendChild(doubleDownButton);
 }

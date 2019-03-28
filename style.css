@@ -13,13 +13,13 @@
   background-position: center;
   background-repeat: no-repeat;
   border: solid black 1px;
-  width: 120px;
-  height: 180px;
+  width: 8em;
+  height: 12em;
   display: inline-block;
   position: relative;
-  margin-left: -40px;
-  margin-right: 2px;
+  margin-left: -4em;
   background-color: white;
+  margin-top: 1.5em;
 }
 
 /* .logo{
@@ -33,12 +33,11 @@
   background-size: cover;
   border-radius: 10px;
   border: solid black 1px;
-  width: 120px;
-  height: 180px;
+  width: 8em;
+  height: 12em;
   display: inline-block;
   position: relative;
-  margin-left: -40px;
-  margin-right: 2px;
+  margin-left: -4em;
   color: transparent;
 }
 
@@ -56,6 +55,12 @@
 
 #blackjack-table {
   border-radius: 30px;
+  border: outset;
+  border-width: .5em;
+  border-color: rgb(72,72,72);
+  background-color: #008000;
+  box-shadow: -1em 1em;
+  box-shadow-right:
 }
 
 #main-section {
@@ -134,6 +139,7 @@
 } */
 #bet-card {
   margin-top: 50%;
+  background: transparent;
 }
 
 #player-score {
@@ -166,22 +172,31 @@
   width: 60%;
   height: 20%;
   position: absolute;
-  margin-right: 15%;
-  margin-top: 30%;
-  right: 1em;
+  margin-top: 20%;
+  right: 5em;
   top: 0.25em;
   border-radius: 1em;
+}
+
+#double-down-button{
+   margin-top: 67%;
+   width: 60%;
+   right: 5em;
+   height: 15%;
+   position: absolute;
+   border-radius: 1em;
+   background-color: gold;
 }
 
 #stay {
   width: 60%;
   height: 20%;
   position: absolute;
-  margin-right: 15%;
-  margin-bottom: 30%;
-  right: 1em;
+  margin-bottom: 20%;
+  right: 5em;
   bottom: 0.25em;
   border-radius: 1em;
+
 }
 
 #logout-button {
