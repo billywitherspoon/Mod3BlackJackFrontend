@@ -111,6 +111,14 @@ function logout() {
 	while (BETTINGACTIONS.firstChild) {
 		BETTINGACTIONS.firstChild.remove();
 	}
+	while (DEALERCARDSDIV.firstChild) {
+		DEALERCARDSDIV.firstChild.remove();
+	}
+	while (PLAYERCARDSDIV.firstChild) {
+		PLAYERCARDSDIV.firstChild.remove();
+	}
+	document.getElementById('player-score').textContent = '';
+	document.getElementById('dealer-score').textContent = '';
 }
 
 function clearHeader() {
