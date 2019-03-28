@@ -1,17 +1,22 @@
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeSix());
+DECK.unshift(makeSix());
+DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
 // DECK.unshift(makeFive());
 // DECK.unshift(makeFive());
-DECK.unshift(makeTen());
+// DECK.unshift(makeTen());
 DECK.unshift(makeFive());
-DECK.unshift(makeAce());
-DECK.unshift(makeTen());
+DECK.unshift(makeFive());
+// DECK.unshift(makeFive());
+// DECK.unshift(makeAce());
+// DECK.unshift(makeTen());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
 
 function newHand() {
+	let amount = parseInt(sessionStorage.getItem('amount'));
+	let balance = parseInt(sessionStorage.getItem('balance'));
 	resetGame();
 	renderBetActions();
 	for (let i = 0; i < 2; i++) {
@@ -43,7 +48,7 @@ function newHand() {
 		dealerBlackJack();
 	} else if (isTwentyOne(DEALERHAND) && isTwentyOne(PLAYERHAND)) {
 		doubleBlackJack();
-	} else if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21) {
+	} else if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21 && amount <= balance) {
 		doubleDown();
 	}
 }

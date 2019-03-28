@@ -88,6 +88,7 @@ function renderUserBar(userInfo) {
 	header.appendChild(usernameDiv);
 	header.appendChild(logoutButton);
 	renderBetCard();
+	zeroBalance();
 }
 
 function logout() {
