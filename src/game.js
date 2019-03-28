@@ -1,8 +1,12 @@
 let DECK = shuffleDeck(createDeck());
 // DECK.unshift(makeSix());
+// DECK.unshift(makeTen());
+// DECK.unshift(makeFive());
+// DECK.unshift(makeFive());
 // DECK.unshift(makeFive());
 // DECK.unshift(makeAce();
 // DECK.unshift(makeTen());
+
 let PLAYERHAND = [];
 let DEALERHAND = [];
 
@@ -35,7 +39,7 @@ function newHand() {
 	if (isTwentyOne(PLAYERHAND)) {
 		blackJack();
 	}
-	if (isEleven(PLAYERHAND)) {
+	if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21) {
 		doubleDown();
 	}
 }
@@ -122,9 +126,4 @@ function addCard(hand, div) {
 	console.log('added a card');
 	logCards('player', PLAYERHAND);
 	logCards('dealer', DEALERHAND);
-}
-
-function updatePlayerTotalDisplay() {
-	currentTotal = accurateTotal(PLAYERHAND);
-	document.getElementById('player-score').textContent = currentTotal;
 }

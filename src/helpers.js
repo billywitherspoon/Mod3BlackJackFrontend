@@ -59,8 +59,8 @@ function isTwentyOne(hand) {
 	}
 }
 
-function isEleven(hand) {
-	if (hardTotal(hand) === 11) {
+function isElevenOrTen(hand) {
+	if (hardTotal(hand) === 11 || hardTotal(hand) === 10) {
 		return true;
 	} else {
 		return false;

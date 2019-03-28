@@ -83,9 +83,14 @@ function makeBet(ev) {
 	if (isInteger(betInput) && hasEnoughMoney(betInput)) {
 		betInput = parseInt(betInput);
 		clearBetCard();
-		updateAccount(betInput);
 		sessionStorage.setItem('amount', `${betInput}`);
-		newHand();
+		// updateAccount(betInput);
+		// newHand();
+		updateAccount(betInput).then((statement) => {
+			// runDealer();
+			console.log(statement);
+			newHand();
+		});
 	} else {
 		alert('Invalid Bet');
 		betInputElement.value = '0';
@@ -102,10 +107,9 @@ function renderBetActions() {
 }
 
 function clearBetActions() {
-	let hitButton = document.getElementById('hit');
-	let stayButton = document.getElementById('stay');
-	hitButton.remove();
-	stayButton.remove();
+	while (BETTINGACTIONS.firstChild) {
+		BETTINGACTIONS.firstChild.remove();
+	}
 	renderBetCard();
 }
 
@@ -142,9 +146,12 @@ function doubleDown() {
 function doubleBet() {
 	clearBetActions();
 	let amount = parseInt(sessionStorage.getItem('amount'));
-	updateAccount(amount);
 	sessionStorage.setItem('amount', `${amount * 2}`);
 	addCard(PLAYERHAND, PLAYERCARDSDIV);
 	updatePlayerTotalDisplay();
-	runDealer();
+	updateAccount(amount).then((statement) => {
+		// runDealer();
+		console.log(statement);
+		runDealer();
+	});
 }

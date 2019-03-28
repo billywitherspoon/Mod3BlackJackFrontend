@@ -46,10 +46,10 @@ function makeTen() {
 	return new Card('10', '♠', 10);
 }
 function makeSix() {
-	return new Card('5', '♠', 5);
+	return new Card('6', '♠', 6);
 }
 function makeFive() {
-	return new Card('6', '♠', 6);
+	return new Card('5', '♠', 5);
 }
 
 function shuffleDeck(deckArray) {
