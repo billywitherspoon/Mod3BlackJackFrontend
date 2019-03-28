@@ -91,4 +91,5 @@ function validUsername(input) {
 function hasEnoughMoney(betInput) {
 	let sessionBalance = parseInt(sessionStorage.getItem('balance'));
 	return parseInt(betInput) <= sessionBalance;
+
 }

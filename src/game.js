@@ -90,6 +90,7 @@ function declareWinner(winType = '') {
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
 	clearBetActions();
+	zeroBalance()
 }
 
 function whoWon() {
