@@ -75,18 +75,25 @@ function declareWinner(winType = '') {
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	if (winType === 'blackjack') {
-		updateAccount(Math.round(amount * -2.5));
+		updateAccount(Math.round(amount * -2.5)).then((statement) => {
+		zeroBalance();
+	});
 		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
 	} else {
 		if (winner === 'Push') {
-			updateAccount(Math.round(amount * -1));
+			updateAccount(Math.round(amount * -1)).then((statement) => {
+			zeroBalance();
+		});
 			result.textContent = 'PUSH';
 			console.log('push');
 		} else if (winner === 'Dealer') {
 			result.textContent = `${winner} won!`;
 			console.log(winner + ' won!');
 		} else {
-			updateAccount(Math.round(amount * -2));
+			updateAccount(Math.round(amount * -2)).then((statement) => {
+			zeroBalance();
+			console.log('you won')
+		});
 			result.textContent = `${winner} won $${amount}!`;
 			console.log(winner + ' won!');
 		}
@@ -94,7 +101,6 @@ function declareWinner(winType = '') {
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
 	clearBetActions();
-	zeroBalance()
 }
 
 function whoWon() {

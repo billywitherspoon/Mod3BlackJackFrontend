@@ -130,7 +130,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
-	fetch(`http://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -146,7 +146,9 @@ function updateAccount(amount) {
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
+			return 'account updated'
 		});
+
 	// .catch(alert('Server Error'));
 }
 
