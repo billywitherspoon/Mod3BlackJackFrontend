@@ -37,18 +37,7 @@ function renderLogin() {
 		header.appendChild(blankColumn);
 		header.appendChild(loginButton);
 	}
-	//for git
 }
-
-// <div class="col-3 center-text">NAME</div>
-// <!-- for merge -->
-// <div class="col-3 text-center"> Balance: $150</div>
-
-// let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
-// let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
-// <div id='username' class="col-3 center-text">NAME</div>
-// <!-- for merge -->
-// <div id='user-balance' class="col-3 text-center"> Balance: $150</div>
 
 function signUp() {
 	let loginInput = document.getElementById('login-input').value;
@@ -130,7 +119,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
-	fetch(`http://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -146,6 +135,7 @@ function updateAccount(amount) {
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
+			return 'Updated account';
 		});
 	// .catch(alert('Server Error'));
 }
@@ -183,4 +173,9 @@ function addChips() {
 			return 'Account Updated';
 		});
 	renderBetCard();
+}
+
+function updatePlayerTotalDisplay() {
+	currentPlayerTotal = accurateTotal(PLAYERHAND);
+	document.getElementById('player-score').textContent = currentPlayerTotal;
 }

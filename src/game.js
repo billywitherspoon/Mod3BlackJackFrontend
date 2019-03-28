@@ -3,9 +3,10 @@ let DECK = shuffleDeck(createDeck());
 // DECK.unshift(makeTen());
 // DECK.unshift(makeFive());
 // DECK.unshift(makeFive());
-// DECK.unshift(makeFive());
-// DECK.unshift(makeAce();
-// DECK.unshift(makeTen());
+DECK.unshift(makeTen());
+DECK.unshift(makeFive());
+DECK.unshift(makeAce());
+DECK.unshift(makeTen());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -36,10 +37,13 @@ function newHand() {
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	currentDealerTotal = accurateTotal(DEALERHAND);
 	document.getElementById('player-score').textContent = currentPlayerTotal;
-	if (isTwentyOne(PLAYERHAND)) {
+	if (isTwentyOne(PLAYERHAND) && !isTwentyOne(DEALERHAND)) {
 		blackJack();
-	}
-	if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21) {
+	} else if (isTwentyOne(DEALERHAND) && !isTwentyOne(PLAYERHAND)) {
+		dealerBlackJack();
+	} else if (isTwentyOne(DEALERHAND) && isTwentyOne(PLAYERHAND)) {
+		doubleBlackJack();
+	} else if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21) {
 		doubleDown();
 	}
 }
@@ -63,11 +67,20 @@ function resetGame() {
 
 function blackJack() {
 	console.log('You got blackjack!');
-	if (DEALERHAND[0].value === 1 || DEALERHAND[0].value === 10) {
-		console.log('Do you want even money?');
-	}
 	showDealer();
 	declareWinner('blackjack');
+}
+
+function dealerBlackJack() {
+	console.log('Dealer got blackjack!');
+	showDealer();
+	declareWinner('dealer blackjack');
+}
+
+function doubleBlackJack() {
+	console.log('double blackjack!');
+	showDealer();
+	declareWinner('double blackjack');
 }
 
 function declareWinner(winType = '') {
@@ -77,6 +90,12 @@ function declareWinner(winType = '') {
 	if (winType === 'blackjack') {
 		updateAccount(Math.round(amount * -2.5));
 		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
+	} else if (winType === 'dealer blackjack') {
+		result.textContent = `Dealer Blackjack!`;
+	} else if (winType === 'double blackjack') {
+		updateAccount(Math.round(amount * -1));
+		result.textContent = `Double Blackjack!`;
+		console.log('push');
 	} else {
 		if (winner === 'Push') {
 			updateAccount(Math.round(amount * -1));
@@ -94,7 +113,7 @@ function declareWinner(winType = '') {
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
 	clearBetActions();
-	zeroBalance()
+	zeroBalance();
 }
 
 function whoWon() {
