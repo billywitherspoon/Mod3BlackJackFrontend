@@ -135,8 +135,9 @@ function updateAccount(amount) {
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
-			return 'Updated account';
+			return 'account updated';
 		});
+
 	// .catch(alert('Server Error'));
 }
 
