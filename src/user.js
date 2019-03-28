@@ -88,7 +88,6 @@ function loginUser(userInfo) {
 function renderUserBar(userInfo) {
 	clearHeader();
 	let usernameDiv = createHtmlElement('div', 'col-2 bg-secondary', `${userInfo.username} `, 'username');
-
 	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-balance');
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
@@ -99,7 +98,6 @@ function renderUserBar(userInfo) {
 	usernameDiv.appendChild(balanceSpan);
 	header.appendChild(usernameDiv);
 	header.appendChild(logoutButton);
-
 	renderBetCard();
 }
 
@@ -130,14 +128,16 @@ function clearHeader() {
 
 function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
-	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
+	let balance = parseInt(sessionStorage.getItem('balance'));
+	let newBalance = balance - amount;
+	fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
 			Accept: 'application/json'
 		},
 		body: JSON.stringify({
-			bet_amount: amount
+			balance: newBalance
 		})
 	})
 		.then((response) => response.json())
@@ -146,12 +146,41 @@ function updateAccount(amount) {
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
-			return 'Account Updated';
 		});
-	// .catch(console.log('Server Error'));
+	// .catch(alert('Server Error'));
 }
 
-function updatePlayerTotalDisplay() {
-	currentTotal = accurateTotal(PLAYERHAND);
-	document.getElementById('player-score').textContent = currentTotal;
+function zeroBalance() {
+	if (parseInt(sessionStorage.getItem('balance')) == 0) {
+		document.getElementById('result').textContent = 'Please Add More Chips to Continue';
+		let addMoreChips = createHtmlElement('button', 'col-2 bg-secondary', 'Add Chips', 'add-chips');
+		addMoreChips.onclick = addChips;
+		header.appendChild(addMoreChips);
+		clearBetCard();
+	}
+}
+
+function addChips() {
+	let user = sessionStorage.getItem('user');
+	let newBalance = 1000;
+	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
+		method: 'PATCH',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
+		body: JSON.stringify({
+			balance: newBalance
+		})
+	})
+		.then((response) => response.json())
+		.then((json) => {
+			console.log('added chips!');
+			console.log(json);
+			let userBalance = document.getElementById('user-balance');
+			userBalance.textContent = `$ ${json.balance}`;
+			sessionStorage.setItem('balance', `${json.balance}`);
+			return 'Account Updated';
+		});
+	renderBetCard();
 }
