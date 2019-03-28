@@ -148,7 +148,8 @@ function zeroBalance() {
 		let addMoreChips = createHtmlElement('button', 'col-2 bg-secondary', 'Add Chips', 'add-chips');
 		addMoreChips.onclick = addChips;
 		header.appendChild(addMoreChips);
-		clearBetCard();
+		debugger
+		clearBetActions();
 	}
 }
 
@@ -175,6 +176,8 @@ function addChips() {
 			return 'Account Updated';
 		});
 	renderBetCard();
+	document.getElementById('result').textContent = '';
+	document.getElementById('add-chips').remove()
 }
 
 function updatePlayerTotalDisplay() {

@@ -110,7 +110,6 @@ function clearBetActions() {
 	while (BETTINGACTIONS.firstChild) {
 		BETTINGACTIONS.firstChild.remove();
 	}
-	renderBetCard();
 }
 
 function clearBetCard() {
