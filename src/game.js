@@ -3,10 +3,10 @@ let DECK = shuffleDeck(createDeck());
 // DECK.unshift(makeTen());
 // DECK.unshift(makeFive());
 // DECK.unshift(makeFive());
-DECK.unshift(makeTen());
-DECK.unshift(makeFive());
-DECK.unshift(makeAce());
-DECK.unshift(makeTen());
+// DECK.unshift(makeTen());
+// DECK.unshift(makeFive());
+// DECK.unshift(makeAce());
+// DECK.unshift(makeTen());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -88,36 +88,26 @@ function declareWinner(winType = '') {
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	if (winType === 'blackjack') {
-		updateAccount(Math.round(amount * -2.5)).then((statement) => {
-			zeroBalance();
-			console.log(statement);
-		});
+		updateAccount(Math.round(amount * -2.5))
 		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
 	} else if (winType === 'dealer blackjack') {
 		result.textContent = `Dealer Blackjack!`;
+		zeroBalance()
 	} else if (winType === 'double blackjack') {
-		updateAccount(Math.round(amount * -1)).then((statement) => {
-			zeroBalance();
-			console.log(statement);
-		});
+		updateAccount(Math.round(amount * -1))
 		result.textContent = `Double Blackjack!`;
 		console.log('push');
 	} else {
 		if (winner === 'Push') {
-			updateAccount(Math.round(amount * -1)).then((statement) => {
-				zeroBalance();
-				console.log(statement);
-			});
+			updateAccount(Math.round(amount * -1))
 			result.textContent = 'PUSH';
 			console.log('push');
 		} else if (winner === 'Dealer') {
 			result.textContent = `${winner} won!`;
-			console.log(winner + ' won!');
+			console.log(winner + ' won!')
+			zeroBalance();
 		} else {
-			updateAccount(Math.round(amount * -2)).then((statement) => {
-				zeroBalance();
-				console.log(statement);
-			});
+			updateAccount(Math.round(amount * -2))
 			result.textContent = `${winner} won $${amount}!`;
 			console.log(winner + ' won!');
 		}
