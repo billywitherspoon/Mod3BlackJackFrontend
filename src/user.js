@@ -117,7 +117,7 @@ function renderUserBar(userInfo) {
 
 function renderBlackJackTable() {
 	let mainSection = document.getElementById('main-section');
-	TABLE = createHtmlElement('div', 'col-7 bg-success', '', 'blackjack-table');
+	TABLE = createHtmlElement('div', 'col-7', '', 'blackjack-table');
 	DEALERCARDSDIV = createHtmlElement('div', '', '', 'dealer-cards');
 	let divResult = createHtmlElement('div', '', '', 'result');
 	let h1Result = createHtmlElement('h1', '', '', 'result');
