@@ -98,11 +98,6 @@
   padding: 2%;
   padding-left: 15%;
 }
-
-/* #bet-amount-button {
-  border-color: white;
-} */
-
 .bottom-right {
   font-size: 1.5em;
   position: absolute;
@@ -135,9 +130,6 @@
   color: transparent;
 }
 
-/* #increase-button {
-  font-size: 2em;
-} */
 #bet-card {
   padding-top: 20em;
 }
@@ -191,11 +183,6 @@
   border-radius: 1em;
 }
 
-/* #logout-button {
-  position: absolute;
-  left: 3em;
-} */
-
 #betting-rows {
   padding: 1em;
 }
@@ -217,10 +204,6 @@
   font-size: 2em;
   color: white;
 }
-
-/* #logout-button {
-  width: 4%;
-} */
 
 #username {
   font-size: 2em;

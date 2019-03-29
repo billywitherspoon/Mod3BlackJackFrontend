@@ -1,10 +1,5 @@
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeFive());
-// // DECK.unshift(makeAce());
-// DECK.unshift(makeFive());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeSix());
+// DECK.unshift(makeAce());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -31,9 +26,6 @@ function newHand() {
 			renderCard(DEALERHAND[i], DEALERCARDSDIV);
 		}
 	}
-	console.log('deck size: ' + DECK.length);
-	logCards('dealer', DEALERHAND);
-	logCards('player', PLAYERHAND);
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	currentDealerTotal = accurateTotal(DEALERHAND);
 	document.getElementById('player-score').textContent = currentPlayerTotal;
@@ -49,10 +41,6 @@ function newHand() {
 }
 
 function resetGame() {
-	// let blackJackTable = document.getElementById('blackjack-table');
-	// while (blackJackTable.firstChild) {
-	// 	blackJackTable.firstChild.remove();
-	// }
 	let result = document.getElementById('result');
 	result.textContent = '';
 	while (DEALERCARDSDIV.firstChild) {
@@ -61,7 +49,6 @@ function resetGame() {
 	while (PLAYERCARDSDIV.firstChild) {
 		PLAYERCARDSDIV.removeChild(PLAYERCARDSDIV.firstChild);
 	}
-
 	PLAYERHAND = [];
 	DEALERHAND = [];
 	if (DECK.length < 18) {
@@ -76,56 +63,48 @@ function resetGame() {
 }
 
 function blackJack() {
-	console.log('You got blackjack!');
 	showDealer();
 	declareWinner('blackjack');
 }
 
 function dealerBlackJack() {
-	console.log('Dealer got blackjack!');
 	showDealer();
 	declareWinner('dealer blackjack');
 }
 
 function doubleBlackJack() {
-	console.log('double blackjack!');
 	showDealer();
 	declareWinner('double blackjack');
 }
 
 function declareWinner(winType = '') {
-	clearBetActions();
 	renderBetCard();
-	let result = document.getElementById('result');
-	let winner = whoWon();
-	let amount = parseInt(sessionStorage.getItem('amount'));
-	if (winType === 'blackjack') {
-		updateAccount(Math.round(amount * -2.5));
-		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
-	} else if (winType === 'dealer blackjack') {
-		result.textContent = `Dealer Blackjack!`;
-		zeroBalance();
-	} else if (winType === 'double blackjack') {
-		updateAccount(Math.round(amount * -1));
-		result.textContent = `Double Blackjack!`;
-		console.log('push');
-	} else {
-		if (winner === 'Push') {
-			updateAccount(Math.round(amount * -1));
-			result.textContent = 'PUSH';
-			console.log('push');
-		} else if (winner === 'Dealer') {
-			result.textContent = `${winner} won!`;
-			console.log(winner + ' won!');
+	setTimeout(() => {
+		let result = document.getElementById('result');
+		let winner = whoWon();
+		let amount = parseInt(sessionStorage.getItem('amount'));
+		if (winType === 'blackjack') {
+			updateAccount(Math.round(amount * -2.5));
+			result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
+		} else if (winType === 'dealer blackjack') {
+			result.textContent = `Dealer Blackjack!`;
 			zeroBalance();
+		} else if (winType === 'double blackjack') {
+			updateAccount(Math.round(amount * -1));
+			result.textContent = `Double Blackjack!`;
 		} else {
-			updateAccount(Math.round(amount * -2));
-			result.textContent = `${winner} won $${amount}!`;
-			console.log(winner + ' won!');
+			if (winner === 'Push') {
+				updateAccount(Math.round(amount * -1));
+				result.textContent = 'PUSH';
+			} else if (winner === 'Dealer') {
+				result.textContent = `${winner} won!`;
+				zeroBalance();
+			} else {
+				updateAccount(Math.round(amount * -2));
+				result.textContent = `${winner} won $${amount}!`;
+			}
 		}
-	}
-	logCards('dealer', DEALERHAND);
-	logCards('player', PLAYERHAND);
+	}, 1500);
 }
 
 function whoWon() {
@@ -133,29 +112,19 @@ function whoWon() {
 	dealerTotal = accurateTotal(DEALERHAND);
 
 	if (playerTotal > 21) {
-		console.log('result: player greater than 21');
 		return 'Dealer';
 	} else if (dealerTotal > 21) {
-		console.log('result: dealer greater than 21');
 		return 'You';
 	} else if (playerTotal < dealerTotal) {
-		console.log('result: dealer greater than player');
 		return 'Dealer';
 	} else if (playerTotal > dealerTotal) {
-		console.log('result: player greater than dealer');
 		return 'You';
-	} else if (playerTotal === dealerTotal) {
-		console.log('result: player === dealer');
-		return 'Push';
 	} else {
-		console.log('something went wrong with determining result');
+		return 'Push';
 	}
 }
 
 function addCard(hand, div) {
 	hand.push(DECK.shift());
 	renderCard(hand[hand.length - 1], div);
-	console.log('added a card');
-	logCards('player', PLAYERHAND);
-	logCards('dealer', DEALERHAND);
 }

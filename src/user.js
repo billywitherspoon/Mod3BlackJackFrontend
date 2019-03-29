@@ -1,6 +1,3 @@
-// let TABLE = document.getElementById('blackjack-table');
-// let DEALERCARDSDIV = document.getElementById('dealer-cards');
-// let PLAYERCARDSDIV = document.getElementById('player-cards');
 let BETTINGACTIONS = document.getElementById('betting-actions');
 renderLogin();
 
@@ -28,7 +25,6 @@ function renderLogin() {
 		let loginInput = createHtmlElement('input', 'form-control col-12', '', 'login-input');
 		let inputGroupAppend = createHtmlElement('div', 'input-group-append', '', 'input-group-append');
 		let loginButton = createHtmlElement('button', 'btn btn-danger', 'Login / Sign Up', 'login-button');
-		// let hiddenColumn = createHtmlElement('div', 'col-7', '', 'hidden-column-1');
 		loginInput.placeholder = 'Username';
 
 		loginButton.onclick = signUp;
@@ -36,29 +32,9 @@ function renderLogin() {
 		inputGroupAppend.appendChild(loginButton);
 		inputGroup.appendChild(loginInput);
 		inputGroup.appendChild(inputGroupAppend);
-		// header.appendChild(hiddenColumn);
 		header.appendChild(inputGroup);
-
-		// let loginInput = createHtmlElement('input', 'col-2 form-control', '', 'login-input');
-		// let blankColumn = createHtmlElement('div', 'col-1', '', '');
-		// let loginButton = createHtmlElement('button', 'col-1 btn btn-secondary mb-2', 'Login', 'login-button');
-
-		// loginInput.placeholder = 'username';
-
-		// loginButton.onclick = signUp;
-
-		// header.appendChild(loginInput);
-		// header.appendChild(blankColumn);
-		// header.appendChild(loginButton);
 	}
 }
-
-// <div class="input-group mb-3">
-//   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-//   <div class="input-group-append">
-//     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-//   </div>
-// </div>
 
 function signUp() {
 	let loginInput = document.getElementById('login-input').value;
@@ -100,7 +76,6 @@ function renderUserBar(userInfo) {
 	clearHeader();
 	let usernameDiv = createHtmlElement('div', 'col-1', `${userInfo.username}`, 'username');
 	let balanceDiv = createHtmlElement('div', 'col-2', `$ ${userInfo.balance}`, 'user-balance');
-	// let hiddenDiv = createHtmlElement('div', 'col-3', '', 'hidden-header-div');
 	let logoutButton = createHtmlElement('button', 'col-2 btn btn-danger', 'Logout', 'logout-button');
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
@@ -108,7 +83,6 @@ function renderUserBar(userInfo) {
 
 	header.appendChild(usernameDiv);
 	header.appendChild(balanceDiv);
-	// header.appendChild(hiddenDiv);
 	header.appendChild(logoutButton);
 
 	renderBetCard();
@@ -141,8 +115,6 @@ function logout() {
 	renderLogin();
 	clearBetActions();
 	resetGame();
-
-	// let blackJackTable = document.getElementById('blackjack-table');
 	TABLE.remove();
 }
 
@@ -169,14 +141,11 @@ function updateAccount(amount) {
 	})
 		.then((response) => response.json())
 		.then((json) => {
-			console.log(json);
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			return 'account updated';
 		});
-
-	// .catch(alert('Server Error'));
 }
 
 function zeroBalance() {
@@ -205,13 +174,10 @@ function addChips() {
 	})
 		.then((response) => response.json())
 		.then((json) => {
-			console.log('added chips!');
-			console.log(json);
 			let userBalance = document.getElementById('user-balance');
 			userBalance.textContent = `$ ${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			document.getElementById('add-chips').remove();
-			// document.getElementById('result').textContent = '';
 			renderBetCard();
 			resetGame();
 			return 'Account Updated';
