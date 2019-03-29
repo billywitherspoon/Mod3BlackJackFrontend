@@ -118,8 +118,11 @@ async function declareWinner(winType = '') {
 			result.textContent = `${winner} won $${amount}!`;
 		}
 	}
+	updateGames(serverResult);
+}
 
-	fetch('http://localhost:3000/api/v1/hands', {
+function updateGames(serverResult) {
+	return fetch('http://localhost:3000/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -128,9 +131,11 @@ async function declareWinner(winType = '') {
 		body: JSON.stringify({
 			user_id: sessionStorage.getItem('user'),
 			winner: serverResult,
-			bet_amount: parseInt(sessionStorage.getItem('amount')),
+			bet_amount: parseInt(sessionStorage.getItem('amount'))
 		})
-	})
+	}).then(() => {
+		return 'updated';
+	});
 }
 
 function whoWon() {
