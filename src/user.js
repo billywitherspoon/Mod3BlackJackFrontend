@@ -68,8 +68,8 @@ function retrieveUserInfo(username) {
 function loginUser(userInfo) {
 	sessionStorage.setItem('user', `${userInfo.id}`);
 	sessionStorage.setItem('username', `${userInfo.username}`);
-	renderUserBar(userInfo);
 	renderBlackJackTable();
+	renderUserBar(userInfo);
 }
 
 function renderUserBar(userInfo) {
