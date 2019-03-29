@@ -78,33 +78,34 @@ function doubleBlackJack() {
 }
 
 function declareWinner(winType = '') {
+	clearBetActions();
 	renderBetCard();
-	setTimeout(() => {
-		let result = document.getElementById('result');
-		let winner = whoWon();
-		let amount = parseInt(sessionStorage.getItem('amount'));
-		if (winType === 'blackjack') {
-			updateAccount(Math.round(amount * -2.5));
-			result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
-		} else if (winType === 'dealer blackjack') {
-			result.textContent = `Dealer Blackjack!`;
-			zeroBalance();
-		} else if (winType === 'double blackjack') {
+	// setTimeout(() => {
+	let result = document.getElementById('result');
+	let winner = whoWon();
+	let amount = parseInt(sessionStorage.getItem('amount'));
+	if (winType === 'blackjack') {
+		updateAccount(Math.round(amount * -2.5));
+		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
+	} else if (winType === 'dealer blackjack') {
+		result.textContent = `Dealer Blackjack!`;
+		zeroBalance();
+	} else if (winType === 'double blackjack') {
+		updateAccount(Math.round(amount * -1));
+		result.textContent = `Double Blackjack!`;
+	} else {
+		if (winner === 'Push') {
 			updateAccount(Math.round(amount * -1));
-			result.textContent = `Double Blackjack!`;
+			result.textContent = 'PUSH';
+		} else if (winner === 'Dealer') {
+			result.textContent = `${winner} won!`;
+			zeroBalance();
 		} else {
-			if (winner === 'Push') {
-				updateAccount(Math.round(amount * -1));
-				result.textContent = 'PUSH';
-			} else if (winner === 'Dealer') {
-				result.textContent = `${winner} won!`;
-				zeroBalance();
-			} else {
-				updateAccount(Math.round(amount * -2));
-				result.textContent = `${winner} won $${amount}!`;
-			}
+			updateAccount(Math.round(amount * -2));
+			result.textContent = `${winner} won $${amount}!`;
 		}
-	}, 1500);
+	}
+	// }, 1500);
 }
 
 function whoWon() {
