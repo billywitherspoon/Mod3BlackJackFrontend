@@ -56,11 +56,11 @@
 #blackjack-table {
   border-radius: 30px;
   border: outset;
-  border-width: .5em;
-  border-color: rgb(72,72,72);
+  border-width: 0.5em;
+  border-color: rgb(72, 72, 72);
   background-color: #008000;
   box-shadow: -1em 1em;
-  box-shadow-right:
+  box-shadow-right: ;
 }
 
 #main-section {
@@ -178,14 +178,14 @@
   border-radius: 1em;
 }
 
-#double-down-button{
-   margin-top: 67%;
-   width: 60%;
-   right: 5em;
-   height: 15%;
-   position: absolute;
-   border-radius: 1em;
-   background-color: gold;
+#double-down-button {
+  margin-top: 67%;
+  width: 60%;
+  right: 5em;
+  height: 15%;
+  position: absolute;
+  border-radius: 1em;
+  background-color: gold;
 }
 
 #stay {
@@ -196,10 +196,13 @@
   right: 5em;
   bottom: 0.25em;
   border-radius: 1em;
-
 }
 
 #logout-button {
   position: absolute;
   left: 3em;
+}
+
+#betting-rows {
+  padding: 1em;
 }

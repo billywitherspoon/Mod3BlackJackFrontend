@@ -1,17 +1,19 @@
 function renderBetCard() {
-	let card = createHtmlElement('div', 'card text-center bg-dark text-white', '', 'bet-card');
-	let cardHeader = createHtmlElement('div', 'card-header', 'Place a Bet', 'card-header');
+	let card = createHtmlElement('div', 'card text-center bg-dark text-white border-dark', '', 'bet-card');
+	let cardHeader = createHtmlElement('div', 'card-header border-dark bg-dark col-12', 'Place a Bet', 'card-header');
 	let cardBody = createHtmlElement('div', 'card-body', '', 'card-body');
 	let form = createHtmlElement('form', '', '', 'bet-form');
-	let row = createHtmlElement('div', 'row', '', '');
-	let colBetInput = createHtmlElement('div', 'col', '', '');
-	let colBetButtons = createHtmlElement('div', 'col', '', '');
+	let row = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
+	let row2 = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
+	let row3 = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
+	let colBetInput = createHtmlElement('div', 'col-6 center', '', '');
+	// let colBetButtons = createHtmlElement('div', 'col-4', '', '');
 	let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
-	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2', 'Deal a Hand', 'deal-button');
-	let increaseButtonDiv = createHtmlElement('div', '', '', 'increase-button-div');
-	let decreaseButtonDiv = createHtmlElement('div', '', '', 'decrease-button-div');
-	let increaseButton = createHtmlElement('button', 'btn btn-danger rounded-circle-lg h1', '+', '');
-	let decreaseButton = createHtmlElement('button', 'btn btn-danger rounded-circle-lg h1', '-', '');
+	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2 col-12', 'Deal a Hand', 'deal-button');
+	let increaseButtonDiv = createHtmlElement('div', 'col-6', '', 'increase-button-div');
+	let decreaseButtonDiv = createHtmlElement('div', 'col-6', '', 'decrease-button-div');
+	let increaseButton = createHtmlElement('button', 'btn btn-danger col-6 h1', '+', '');
+	let decreaseButton = createHtmlElement('button', 'btn btn-danger col-6 h1', '-', '');
 	// let dollarInput = createHtmlElement('span', 'className', 'textContent', 'id');
 
 	previousBet = sessionStorage.getItem('amount');
@@ -33,15 +35,17 @@ function renderBetCard() {
 	dealButton.type = 'submit';
 	dealButton.onclick = makeBet;
 
-	decreaseButtonDiv.appendChild(decreaseButton);
 	increaseButtonDiv.appendChild(increaseButton);
-	colBetButtons.appendChild(increaseButtonDiv);
-	colBetButtons.appendChild(decreaseButtonDiv);
+	decreaseButtonDiv.appendChild(decreaseButton);
 	colBetInput.appendChild(betInput);
 	row.appendChild(colBetInput);
-	row.appendChild(colBetButtons);
+	row2.appendChild(decreaseButtonDiv);
+	row2.appendChild(increaseButtonDiv);
+	row3.appendChild(dealButton);
 	form.appendChild(row);
-	form.appendChild(dealButton);
+	form.appendChild(row2);
+	form.appendChild(row3);
+	// form.appendChild(dealButton);
 	cardBody.appendChild(form);
 	card.appendChild(cardHeader);
 	card.appendChild(cardBody);
@@ -143,7 +147,7 @@ function playerStay() {
 
 function doubleDown() {
 	let doubleDownButton = createHtmlElement('button', '', 'Double Down', 'double-down-button');
-	
+
 	doubleDownButton.onclick = doubleBet;
 	BETTINGACTIONS.appendChild(doubleDownButton);
 }
