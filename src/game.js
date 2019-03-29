@@ -126,6 +126,11 @@ function declareWinner(winType = '') {
 	}
 	logCards('dealer', DEALERHAND);
 	logCards('player', PLAYERHAND);
+	// debugger
+	// if (winner == 'You'){
+	// 	let serverResult = win
+	// }
+	// else if (winner ==)
 }
 
 function whoWon() {
