@@ -1,5 +1,8 @@
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeAce());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeTen());
+// DECK.unshift(makeFive());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -173,10 +176,9 @@ function whoWon() {
 function addCard(hand, div) {
 	hand.push(DECK.shift());
 	renderCard(hand[hand.length - 1], div);
-
 }
 
-function playSound(){
-	let cardSound = document.getElementById('card-sound')
-	cardSound.play()
+function playSound() {
+	let cardSound = document.getElementById('card-sound');
+	cardSound.play();
 }

@@ -92,7 +92,7 @@ function makeBet(ev) {
 		betInput = parseInt(betInput);
 		clearBetActions();
 		sessionStorage.setItem('amount', `${betInput}`);
-		updateAccount(betInput).then((statement) => {
+		updateAccount(betInput).then(() => {
 			newHand();
 		});
 	} else {
@@ -154,4 +154,8 @@ function doubleBet() {
 	updateAccount(amount).then((statement) => {
 		runDealer();
 	});
+}
+
+for (let i = 99; i > 0; i--) {
+	createNewReview(`${i} bottles of beer on the wall`, 'take one down and pass it around', resort);
 }

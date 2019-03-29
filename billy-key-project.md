@@ -17,10 +17,8 @@
 - `A user should be dealt from a single deck`
 
 ####Stretch
-- A user should be able to toggle different backgrounds
-- `A user can see which is their 'down card'`
-- A user should be able to double down
+- `A user should be able to double down`
 - `A user's bet should default to their last bet`
-- A user should be able to add money to their account
+- `A user should be able to add money to their account`
 - A user should be notified when the deck is reshuffling
 - `A deck should auto re shuffle`
