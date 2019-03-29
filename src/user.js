@@ -183,7 +183,7 @@ function addChips() {
 		.then((response) => response.json())
 		.then((json) => {
 			let userBalance = document.getElementById('user-balance');
-			usernameDiv.textContent = `${userInfo.username}$${userInfo.balance}`;
+			document.getElementById('user-information').textContent = `${json.username}$${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			document.getElementById('add-chips').remove();
 			renderBetCard();
@@ -200,6 +200,7 @@ function updatePlayerTotalDisplay() {
 function updateWinPercentage(array){
 	let wins = 0
 	let totalHands = 0
+	if (array.length > 0){
 	for (let i = 0; i < array.length; i++){
 		totalHands++
 		if (array[i].winner == 'Player'){
@@ -212,4 +213,5 @@ function updateWinPercentage(array){
 	console.log(wins)
 	console.log(totalHands)
 	document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil((wins/totalHands) * 100)}%`
+}
 }
