@@ -109,4 +109,5 @@ function renderCard(
 	} else {
 		cardArea.appendChild(newDiv);
 	}
+	playSound()
 }
