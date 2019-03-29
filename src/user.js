@@ -1,7 +1,8 @@
 let BETTINGACTIONS = document.getElementById('betting-actions');
 renderLogin();
 
-function showDealer() {
+async function showDealer() {
+	await timeout(1000);
 	let showTopLeft = document.getElementById('top-left-hidden');
 	let showBottomRight = document.getElementById('bottom-right-hidden');
 	let showCard = document.getElementById('hidden-card');
@@ -9,7 +10,7 @@ function showDealer() {
 	showBottomRight.removeAttribute('id');
 	showCard.removeAttribute('id');
 	showCard.className = 'playing-card';
-	let dealerScore = createHtmlElement('h1', '', '', 'dealer-score');
+	let dealerScore = document.getElementById('dealer-score');
 	let bjTable = document.getElementById('blackjack-table');
 	dealerScore.textContent = accurateTotal(DEALERHAND);
 	bjTable.appendChild(dealerScore);
@@ -94,15 +95,17 @@ function renderBlackJackTable() {
 	TABLE = createHtmlElement('div', 'col-7', '', 'blackjack-table');
 	DEALERCARDSDIV = createHtmlElement('div', '', '', 'dealer-cards');
 	let divResult = createHtmlElement('div', '', '', 'result');
-	let h1Result = createHtmlElement('h1', '', '', 'result');
-	let h1PlayerScore = createHtmlElement('h1', '', '', 'player-score');
+	// let h1Result = createHtmlElement('h1', '', '', 'result');
+	let playerScore = createHtmlElement('h1', '', '', 'player-score');
+	let dealerScore = createHtmlElement('h1', '', '', 'dealer-score');
 	PLAYERCARDSDIV = createHtmlElement('div', '', '', 'player-cards');
 
-	divResult.appendChild(h1Result);
+	// divResult.appendChild(h1Result);
+	TABLE.appendChild(dealerScore);
 	TABLE.appendChild(DEALERCARDSDIV);
 	TABLE.appendChild(divResult);
-	TABLE.appendChild(h1PlayerScore);
 	TABLE.appendChild(PLAYERCARDSDIV);
+	TABLE.appendChild(playerScore);
 	mainSection.appendChild(TABLE);
 	mainSection.insertBefore(TABLE, mainSection.firstChild);
 }

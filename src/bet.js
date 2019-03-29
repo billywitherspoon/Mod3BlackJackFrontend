@@ -82,7 +82,7 @@ function setBetInput() {
 
 function makeBet(ev) {
 	if (document.getElementById('dealer-score')) {
-		document.getElementById('dealer-score').remove();
+		document.getElementById('dealer-score').textContent = '';
 	}
 	document.getElementById('player-score').textContent = '';
 	ev.preventDefault();
@@ -116,16 +116,20 @@ function clearBetActions() {
 	}
 }
 
-function playerHit() {
+async function playerHit() {
 	let doubleDownButton = document.getElementById('double-down-button');
 	if (doubleDownButton) {
 		doubleDownButton.remove();
 	}
+	clearBetActions();
+	await timeout(1000);
 	addCard(PLAYERHAND, PLAYERCARDSDIV);
 	updatePlayerTotalDisplay();
 	if (isBusted(PLAYERHAND)) {
 		showDealer();
 		declareWinner();
+	} else {
+		renderBetActions();
 	}
 }
 
@@ -137,6 +141,7 @@ function playerStay() {
 function doubleDown() {
 	let doubleDownButton = createHtmlElement('button', '', 'Double Down', 'double-down-button');
 	doubleDownButton.onclick = doubleBet;
+	renderBetActions();
 	BETTINGACTIONS.appendChild(doubleDownButton);
 }
 

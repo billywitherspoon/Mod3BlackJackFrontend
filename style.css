@@ -92,11 +92,13 @@
 #dealer-cards {
   padding: 5%;
   padding-left: 15%;
+  height: 11em;
 }
 
 #player-cards {
-  padding: 2%;
+  padding: 5%;
   padding-left: 15%;
+  height: 11em;
 }
 .bottom-right {
   font-size: 1.5em;
@@ -147,9 +149,8 @@
 }
 
 #result {
-  min-height: 12%;
+  min-height: 20%;
   font-size: 1.75em;
-  text-align: center;
   vertical-align: middle;
 }
 
