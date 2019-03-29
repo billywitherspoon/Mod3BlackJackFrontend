@@ -84,28 +84,46 @@ function declareWinner(winType = '') {
 	let result = document.getElementById('result');
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
+	let serverResult;
 	if (winType === 'blackjack') {
 		updateAccount(Math.round(amount * -2.5));
 		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
+		serverResult = 'Player';
 	} else if (winType === 'dealer blackjack') {
 		result.textContent = `Dealer Blackjack!`;
+		serverResult = 'Dealer';
 		zeroBalance();
 	} else if (winType === 'double blackjack') {
+		serverResult = 'Push';
 		updateAccount(Math.round(amount * -1));
 		result.textContent = `Double Blackjack!`;
 	} else {
 		if (winner === 'Push') {
 			updateAccount(Math.round(amount * -1));
 			result.textContent = 'PUSH';
+			serverResult = 'Push';
 		} else if (winner === 'Dealer') {
 			result.textContent = `${winner} won!`;
+			serverResult = 'Dealer';
 			zeroBalance();
 		} else {
+			serverResult = 'Player';
 			updateAccount(Math.round(amount * -2));
 			result.textContent = `${winner} won $${amount}!`;
 		}
 	}
-	// }, 1500);
+	fetch('http://localhost:3000/api/v1/hands', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
+		body: JSON.stringify({
+			user_id: sessionStorage.getItem('user'),
+			winner: serverResult,
+			bet_amount: parseInt(sessionStorage.getItem('amount')),
+		})
+	})
 }
 
 function whoWon() {

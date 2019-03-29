@@ -205,12 +205,31 @@
   color: white;
 }
 
-#username {
+#user-information {
   font-size: 2em;
   color: white;
+  /* position: absolute;
+  left: .01%;
+  top: 2%; */
 }
 
-#user-balance {
-  font-size: 2em;
-  color: white;
+
+
+#win-percentage{
+   color: white;
+   font-size: 2em;
+}
+
+#logout-button{
+   position: absolute;
+   right: 5%;
+   top: 3%;
+   border: solid;
+   border-width: medium;
+   border-color: #dc3545;
+
+}
+
+#bet-card-header{
+   margin-top: 30%;
 }
