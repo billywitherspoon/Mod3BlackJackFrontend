@@ -2,7 +2,7 @@ let BETTINGACTIONS = document.getElementById('betting-actions');
 renderLogin();
 
 async function showDealer() {
-	await timeout(1000);
+	await timeout(650);
 	let showTopLeft = document.getElementById('top-left-hidden');
 	let showBottomRight = document.getElementById('bottom-right-hidden');
 	let showCard = document.getElementById('hidden-card');
@@ -85,7 +85,7 @@ function renderUserBar(userInfo) {
 
 	let winPercentage = createHtmlElement('div', 'col-5', ``, 'win-percentage');
 
-	let blankCol = createHtmlElement('div', 'col-1');
+	// let blankCol = createHtmlElement('div', 'col-1');
 
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 

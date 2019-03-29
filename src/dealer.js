@@ -1,9 +1,9 @@
 async function runDealer() {
 	showDealer();
-	await timeout(1000);
+	await timeout(650);
 	while (isSoft(DEALERHAND)) {
 		if (hardTotal(DEALERHAND) < 8) {
-			await timeout(1000);
+			await timeout(650);
 			addCard(DEALERHAND, DEALERCARDSDIV);
 			updateDealerTotalDisplay();
 		} else if (hardTotal(DEALERHAND) >= 8) {
@@ -11,7 +11,7 @@ async function runDealer() {
 		}
 	}
 	while (hardTotal(DEALERHAND) < 17 && !isSoft(DEALERHAND)) {
-		await timeout(1000);
+		await timeout(650);
 		addCard(DEALERHAND, DEALERCARDSDIV);
 		updateDealerTotalDisplay();
 		if (isBusted(DEALERHAND)) {

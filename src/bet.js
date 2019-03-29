@@ -122,7 +122,7 @@ async function playerHit() {
 		doubleDownButton.remove();
 	}
 	clearBetActions();
-	await timeout(1000);
+	await timeout(650);
 	addCard(PLAYERHAND, PLAYERCARDSDIV);
 	updatePlayerTotalDisplay();
 	if (isBusted(PLAYERHAND)) {
