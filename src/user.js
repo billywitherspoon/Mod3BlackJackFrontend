@@ -75,15 +75,19 @@ function loginUser(userInfo) {
 
 function renderUserBar(userInfo) {
 	clearHeader();
-	let usernameDiv = createHtmlElement('div', 'col-1', `${userInfo.username}`, 'username');
-	let balanceDiv = createHtmlElement('div', 'col-2', `$ ${userInfo.balance}`, 'user-balance');
-	let logoutButton = createHtmlElement('button', 'col-2 btn btn-danger', 'Logout', 'logout-button');
+	// let usernameDiv = createHtmlElement('div', 'col-1', `${userInfo.username}`, 'username');
+	let usernameDiv = createHtmlElement('div', 'col-2', `${userInfo.username}$${userInfo.balance}`, 'user-information');
+	let logoutButton = createHtmlElement('button', 'col-2 btn btn-dark', 'Logout', 'logout-button');
+	let winPercentage = createHtmlElement('div', 'col-3', 'Win Percentage', 'win-percentage');
+	let blankCol = createHtmlElement('div', 'col-2');
+
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
 	logoutButton.onclick = logout;
 
 	header.appendChild(usernameDiv);
-	header.appendChild(balanceDiv);
+	header.appendChild(blankCol)
+	header.appendChild(winPercentage)
 	header.appendChild(logoutButton);
 
 	renderBetCard();
@@ -132,6 +136,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
+	let handsArray;
 	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
@@ -145,8 +150,11 @@ function updateAccount(amount) {
 		.then((response) => response.json())
 		.then((json) => {
 			let userBalance = document.getElementById('user-balance');
-			userBalance.textContent = `$ ${json.balance}`;
+			document.getElementById('user-information').textContent = `${json.username}$${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
+			console.log(json)
+			let handsArray = json.hands;
+			updateWinPercentage(handsArray);
 			return 'account updated';
 		});
 }
@@ -178,7 +186,7 @@ function addChips() {
 		.then((response) => response.json())
 		.then((json) => {
 			let userBalance = document.getElementById('user-balance');
-			userBalance.textContent = `$ ${json.balance}`;
+			document.getElementById('user-information').textContent = `${json.username}$${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			document.getElementById('add-chips').remove();
 			renderBetCard();
@@ -190,4 +198,23 @@ function addChips() {
 function updatePlayerTotalDisplay() {
 	currentPlayerTotal = accurateTotal(PLAYERHAND);
 	document.getElementById('player-score').textContent = currentPlayerTotal;
+}
+
+function updateWinPercentage(array){
+	let wins = 0
+	let totalHands = 0
+	if (array.length > 0){
+	for (let i = 0; i < array.length; i++){
+		totalHands++
+		if (array[i].winner == 'Player'){
+			wins++
+		}
+		if (array[i].winner == 'Push'){
+			totalHands--
+		}
+	}
+	console.log(wins)
+	console.log(totalHands)
+	document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil((wins/totalHands) * 100)}%`
+}
 }

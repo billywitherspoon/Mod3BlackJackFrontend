@@ -1,8 +1,9 @@
 #add-chips {
-  width: 20%;
+  width: 30%;
   position: absolute;
   right: 45%;
-  font-size: 1.2em;
+  top: auto;
+  font-size: 1.5em;
   border-radius: 0.5em;
 }
 
@@ -206,12 +207,31 @@
   color: white;
 }
 
-#username {
+#user-information {
   font-size: 2em;
   color: white;
+  /* position: absolute;
+  left: .01%;
+  top: 2%; */
 }
 
-#user-balance {
-  font-size: 2em;
-  color: white;
+
+
+#win-percentage{
+   color: white;
+   font-size: 2em;
+}
+
+#logout-button{
+   position: absolute;
+   right: 5%;
+   top: 3%;
+   border: solid;
+   border-width: medium;
+   border-color: #dc3545;
+
+}
+
+#bet-card-header{
+   margin-top: 30%;
 }
