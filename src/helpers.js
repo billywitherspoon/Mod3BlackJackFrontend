@@ -91,5 +91,13 @@ function validUsername(input) {
 function hasEnoughMoney(betInput) {
 	let sessionBalance = parseInt(sessionStorage.getItem('balance'));
 	return parseInt(betInput) <= sessionBalance;
-
 }
+
+function timeout(ms) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// async function sleep2000(fn, ...args) {
+
+// 	return fn(...args);
+// }

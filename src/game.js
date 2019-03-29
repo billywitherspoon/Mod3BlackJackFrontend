@@ -4,16 +4,18 @@ let DECK = shuffleDeck(createDeck());
 let PLAYERHAND = [];
 let DEALERHAND = [];
 
-function newHand() {
+async function newHand() {
 	resetGame();
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	let balance = parseInt(sessionStorage.getItem('balance'));
-	renderBetActions();
 	for (let i = 0; i < 2; i++) {
 		PLAYERHAND[i] = DECK.shift();
 		DEALERHAND[i] = DECK.shift();
+		await timeout(1000);
 		renderCard(PLAYERHAND[i], PLAYERCARDSDIV);
+		updatePlayerTotalDisplay();
 		if (i == 0) {
+			await timeout(1000);
 			renderCard(
 				DEALERHAND[i],
 				DEALERCARDSDIV,
@@ -23,12 +25,10 @@ function newHand() {
 				'top-left-hidden'
 			);
 		} else {
+			await timeout(1000);
 			renderCard(DEALERHAND[i], DEALERCARDSDIV);
 		}
 	}
-	currentPlayerTotal = accurateTotal(PLAYERHAND);
-	currentDealerTotal = accurateTotal(DEALERHAND);
-	document.getElementById('player-score').textContent = currentPlayerTotal;
 	if (isTwentyOne(PLAYERHAND) && !isTwentyOne(DEALERHAND)) {
 		blackJack();
 	} else if (isTwentyOne(DEALERHAND) && !isTwentyOne(PLAYERHAND)) {
@@ -37,6 +37,8 @@ function newHand() {
 		doubleBlackJack();
 	} else if (isElevenOrTen(PLAYERHAND) && accurateTotal != 21 && amount <= balance) {
 		doubleDown();
+	} else {
+		renderBetActions();
 	}
 }
 
@@ -62,23 +64,27 @@ function resetGame() {
 	}
 }
 
-function blackJack() {
+async function blackJack() {
 	showDealer();
+	await timeout(1000);
 	declareWinner('blackjack');
 }
 
-function dealerBlackJack() {
+async function dealerBlackJack() {
 	showDealer();
+	await timeout(1000);
 	declareWinner('dealer blackjack');
 }
 
-function doubleBlackJack() {
+async function doubleBlackJack() {
 	showDealer();
+	await timeout(1000);
 	declareWinner('double blackjack');
 }
 
-function declareWinner(winType = '') {
+async function declareWinner(winType = '') {
 	clearBetActions();
+	await timeout(1000);
 	renderBetCard();
 	// setTimeout(() => {
 	let result = document.getElementById('result');
@@ -112,6 +118,7 @@ function declareWinner(winType = '') {
 			result.textContent = `${winner} won $${amount}!`;
 		}
 	}
+
 	fetch('http://localhost:3000/api/v1/hands', {
 		method: 'POST',
 		headers: {
