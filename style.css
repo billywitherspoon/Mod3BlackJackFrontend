@@ -1,8 +1,8 @@
 #add-chips {
-  width: 30%;
+  width: 15%;
   position: absolute;
-  right: 45%;
-  top: auto;
+  right: 25%;
+  top: 3%;
   font-size: 1.5em;
   border-radius: 0.5em;
 }
@@ -216,23 +216,20 @@
   top: 2%; */
 }
 
-
-
-#win-percentage{
-   color: white;
-   font-size: 2em;
+#win-percentage {
+  color: white;
+  font-size: 2em;
 }
 
-#logout-button{
-   position: absolute;
-   right: 5%;
-   top: 3%;
-   border: solid;
-   border-width: medium;
-   border-color: #dc3545;
-
+#logout-button {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  border: solid;
+  border-width: medium;
+  border-color: #dc3545;
 }
 
-#bet-card-header{
-   margin-top: 30%;
+#bet-card-header {
+  margin-top: 30%;
 }
