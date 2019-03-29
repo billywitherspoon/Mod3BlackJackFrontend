@@ -56,11 +56,11 @@
 #blackjack-table {
   border-radius: 30px;
   border: outset;
-  border-width: .5em;
-  border-color: rgb(72,72,72);
+  border-width: 0.5em;
+  border-color: rgb(72, 72, 72);
   background-color: #008000;
   box-shadow: -1em 1em;
-  box-shadow-right:
+  box-shadow-right: ;
 }
 
 #main-section {
@@ -87,6 +87,7 @@
 
 #deal-button {
   align-self: center;
+  font-size: 2em;
 }
 #dealer-cards {
   padding: 5%;
@@ -138,8 +139,7 @@
   font-size: 2em;
 } */
 #bet-card {
-  margin-top: 50%;
-  background: transparent;
+  padding-top: 20em;
 }
 
 #player-score {
@@ -161,13 +161,6 @@
   vertical-align: middle;
 }
 
-#username {
-  height: 2em;
-  border-color: transparent;
-  border-style: solid;
-  border-radius: 0.5em;
-}
-
 #hit {
   width: 60%;
   height: 20%;
@@ -178,14 +171,14 @@
   border-radius: 1em;
 }
 
-#double-down-button{
-   margin-top: 60%;
-   width: 60%;
-   right: 5em;
-   height: 15%;
-   position: absolute;
-   border-radius: 1em;
-   background-color: gold;
+#double-down-button {
+  margin-top: 60%;
+  width: 60%;
+  right: 5em;
+  height: 15%;
+  position: absolute;
+  border-radius: 1em;
+  background-color: gold;
 }
 
 #stay {
@@ -196,10 +189,45 @@
   right: 5em;
   bottom: 0.25em;
   border-radius: 1em;
-
 }
 
-#logout-button {
+/* #logout-button {
   position: absolute;
   left: 3em;
+} */
+
+#betting-rows {
+  padding: 1em;
+}
+
+#bet-input {
+  text-align: center;
+  font-size: 2em;
+}
+
+#bet-change-buttons {
+  font-size: 2em;
+}
+
+#bet-card-header {
+  font-size: 3em;
+}
+
+#bet-currency {
+  font-size: 2em;
+  color: white;
+}
+
+/* #logout-button {
+  width: 4%;
+} */
+
+#username {
+  font-size: 2em;
+  color: white;
+}
+
+#user-balance {
+  font-size: 2em;
+  color: white;
 }
