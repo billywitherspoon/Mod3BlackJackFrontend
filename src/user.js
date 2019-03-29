@@ -24,7 +24,6 @@ function renderLogin() {
 		retrieveUserInfo(sessionStorage.getItem('username'));
 	} else {
 		let header = document.getElementById('header');
-
 		let inputGroup = createHtmlElement('div', 'input-group mb-3 col-5', '', 'input-group-1');
 		let loginInput = createHtmlElement('input', 'form-control', '', 'login-input');
 		let inputGroupAppend = createHtmlElement('div', 'input-group-append', '', 'input-group-append');

@@ -87,6 +87,7 @@
 
 #deal-button {
   align-self: center;
+  font-size: 2em;
 }
 #dealer-cards {
   padding: 5%;
@@ -138,8 +139,7 @@
   font-size: 2em;
 } */
 #bet-card {
-  margin-top: 50%;
-  background: transparent;
+  padding-top: 20em;
 }
 
 #player-score {
@@ -205,4 +205,22 @@
 
 #betting-rows {
   padding: 1em;
+}
+
+#bet-input {
+  text-align: center;
+  font-size: 2em;
+}
+
+#bet-change-buttons {
+  font-size: 2em;
+}
+
+#bet-card-header {
+  font-size: 3em;
+}
+
+#bet-currency {
+  font-size: 2em;
+  font-color: white;
 }
