@@ -92,33 +92,50 @@ async function declareWinner(winType = '') {
 	let amount = parseInt(sessionStorage.getItem('amount'));
 	let serverResult;
 	if (winType === 'blackjack') {
-		updateAccount(Math.round(amount * -2.5));
-		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
 		serverResult = 'Player';
+		result.textContent = `BLACKJACK! You won $${Math.round(amount * 1.5)}!`;
+		updateGames(serverResult).then(() => {
+			updateAccount(Math.round(amount * -2.5));
+		});
 	} else if (winType === 'dealer blackjack') {
-		result.textContent = `Dealer Blackjack!`;
 		serverResult = 'Dealer';
+		result.textContent = `Dealer Blackjack!`;
+		updateGames(serverResult).then(() => {
+			retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
+				renderUserBar(userInfo);
+			});
+		});
 		zeroBalance();
 	} else if (winType === 'double blackjack') {
 		serverResult = 'Push';
-		updateAccount(Math.round(amount * -1));
 		result.textContent = `Double Blackjack!`;
+		updateGames(serverResult).then(() => {
+			updateAccount(Math.round(amount * -1));
+		});
 	} else {
 		if (winner === 'Push') {
-			updateAccount(Math.round(amount * -1));
-			result.textContent = 'PUSH';
 			serverResult = 'Push';
+			result.textContent = 'PUSH';
+			updateGames(serverResult).then(() => {
+				updateAccount(Math.round(amount * -1));
+			});
 		} else if (winner === 'Dealer') {
-			result.textContent = `${winner} won!`;
 			serverResult = 'Dealer';
+			result.textContent = `${winner} won!`;
+			updateGames(serverResult).then(() => {
+				retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
+					renderUserBar(userInfo);
+				});
+			});
 			zeroBalance();
 		} else {
 			serverResult = 'Player';
-			updateAccount(Math.round(amount * -2));
 			result.textContent = `${winner} won $${amount}!`;
+			updateGames(serverResult).then(() => {
+				updateAccount(Math.round(amount * -2));
+			});
 		}
 	}
-	updateGames(serverResult);
 }
 
 function updateGames(serverResult) {
@@ -133,8 +150,6 @@ function updateGames(serverResult) {
 			winner: serverResult,
 			bet_amount: parseInt(sessionStorage.getItem('amount'))
 		})
-	}).then(() => {
-		return 'updated';
 	});
 }
 

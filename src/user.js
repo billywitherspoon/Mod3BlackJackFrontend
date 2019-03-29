@@ -19,7 +19,8 @@ async function showDealer() {
 function renderLogin() {
 	clearHeader();
 	if (sessionStorage.getItem('username')) {
-		retrieveUserInfo(sessionStorage.getItem('username'));
+		loginUser(sessionStorage.getItem('username'));
+		// retrieveUserInfo(sessionStorage.getItem('username'));
 	} else {
 		let header = document.getElementById('header');
 		let inputGroup = createHtmlElement('div', 'input-group mb-3 col-3', '', 'input-group-1');
@@ -40,14 +41,14 @@ function renderLogin() {
 function signUp() {
 	let loginInput = document.getElementById('login-input').value;
 	if (validUsername(loginInput)) {
-		retrieveUserInfo(loginInput);
+		loginUser(loginInput);
 	} else {
 		alert('Please enter a valid username');
 	}
 }
 
 function retrieveUserInfo(username) {
-	fetch('http://localhost:3000/api/v1/users', {
+	return fetch('http://localhost:3000/api/v1/users', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -62,43 +63,45 @@ function retrieveUserInfo(username) {
 		})
 		.then((json) => {
 			console.log(json);
-			loginUser(json);
+			return json;
 		});
 }
 
-function loginUser(userInfo) {
-	sessionStorage.setItem('user', `${userInfo.id}`);
-	sessionStorage.setItem('username', `${userInfo.username}`);
-	renderBlackJackTable();
-	renderUserBar(userInfo);
+function loginUser(username) {
+	retrieveUserInfo(username).then((userInfo) => {
+		sessionStorage.setItem('user', `${userInfo.id}`);
+		sessionStorage.setItem('username', `${userInfo.username}`);
+		renderBlackJackTable();
+		renderUserBar(userInfo);
+	});
 }
 
 function renderUserBar(userInfo) {
 	clearHeader();
 	let usernameDiv = createHtmlElement(
 		'div',
-		'col-2',
+		'col-3',
 		`${userInfo.username} $${userInfo.balance}`,
 		'user-information'
 	);
 	let logoutButton = createHtmlElement('button', 'col-2 btn btn-dark', 'Logout', 'logout-button');
 
-	let winPercentage = createHtmlElement('div', 'col-5', ``, 'win-percentage');
+	let winPercentage = createHtmlElement('div', 'col-4', '', 'win-percentage');
 
-	let blankCol = createHtmlElement('div', 'col-1');
+	// let blankCol = createHtmlElement('div', 'col-1');
 
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
 	logoutButton.onclick = logout;
 
 	header.appendChild(usernameDiv);
-	header.appendChild(blankCol);
+	// header.appendChild(blankCol);
 	header.appendChild(winPercentage);
 	header.appendChild(logoutButton);
 
 	let handsArray = userInfo.hands;
 	updateWinPercentage(handsArray);
-
+	clearBetActions();
 	renderBetCard();
 	zeroBalance();
 }
@@ -158,7 +161,7 @@ function updateAccount(amount) {
 	})
 		.then((response) => response.json())
 		.then((json) => {
-			let userBalance = document.getElementById('user-balance');
+			// let userBalance = document.getElementById('user-balance');
 			document.getElementById('user-information').textContent = `${json.username} $${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			console.log(json);
