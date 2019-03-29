@@ -13,13 +13,13 @@
   background-position: center;
   background-repeat: no-repeat;
   border: solid black 1px;
-  width: 8em;
-  height: 12em;
+  width: 7.5em;
+  height: 11em;
   display: inline-block;
   position: relative;
   margin-left: -4em;
   background-color: white;
-  margin-top: 1.5em;
+  /* margin-top: .3em; */
 }
 
 /* .logo{
@@ -33,8 +33,8 @@
   background-size: cover;
   border-radius: 10px;
   border: solid black 1px;
-  width: 8em;
-  height: 12em;
+  width: 7.5em;
+  height: 11em;
   display: inline-block;
   position: relative;
   margin-left: -4em;
@@ -179,7 +179,7 @@
 }
 
 #double-down-button {
-  margin-top: 67%;
+  margin-top: 60%;
   width: 60%;
   right: 5em;
   height: 15%;
