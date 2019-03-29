@@ -24,8 +24,8 @@ function renderLogin() {
 		retrieveUserInfo(sessionStorage.getItem('username'));
 	} else {
 		let header = document.getElementById('header');
-		let inputGroup = createHtmlElement('div', 'input-group mb-3 col-5', '', 'input-group-1');
-		let loginInput = createHtmlElement('input', 'form-control', '', 'login-input');
+		let inputGroup = createHtmlElement('div', 'input-group mb-3 col-3', '', 'input-group-1');
+		let loginInput = createHtmlElement('input', 'form-control col-12', '', 'login-input');
 		let inputGroupAppend = createHtmlElement('div', 'input-group-append', '', 'input-group-append');
 		let loginButton = createHtmlElement('button', 'btn btn-danger', 'Login / Sign Up', 'login-button');
 		// let hiddenColumn = createHtmlElement('div', 'col-7', '', 'hidden-column-1');
@@ -98,16 +98,17 @@ function loginUser(userInfo) {
 
 function renderUserBar(userInfo) {
 	clearHeader();
-	let usernameDiv = createHtmlElement('div', 'col-2 bg-secondary', `${userInfo.username} `, 'username');
-	let balanceSpan = createHtmlElement('span', 'badge badge-danger', `$ ${userInfo.balance}`, 'user-balance');
+	let usernameDiv = createHtmlElement('div', 'col-1', `${userInfo.username}`, 'username');
+	let balanceDiv = createHtmlElement('div', 'col-2', `$ ${userInfo.balance}`, 'user-balance');
+	// let hiddenDiv = createHtmlElement('div', 'col-3', '', 'hidden-header-div');
+	let logoutButton = createHtmlElement('button', 'col-2 btn btn-danger', 'Logout', 'logout-button');
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
-
-	let logoutButton = createHtmlElement('button', 'col-1 btn btn-danger mb-2', 'Logout', 'logout-button');
 
 	logoutButton.onclick = logout;
 
-	usernameDiv.appendChild(balanceSpan);
 	header.appendChild(usernameDiv);
+	header.appendChild(balanceDiv);
+	// header.appendChild(hiddenDiv);
 	header.appendChild(logoutButton);
 
 	renderBetCard();

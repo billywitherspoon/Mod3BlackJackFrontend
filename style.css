@@ -161,13 +161,6 @@
   vertical-align: middle;
 }
 
-#username {
-  height: 2em;
-  border-color: transparent;
-  border-style: solid;
-  border-radius: 0.5em;
-}
-
 #hit {
   width: 60%;
   height: 20%;
@@ -198,10 +191,10 @@
   border-radius: 1em;
 }
 
-#logout-button {
+/* #logout-button {
   position: absolute;
   left: 3em;
-}
+} */
 
 #betting-rows {
   padding: 1em;
@@ -222,5 +215,19 @@
 
 #bet-currency {
   font-size: 2em;
-  font-color: white;
+  color: white;
+}
+
+/* #logout-button {
+  width: 4%;
+} */
+
+#username {
+  font-size: 2em;
+  color: white;
+}
+
+#user-balance {
+  font-size: 2em;
+  color: white;
 }

@@ -8,7 +8,7 @@ function renderBetCard() {
 	// 		</a>
 	// 	</div>
 	// </div>;
-
+	// let cardRow = createHtmlElement('div', 'row', '', 'card-row');
 	let card = createHtmlElement('card', 'text-center bg-dark text-white border-dark', '', 'bet-card');
 	let cardHeader = createHtmlElement(
 		'div',
@@ -21,11 +21,11 @@ function renderBetCard() {
 	let row = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
 	let row2 = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
 	let row3 = createHtmlElement('div', 'row justify-content-center', '', 'betting-rows');
-	let betInputCol = createHtmlElement('div', 'col-6', '', '');
+	let betInputCol = createHtmlElement('div', 'col-4', '', '');
 	let betCurrency = createHtmlElement('div', 'col-1', '$', 'bet-currency');
 	// let colBetButtons = createHtmlElement('div', 'col-4', '', '');
 	let betInput = createHtmlElement('input', 'form-control', '', 'bet-input');
-	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2 col-12', 'Deal a Hand', 'deal-button');
+	let dealButton = createHtmlElement('button', 'btn btn-secondary mb-2 col-10', 'Deal a Hand', 'deal-button');
 	let increaseButtonDiv = createHtmlElement('div', 'col-6', '', 'increase-button-div');
 	let decreaseButtonDiv = createHtmlElement('div', 'col-6', '', 'decrease-button-div');
 	let increaseButton = createHtmlElement('button', 'btn btn-danger col-6', '+', 'bet-change-buttons');
@@ -66,6 +66,8 @@ function renderBetCard() {
 	cardBody.appendChild(form);
 	card.appendChild(cardHeader);
 	card.appendChild(cardBody);
+	// cardRow.appendChild(card);
+	// BETTINGACTIONS.appendChild(cardRow);
 	BETTINGACTIONS.appendChild(card);
 }
 
