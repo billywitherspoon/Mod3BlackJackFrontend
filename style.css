@@ -8,17 +8,18 @@
 }
 
 .playing-card {
-  border-radius: 10px;
+  border-radius: 1vh;
   background-image: url("img/logo.png");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   border: solid black 1px;
-  width: 7.5em;
-  height: 11em;
+  width: 18vh;
+  height: 24vh;
+  /* height: 11em; */
   display: inline-block;
   position: relative;
-  margin-left: -4em;
+  margin-left: -10vh;
   background-color: white;
   /* margin-top: .3em; */
 }
@@ -32,13 +33,13 @@
 #hidden-card {
   background-image: url("img/playing_card.png");
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 1vh;
   border: solid black 1px;
-  width: 7.5em;
-  height: 11em;
+  width: 18vh;
+  height: 24vh;
   display: inline-block;
   position: relative;
-  margin-left: -4em;
+  margin-left: -10vh;
   color: transparent;
 }
 
@@ -55,17 +56,18 @@
 }
 
 #blackjack-table {
-  border-radius: 30px;
+  border-radius: 3vh;
   border: outset;
   border-width: 0.5em;
   border-color: rgb(72, 72, 72);
   background-color: #008000;
   box-shadow: -1em 1em;
-  box-shadow-right: ;
+  min-height: 80vh;
+  min-width: 70vh;
 }
 
 #main-section {
-  height: 95%;
+  max-height: 95%;
   padding: 3em;
 }
 
@@ -91,18 +93,17 @@
   font-size: 2em;
 }
 #dealer-cards {
-  padding: 5%;
   padding-left: 15%;
-  height: 15em;
+  min-height: 30vh;
+  margin-top: 5vh;
 }
 
 #player-cards {
-  padding: 5%;
   padding-left: 15%;
-  height: 12em;
+  min-height: : 30vh;
 }
 .bottom-right {
-  font-size: 1.5em;
+  font-size: 3.5vh;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -110,7 +111,7 @@
 }
 
 .top-left {
-  font-size: 1.5em;
+  font-size: 3.5vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -150,8 +151,8 @@
 }
 
 #result {
-  min-height: 10%;
-  font-size: 1.75em;
+  min-height: 10vh;
+  font-size: 4vh;
   vertical-align: middle;
   text-align: center;
 }
