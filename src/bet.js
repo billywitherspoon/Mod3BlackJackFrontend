@@ -19,11 +19,15 @@ function renderBetCard() {
 	let decreaseButtonDiv = createHtmlElement('div', 'col-6', '', 'decrease-button-div');
 	let increaseButton = createHtmlElement('button', 'btn btn-danger col-6', '+', 'bet-change-buttons');
 	let decreaseButton = createHtmlElement('button', 'btn btn-danger col-6', '-', 'bet-change-buttons');
-
-	previousBet = sessionStorage.getItem('amount');
-
+	let previousBet = sessionStorage.getItem('amount');
 	if (previousBet) {
+		if (sessionStorage.getItem('double-down') === 'true'){
+			betInput.value = `${parseInt(previousBet) / 2}`
+
+		}
+		else{
 		betInput.value = `${previousBet}`;
+		}
 	} else {
 		betInput.value = `1`;
 	}
@@ -87,6 +91,7 @@ function makeBet(ev) {
 	document.getElementById('player-score').textContent = '';
 	ev.preventDefault();
 	let betInputElement = setBetInput();
+	sessionStorage.setItem('double-down', 'false')
 	let betInput = betInputElement.value;
 	if (isInteger(betInput) && hasEnoughMoney(betInput) && parseInt(betInput) > 0) {
 		betInput = parseInt(betInput);
@@ -148,14 +153,11 @@ function doubleDown() {
 function doubleBet() {
 	clearBetActions();
 	let amount = parseInt(sessionStorage.getItem('amount'));
+	sessionStorage.setItem('double-down', 'true')
 	sessionStorage.setItem('amount', `${amount * 2}`);
 	addCard(PLAYERHAND, PLAYERCARDSDIV);
 	updatePlayerTotalDisplay();
 	updateAccount(amount).then((statement) => {
 		runDealer();
 	});
-}
-
-for (let i = 99; i > 0; i--) {
-	createNewReview(`${i} bottles of beer on the wall`, 'take one down and pass it around', resort);
 }

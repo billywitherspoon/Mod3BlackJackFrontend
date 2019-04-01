@@ -1,8 +1,8 @@
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeSix());
+DECK.unshift(makeSix());
+DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
-// DECK.unshift(makeFive());
+DECK.unshift(makeFive());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
