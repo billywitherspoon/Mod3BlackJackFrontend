@@ -142,7 +142,7 @@ async function declareWinner(winType = '') {
 }
 
 function updateGames(serverResult) {
-	return fetch('http://blueberry-pudding-46059.herokuapp.com/api/v1/hands', {
+	return fetch('https://blueberry-pudding-46059.herokuapp.com/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
