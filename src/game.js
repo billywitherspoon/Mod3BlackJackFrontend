@@ -1,8 +1,8 @@
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeSix());
+DECK.unshift(makeSix());
+DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
-// DECK.unshift(makeFive());
+DECK.unshift(makeFive());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -142,7 +142,7 @@ async function declareWinner(winType = '') {
 }
 
 function updateGames(serverResult) {
-	return fetch('http://localhost:3000/api/v1/hands', {
+	return fetch('https://blueberry-pudding-46059.herokuapp.com/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
