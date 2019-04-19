@@ -210,7 +210,7 @@
 }
 
 #user-information {
-  font-size: 2vw;
+  font-size: 2em;
   color: white;
   /* position: absolute;
   left: .01%;
@@ -219,7 +219,7 @@
 
 #win-percentage {
   color: white;
-  font-size: 2vw;
+  font-size: 2em;
 }
 
 #logout-button {
@@ -237,8 +237,26 @@
 }
 
 
-/* @media only screen and (max-width: 1110px) {
-  [class*="col-"] {
-    width: 100%;
-  }
-} */
+@media only screen and (max-width: 850px) {
+   #user-information {
+     font-size: 1.2em;
+     color: white;
+   }
+
+   #win-percentage {
+     color: white;
+     font-size: 1.2em;
+   }
+
+   #betting-actions {
+      display: flex;
+      flex-direction: column;
+   }
+}
+
+@media only screen and (max-width: 768px) {
+   #page{
+      display: grid;
+      grid-template-rows: 5% 1fr 30%;
+   }
+}
