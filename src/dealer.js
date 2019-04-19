@@ -1,6 +1,5 @@
 async function runDealer() {
 	showDealer();
-	await timeout(650);
 	while (isSoft(DEALERHAND)) {
 		if (hardTotal(DEALERHAND) < 8) {
 			await timeout(650);
