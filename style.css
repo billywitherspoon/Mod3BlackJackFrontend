@@ -247,11 +247,12 @@
 
 @media only screen and (max-width: 768px) {
    #page{
-      width: 100vw;
-      height: 100vh;
+      width: 95vw;
+      height: 95vh;
       display: grid;
       grid-template-rows: 5% 1fr 30%;
       background-color: rgb(88,88,88);
+      margin-right: 5%;
    }
 
    #login-container{
@@ -509,6 +510,10 @@
    #result{
       text-align: center;
       margin: 3%;
+   }
+
+   html{
+   background-color: rgb(88,88,88);
    }
 
 }
