@@ -1,3 +1,4 @@
+@media only screen and (min-width: 769px) {
 #add-chips {
   width: 15%;
   position: absolute;
@@ -55,6 +56,7 @@
 
 #page {
   height: 100vh;
+
 }
 
 #blackjack-table {
@@ -64,7 +66,6 @@
   border-color: rgb(72, 72, 72);
   background-color: #008000;
   box-shadow: -1em 1em;
-  min-height: 80vh;
   min-width: 70vh;
 }
 
@@ -97,13 +98,16 @@
 #dealer-cards {
   padding-left: 15%;
   min-height: 30vh;
-  margin-top: 5vh;
+  padding-top: 40%;
+  /* margin-top: 5vh; */
 }
 
 #player-cards {
   padding-left: 15%;
   min-height: : 30vh;
 }
+
+
 .bottom-right {
   font-size: 3.5vh;
   position: absolute;
@@ -212,7 +216,7 @@
 }
 
 #user-information {
-  font-size: 2vw;
+  font-size: 2em;
   color: white;
   /* position: absolute;
   left: .01%;
@@ -221,7 +225,7 @@
 
 #win-percentage {
   color: white;
-  font-size: 2vw;
+  font-size: 2em;
 }
 
 #logout-button {
@@ -237,10 +241,274 @@
   margin-top: 30%;
   font-size: 4vw;
 }
+}
 
 
-/* @media only screen and (max-width: 1110px) {
-  [class*="col-"] {
-    width: 100%;
-  }
-} */
+
+@media only screen and (max-width: 768px) {
+   #page{
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 5% 1fr 30%;
+      background-color: rgb(88,88,88);
+   }
+
+   #login-container{
+      height: 100%;
+      grid-row: 2;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-left: 0;
+   }
+
+   #nav-bar{
+      grid-row: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+   }
+
+   #input-group-1{
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 50%;
+   }
+
+
+   #login-input{
+      width: 100%;
+      height: 15%;
+   }
+
+   #login-button{
+      background-color: #C91F37;
+      width: 40%;
+      height: 20%;
+      border-radius: 5%;
+   }
+
+   #login-input{
+      align-self: center;
+   }
+
+   #blackjack-table {
+     border-radius: 3vmin;
+     border: outset;
+     border-width: 0.5em;
+     border-color: rgb(72, 72, 72);
+     background-color: #008000;
+     box-shadow: -50% 5%;
+     height: 80%;
+     width: 100%;
+     margin: 5%;
+     display: grid;
+     grid-template-rows: 10% 1fr 10% 1fr 10%;
+   }
+
+   #main-section{
+      grid-row: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   #wager-grid{
+      height: 100%;
+      display: grid;
+      grid-template-rows: 10% 50% 40%;
+   }
+
+   .flex-center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   #wager-title-div{
+      grid-row: 1;
+   }
+
+   #wager-modifier-div{
+      grid-row: 2;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+   }
+
+   #wager-amount-div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   #deal-hand-div{
+      grid-row: 3;
+   }
+
+   #bet-input{
+      border: solid;
+      width: 4em;
+      height: 2em;
+      font-size: 3vh;
+      text-align: center;
+   }
+
+   #bet-currency{
+      font-size: 3vh;
+   }
+
+   .bet-change-button{
+      font-size: 100%;
+      border: solid;
+      height: 30%;
+      width: 20%;
+      background-color: #C91F37;
+      border-radius: 10%;
+   }
+
+   .playing-card {
+     border-radius: 1vh;
+     background-image: url("img/logo.png");
+     background-size: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     border: solid black 1px;
+     width: 11vh;
+     height: 16vh;
+     margin-left: -10%;
+     display: inline-block;
+     position: relative;
+     background-color: white;
+   }
+
+   #hidden-card {
+     background-image: url("img/playing_card.png");
+     background-size: cover;
+     border-radius: 1vh;
+     border: solid black 1px;
+     width: 11vh;
+     height: 16vh;
+     display: inline-block;
+     position: relative;
+     color: transparent;
+     margin-left: -10%
+   }
+
+   .red {
+     color: red;
+   }
+
+   .black {
+     color: black;
+   }
+
+   .bottom-right {
+     font-size: 3.5vh;
+     position: absolute;
+     bottom: 0;
+     right: 0;
+     padding: 4px;
+   }
+
+   .top-left {
+     font-size: 3.5vh;
+     position: absolute;
+     top: 0;
+     left: 0;
+     padding: 4px;
+   }
+
+   #bottom-right-hidden {
+     position: absolute;
+     bottom: 0;
+     right: 0;
+     padding: 4px;
+     color: transparent;
+   }
+
+   #top-left-hidden {
+     position: absolute;
+     top: 0;
+     left: 0;
+     padding: 4px;
+     color: transparent;
+   }
+
+   #dealer-cards {
+      grid-row: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   #player-cards {
+      grid-row: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+
+   #player-score{
+      grid-row: 5;
+      text-align: center;
+   }
+   #dealer-score{
+      grid-row: 1;
+      text-align: center;
+   }
+
+   #wager-title-div{
+      font-size: 4vh;
+      color: white;
+   }
+
+   #deal-button{
+      background-color: rgb(88,88,88);
+      color: white;
+      width: 40%;
+      height: 70%;
+      border: solid;
+      font-size: 2.5vh;
+   }
+
+   #deal-hand-div{
+      display: flex;
+      justify-content: baseline;
+   }
+
+   .hit-stay{
+      width: 30%;
+      background-color: #C91F37;
+      height: 35%;
+      border-radius: 5%;
+   }
+
+   #double-down-button{
+      width: 30%;
+      background-color: #B3995D;
+      height: 35%;
+      border-radius: 5%;
+   }
+
+   #hit-stay-div{
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+   }
+
+   #result{
+      text-align: center;
+      margin: 3%;
+   }
+
+}
