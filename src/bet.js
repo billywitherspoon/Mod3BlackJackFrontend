@@ -100,12 +100,15 @@ function makeBet(ev) {
 }
 
 function renderBetActions() {
-	let hitButton = createHtmlElement('button', 'btn-danger', 'Hit', 'hit');
-	let stayButton = createHtmlElement('button', 'btn-danger', 'Stay', 'stay');
+	let hitButton = createHtmlElement('button', 'hit-stay', 'Hit', 'hit');
+	let stayButton = createHtmlElement('button', 'hit-stay', 'Stay', 'stay');
 	hitButton.onclick = playerHit;
 	stayButton.onclick = playerStay;
-	document.getElementById('betting-actions').appendChild(hitButton);
-	document.getElementById('betting-actions').appendChild(stayButton);
+	let hitStayDiv = createHtmlElement('div', '', '', 'hit-stay-div');
+	hitStayDiv.appendChild(hitButton)
+	hitStayDiv.appendChild(stayButton)
+	document.getElementById('betting-actions').appendChild(hitStayDiv);
+
 }
 
 function clearBetActions() {
@@ -140,7 +143,7 @@ function doubleDown() {
 	let doubleDownButton = createHtmlElement('button', '', 'Double Down', 'double-down-button');
 	doubleDownButton.onclick = doubleBet;
 	renderBetActions();
-	document.getElementById('betting-actions').appendChild(doubleDownButton);
+	document.getElementById('hit-stay-div').appendChild(doubleDownButton);
 }
 
 function doubleBet() {

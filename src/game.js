@@ -14,11 +14,11 @@ async function newHand() {
 	for (let i = 0; i < 2; i++) {
 		PLAYERHAND[i] = DECK.shift();
 		DEALERHAND[i] = DECK.shift();
-		await timeout(650);
+		await timeout(550);
 		renderCard(PLAYERHAND[i], PLAYERCARDSDIV);
 		updatePlayerTotalDisplay();
 		if (i == 0) {
-			await timeout(650);
+			await timeout(550);
 			renderCard(
 				DEALERHAND[i],
 				DEALERCARDSDIV,
@@ -28,7 +28,7 @@ async function newHand() {
 				'top-left-hidden'
 			);
 		} else {
-			await timeout(650);
+			await timeout(550);
 			renderCard(DEALERHAND[i], DEALERCARDSDIV);
 		}
 	}
@@ -69,25 +69,25 @@ function resetGame() {
 
 async function blackJack() {
 	showDealer();
-	await timeout(650);
+	await timeout(550);
 	declareWinner('blackjack');
 }
 
 async function dealerBlackJack() {
 	showDealer();
-	await timeout(650);
+	await timeout(550);
 	declareWinner('dealer blackjack');
 }
 
 async function doubleBlackJack() {
 	showDealer();
-	await timeout(650);
+	await timeout(550);
 	declareWinner('double blackjack');
 }
 
 async function declareWinner(winType = '') {
 	clearBetActions();
-	await timeout(650);
+	await timeout(550);
 	renderBetCard();
 	// setTimeout(() => {
 	let result = document.getElementById('result');
@@ -105,7 +105,7 @@ async function declareWinner(winType = '') {
 		result.textContent = `Dealer Blackjack!`;
 		updateGames(serverResult).then(() => {
 			retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
-				renderUserBar(userInfo);
+				// renderUserBar(userInfo);
 			});
 		});
 		zeroBalance();
@@ -127,8 +127,8 @@ async function declareWinner(winType = '') {
 			result.textContent = `${winner} won!`;
 			updateGames(serverResult).then(() => {
 				retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
-					renderUserBar(userInfo);
-				});
+					// renderUserBar(userInfo);
+								});
 			});
 			zeroBalance();
 		} else {
