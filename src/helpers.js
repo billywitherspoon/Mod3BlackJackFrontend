@@ -7,7 +7,7 @@ function isBusted(hand) {
 }
 
 function hasAce(hand) {
-	handDisplays = Object.values(hand).map((value) => {
+	let handDisplays = Object.values(hand).map((value) => {
 		return value.display;
 	});
 	if (handDisplays.includes('A')) {
@@ -22,7 +22,7 @@ function sumArray(array) {
 }
 
 function hardTotal(hand) {
-	handArray = Object.values(hand).map((value) => {
+	let handArray = Object.values(hand).map((value) => {
 		return value.value;
 	});
 	return sumArray(handArray);
@@ -94,7 +94,7 @@ function hasEnoughMoney(betInput) {
 }
 
 function timeout(ms) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
+	return new Promise((done) => setTimeout(done, ms));
 }
 
 // async function sleep2000(fn, ...args) {
