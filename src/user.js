@@ -1,4 +1,4 @@
-let BETTINGACTIONS = document.getElementById('betting-actions');
+
 renderLogin();
 
 async function showDealer() {
@@ -17,34 +17,35 @@ async function showDealer() {
 }
 
 function renderLogin() {
-	clearHeader();
 	if (sessionStorage.getItem('username')) {
 		loginUser(sessionStorage.getItem('username'));
-		// retrieveUserInfo(sessionStorage.getItem('username'));
 	} else {
-		let header = document.getElementById('header');
-		let inputGroup = createHtmlElement('div', 'input-group mb-3 col-3', '', 'input-group-1');
-		let loginInput = createHtmlElement('input', 'form-control col-12', '', 'login-input');
-		let inputGroupAppend = createHtmlElement('div', 'input-group-append', '', 'input-group-append');
-		let loginButton = createHtmlElement('button', 'btn btn-danger', 'Login / Sign Up', 'login-button');
+		let loginContainer = createHtmlElement('div', '', '', 'login-container')
+		let inputGroup = createHtmlElement('form', 'input-group', '', 'input-group-1');
+		let loginInput = createHtmlElement('input', '', '', 'login-input');
+		let inputGroupAppend = createHtmlElement('div', '', '', '');
+		let loginButton = createHtmlElement('input', 'button', 'Login / Sign Up', 'login-button');
+		loginButton.type = 'submit'
 		loginInput.placeholder = 'Username';
-
-		loginButton.onclick = signUp;
-
+		loginButton.onclick = (event) => signUp(event);
 		inputGroupAppend.appendChild(loginButton);
 		inputGroup.appendChild(loginInput);
 		inputGroup.appendChild(inputGroupAppend);
-		header.appendChild(inputGroup);
+		loginContainer.appendChild(inputGroup);
+		document.getElementById('page').appendChild(loginContainer)
 	}
 }
 
-function signUp() {
+function signUp(event) {
+	event.preventDefault();
 	let loginInput = document.getElementById('login-input').value;
 	if (validUsername(loginInput)) {
+		document.getElementById('login-container').remove()
 		loginUser(loginInput);
 	} else {
 		alert('Please enter a valid username');
 	}
+
 }
 
 function retrieveUserInfo(username) {
@@ -68,6 +69,8 @@ function retrieveUserInfo(username) {
 }
 
 function loginUser(username) {
+	let bettingActions = createHtmlElement('div', '', '', 'betting-actions')
+	document.getElementById('page').appendChild(bettingActions)
 	retrieveUserInfo(username).then((userInfo) => {
 		sessionStorage.setItem('user', `${userInfo.id}`);
 		sessionStorage.setItem('username', `${userInfo.username}`);
@@ -77,7 +80,6 @@ function loginUser(username) {
 }
 
 function renderUserBar(userInfo) {
-	clearHeader();
 	let usernameDiv = createHtmlElement(
 		'div',
 		'col-3',
@@ -85,34 +87,30 @@ function renderUserBar(userInfo) {
 		'user-information'
 	);
 	let logoutButton = createHtmlElement('button', 'col-2 btn btn-dark', 'Logout', 'logout-button');
-
+	let navBar = createHtmlElement('div', '', '', 'nav-bar')
 	let winPercentage = createHtmlElement('div', 'col-4', '', 'win-percentage');
-
-	// let blankCol = createHtmlElement('div', 'col-1');
-
 	sessionStorage.setItem('balance', `${userInfo.balance}`);
 
 	logoutButton.onclick = logout;
 
-	header.appendChild(usernameDiv);
-	// header.appendChild(blankCol);
-	header.appendChild(winPercentage);
-	header.appendChild(logoutButton);
-
+	navBar.appendChild(usernameDiv);
+	navBar.appendChild(winPercentage);
+	navBar.appendChild(logoutButton);
+	document.getElementById('page').appendChild(navBar)
 	let handsArray = userInfo.hands;
 	updateWinPercentage(handsArray);
-	clearBetActions();
+	// clearBetActions();
 	renderBetCard();
 	zeroBalance();
 }
 
 function renderBlackJackTable() {
-	let mainSection = document.getElementById('main-section');
+	let mainSection = createHtmlElement('div', '', '', 'main-section');
 	TABLE = createHtmlElement('div', 'col-7', '', 'blackjack-table');
 	DEALERCARDSDIV = createHtmlElement('div', '', '', 'dealer-cards');
 	let divResult = createHtmlElement('div', '', '', 'result');
 	// let h1Result = createHtmlElement('h1', '', '', 'result');
-	let playerScore = createHtmlElement('h1', '', '', 'player-score');
+	let playerScore = createHtmlElement('div', '', '', 'player-score');
 	let dealerScore = createHtmlElement('h1', '', '', 'dealer-score');
 	PLAYERCARDSDIV = createHtmlElement('div', '', '', 'player-cards');
 
@@ -124,6 +122,7 @@ function renderBlackJackTable() {
 	TABLE.appendChild(playerScore);
 	mainSection.appendChild(TABLE);
 	mainSection.insertBefore(TABLE, mainSection.firstChild);
+	document.getElementById('page').appendChild(mainSection)
 }
 
 function logout() {
@@ -131,16 +130,17 @@ function logout() {
 	sessionStorage.removeItem('username');
 	sessionStorage.removeItem('amount');
 	sessionStorage.removeItem('balance');
+	clearNavBar();
 	renderLogin();
 	clearBetActions();
 	resetGame();
 	TABLE.remove();
 }
 
-function clearHeader() {
-	let header = document.getElementById('header');
-	while (header.firstChild) {
-		header.firstChild.remove();
+function clearNavBar() {
+	let navBar = document.getElementById('nav-bar');
+	while (navBar.firstChild) {
+		navBar.firstChild.remove();
 	}
 }
 
