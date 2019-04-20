@@ -118,24 +118,30 @@ function renderUserBar(userInfo) {
 }
 
 function renderBlackJackTable() {
-  let mainSection = createHtmlElement("div", "", "", "main-section");
-  TABLE = createHtmlElement("div", "col-7", "", "blackjack-table");
-  DEALERCARDSDIV = createHtmlElement("div", "", "", "dealer-cards");
-  let divResult = createHtmlElement("div", "", "", "result");
-  // let h1Result = createHtmlElement('h1', '', '', 'result');
-  let playerScore = createHtmlElement("div", "", "", "player-score");
-  let dealerScore = createHtmlElement("div", "", "", "dealer-score");
-  PLAYERCARDSDIV = createHtmlElement("div", "", "", "player-cards");
+   if (!!document.getElementById('main-section')  === false){
+        let mainSection = createHtmlElement("div", "", "", "main-section");
+        TABLE = createHtmlElement("div", "col-7", "", "blackjack-table");
+        DEALERCARDSDIV = createHtmlElement("div", "", "", "dealer-cards");
+        let divResult = createHtmlElement("div", "", "", "result");
+        // let h1Result = createHtmlElement('h1', '', '', 'result');
+        let playerScore = createHtmlElement("div", "", "", "player-score");
+        let dealerScore = createHtmlElement("div", "", "", "dealer-score");
+        PLAYERCARDSDIV = createHtmlElement("div", "", "", "player-cards");
 
-  // divResult.appendChild(h1Result);
-  TABLE.appendChild(dealerScore);
-  TABLE.appendChild(DEALERCARDSDIV);
-  TABLE.appendChild(divResult);
-  TABLE.appendChild(PLAYERCARDSDIV);
-  TABLE.appendChild(playerScore);
-  mainSection.appendChild(TABLE);
-  mainSection.insertBefore(TABLE, mainSection.firstChild);
-  document.getElementById("page").appendChild(mainSection);
+        // divResult.appendChild(h1Result);
+        TABLE.appendChild(dealerScore);
+        TABLE.appendChild(DEALERCARDSDIV);
+        TABLE.appendChild(divResult);
+        TABLE.appendChild(PLAYERCARDSDIV);
+        TABLE.appendChild(playerScore);
+        mainSection.appendChild(TABLE);
+        mainSection.insertBefore(TABLE, mainSection.firstChild);
+        document.getElementById("page").appendChild(mainSection);
+     }
+  else{
+     return
+ }
+
 }
 
 function logout() {
