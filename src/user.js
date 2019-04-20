@@ -165,7 +165,7 @@ function clearNavBar() {
     navBar.firstChild.remove();
   }
 }
-
+//useless, trying to fix heroku
 function updateAccount(amount) {
   let user = sessionStorage.getItem("user");
   let balance = parseInt(sessionStorage.getItem("balance"));
