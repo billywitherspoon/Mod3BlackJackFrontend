@@ -20,23 +20,32 @@ function renderLogin() {
 		loginUser(sessionStorage.getItem('username'));
 	} else {
 		let loginContainer = createHtmlElement('div', '', '', 'login-container');
-		let loginWelcome = createHtmlElement(
+		let loginWelcomeHeader = createHtmlElement('div', '', 'BLACKJACK', 'login-welcome-header');
+		let loginWelcomeText = createHtmlElement(
 			'div',
 			'',
-			'Blackjack: An App by Billy Witherspoon and Kevin McMinn',
-			'login-welcome'
+			'An App by Billy Witherspoon and Kevin McMinn',
+			'login-welcome-text'
 		);
 		let inputGroup = createHtmlElement('form', 'input-group', '', 'input-group-1');
 		let loginInput = createHtmlElement('input', '', '', 'login-input');
 		// let inputGroupAppend = createHtmlElement("div", "", "", "");
 		let loginButton = createHtmlElement('input', 'button', 'Login / Sign Up', 'login-button');
+		let appInfo = createHtmlElement(
+			'div',
+			'',
+			'Created in 2019 Using Vanilla Javascript with a Ruby on Rails Backend',
+			'app-info'
+		);
 		loginButton.type = 'submit';
 		loginInput.placeholder = 'Username';
 		loginButton.onclick = (event) => signUp(event);
 		inputGroup.appendChild(loginInput);
 		inputGroup.appendChild(loginButton);
-		loginContainer.appendChiled(loginWelcome);
+		loginContainer.appendChild(loginWelcomeHeader);
+		loginContainer.appendChild(loginWelcomeText);
 		loginContainer.appendChild(inputGroup);
+		loginContainer.appendChild(appInfo);
 		// loginContainer.appendChild(inputGroup);
 		document.getElementById('page').appendChild(loginContainer);
 	}

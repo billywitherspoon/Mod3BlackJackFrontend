@@ -77,7 +77,7 @@ function createHtmlElement(tag = '', className = '', textContent = '', id = '') 
 
 function isInteger(value) {
 	let regex = /\D/;
-	return !regex.test(value);
+	return value === '' ? false : !regex.test(value);
 }
 
 function validUsername(input) {
