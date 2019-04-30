@@ -20,6 +20,12 @@ function renderLogin() {
 		loginUser(sessionStorage.getItem('username'));
 	} else {
 		let loginContainer = createHtmlElement('div', '', '', 'login-container');
+		let loginWelcome = createHtmlElement(
+			'div',
+			'',
+			'Blackjack: An App by Billy Witherspoon and Kevin McMinn',
+			'login-welcome'
+		);
 		let inputGroup = createHtmlElement('form', 'input-group', '', 'input-group-1');
 		let loginInput = createHtmlElement('input', '', '', 'login-input');
 		// let inputGroupAppend = createHtmlElement("div", "", "", "");
@@ -29,6 +35,7 @@ function renderLogin() {
 		loginButton.onclick = (event) => signUp(event);
 		inputGroup.appendChild(loginInput);
 		inputGroup.appendChild(loginButton);
+		loginContainer.appendChiled(loginWelcome);
 		loginContainer.appendChild(inputGroup);
 		// loginContainer.appendChild(inputGroup);
 		document.getElementById('page').appendChild(loginContainer);
@@ -201,7 +208,7 @@ function addChips() {
 	})
 		.then((response) => response.json())
 		.then((json) => {
-			let userBalance = document.getElementById('user-balance');
+			// let userBalance = document.getElementById('user-balance');
 			document.getElementById('user-information').textContent = `${json.username} $${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			document.getElementById('add-chips').remove();
