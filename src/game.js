@@ -1,8 +1,8 @@
 let DECK = shuffleDeck(createDeck());
-DECK.unshift(makeSix());
-DECK.unshift(makeSix());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
-DECK.unshift(makeFive());
+// DECK.unshift(makeFive());
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -128,7 +128,7 @@ async function declareWinner(winType = '') {
 			updateGames(serverResult).then(() => {
 				retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
 					// renderUserBar(userInfo);
-								});
+				});
 			});
 			zeroBalance();
 		} else {
