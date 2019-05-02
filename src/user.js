@@ -63,7 +63,7 @@ function signUp(event) {
 }
 
 function retrieveUserInfo(username) {
-	return fetch('https://blueberry-pudding-46059.herokuapp.com/api/v1/users', {
+	return fetch('https://playblackjackbackend.herokuapp.com/api/v1/users', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
-	return fetch(`https://blueberry-pudding-46059.herokuapp.com/api/v1/users/${user}`, {
+	return fetch(`https://playblackjackbackend.herokuapp.com/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ function addChips() {
 	let user = sessionStorage.getItem('user');
 	let newBalance = 1000;
 
-	return fetch(`https://blueberry-pudding-46059.herokuapp.com/api/v1/users/${user}`, {
+	return fetch(`https://playblackjackbackend.herokuapp.com/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
