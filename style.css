@@ -22,19 +22,19 @@ body {
 
 #app-info {
 	color: white;
-	font-size: 1.75vh;
+	font-size: 2vh;
 	text-align: center;
 }
 
 #login-welcome-text {
 	color: white;
-	font-size: 1.75vh;
+	font-size: 2vh;
 	text-align: center;
 }
 
 #login-welcome-header {
 	font-family: "Alfa Slab One", cursive;
-	font-size: 3vh;
+	font-size: 3.5vh;
 	color: white;
 }
 

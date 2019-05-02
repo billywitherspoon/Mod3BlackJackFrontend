@@ -34,7 +34,7 @@ function renderLogin() {
 		let appInfo = createHtmlElement(
 			'div',
 			'',
-			'Created in 2019 Using Vanilla Javascript with a Ruby on Rails Backend',
+			'Mobile and Desktop friendly. Created in 2019 using a vanilla Javascript frontend and a Ruby on Rails backend.',
 			'app-info'
 		);
 		loginButton.type = 'submit';
