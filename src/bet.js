@@ -63,7 +63,7 @@ function increaseBet() {
 function decreaseBet() {
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
-	if (isInteger(betInput && betInput !== '') && betInput > 1) {
+	if (isInteger(betInput) && betInput !== '' && betInput > 1) {
 		betInputElement.value = `${parseInt(betInput) - 5}`;
 	} else {
 		betInputElement.value = '5';
