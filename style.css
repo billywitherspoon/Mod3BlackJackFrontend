@@ -160,7 +160,7 @@ body {
   border: solid black 1px;
   width: 11vh;
   height: 16vh;
-  margin-left: -10%;
+  margin-left: -20%;
   display: inline-block;
   position: relative;
   background-color: white;
@@ -176,7 +176,7 @@ body {
   display: inline-block;
   position: relative;
   color: transparent;
-  margin-left: -10%;
+  margin-left: -20%;
 }
 
 .red {
@@ -323,7 +323,7 @@ html {
     background-color: #008000;
     box-shadow: -50% 5%;
     height: 80%;
-    width: 50%;
+    width: 25%;
     margin: 5%;
     display: grid;
     grid-template-rows: 10% 1fr 10% 1fr 10%;
