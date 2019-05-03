@@ -237,16 +237,19 @@ function updateWinPercentage(array) {
 	let totalHands = 0;
 	if (array.length > 0) {
 		for (let i = 0; i < array.length; i++) {
-			totalHands++;
 			if (array[i].winner == 'Player') {
 				wins++;
-			}
-			if (array[i].winner == 'Push') {
-				totalHands--;
+				totalHands++;
+			} else if (array[i].winner == 'Dealer') {
+				wins++;
 			}
 		}
 		console.log(wins);
 		console.log(totalHands);
-		document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil(wins / totalHands * 100)}%`;
+		if (totalHands) {
+			document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil(
+				wins / totalHands * 100
+			)}%`;
+		}
 	}
 }
