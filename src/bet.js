@@ -46,7 +46,7 @@ function renderBetCard() {
 			betInput.value = `${previousBet}`;
 		}
 	} else {
-		betInput.value = `1`;
+		betInput.value = `5`;
 	}
 }
 
@@ -54,9 +54,9 @@ function increaseBet() {
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
 	if (isInteger(betInput) && betInput !== '') {
-		betInputElement.value = `${parseInt(betInput) + 1}`;
+		betInputElement.value = `${parseInt(betInput) + 5}`;
 	} else {
-		betInputElement.value = '1';
+		betInputElement.value = '5';
 	}
 }
 
@@ -64,9 +64,9 @@ function decreaseBet() {
 	let betInputElement = setBetInput();
 	let betInput = betInputElement.value;
 	if (isInteger(betInput && betInput !== '') && betInput > 1) {
-		betInputElement.value = `${parseInt(betInput) - 1}`;
+		betInputElement.value = `${parseInt(betInput) - 5}`;
 	} else {
-		betInputElement.value = '1';
+		betInputElement.value = '5';
 	}
 }
 
@@ -92,7 +92,7 @@ function makeBet(ev) {
 		});
 	} else {
 		alert('Please enter a valid bet');
-		betInputElement.value = '1';
+		betInputElement.value = '5';
 	}
 }
 
