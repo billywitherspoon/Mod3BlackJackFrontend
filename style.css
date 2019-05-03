@@ -160,7 +160,7 @@ body {
   border: solid black 1px;
   width: 11vh;
   height: 16vh;
-  margin-left: -20%;
+  margin-left: -50%;
   display: inline-block;
   position: relative;
   background-color: white;
@@ -176,7 +176,7 @@ body {
   display: inline-block;
   position: relative;
   color: transparent;
-  margin-left: -20%;
+  margin-left: -50%;
 }
 
 .red {
