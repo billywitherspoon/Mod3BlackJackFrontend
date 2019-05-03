@@ -24,7 +24,7 @@ function renderLogin() {
 		let loginWelcomeText = createHtmlElement(
 			'div',
 			'',
-			'An App by Billy Witherspoon and Kevin McMinn',
+			'A mobile first app by Billy Witherspoon and Kevin McMinn',
 			'login-welcome-text'
 		);
 		let inputGroup = createHtmlElement('form', 'input-group', '', 'input-group-1');

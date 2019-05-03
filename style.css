@@ -1,313 +1,331 @@
 body {
-	font-family: "Chivo";
+  font-family: "Chivo";
 }
 #page {
-	width: 95vw;
-	height: 95vh;
-	display: grid;
-	grid-template-rows: 5% 1fr 30%;
-	background-color: rgb(88, 88, 88);
-	margin-right: 5%;
+  width: 95vw;
+  height: 95vh;
+  display: grid;
+  grid-template-rows: 5% 1fr 30%;
+  background-color: rgb(88, 88, 88);
+  margin-right: 5%;
 }
 
 #login-container {
-	height: 100%;
-	grid-row: 2/4;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding-left: 0;
-	flex-direction: column;
+  height: 100%;
+  grid-row: 2/4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 0;
+  flex-direction: column;
 }
 
 #app-info {
-	color: white;
-	font-size: 2vh;
-	text-align: center;
+  color: white;
+  font-size: 2vh;
+  text-align: center;
 }
 
 #login-welcome-text {
-	color: white;
-	font-size: 2vh;
-	text-align: center;
+  color: white;
+  font-size: 2vh;
+  text-align: center;
 }
 
 #login-welcome-header {
-	font-family: "Alfa Slab One", cursive;
-	font-size: 3.5vh;
-	color: white;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 3.5vh;
+  color: white;
 }
 
 #nav-bar {
-	grid-row: 1;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	color: white;
-	font-size: 3vw;
+  grid-row: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 3vw;
 }
 
 #input-group-1 {
-	width: 70%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	height: 50%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50%;
 }
 
 #login-input {
-	width: 100%;
-	height: 15%;
-	align-self: center;
-	text-align: center;
-	font-size: 3vh;
-	color: grey;
+  width: 100%;
+  height: 15%;
+  align-self: center;
+  text-align: center;
+  font-size: 3vh;
+  color: grey;
 }
 
 #login-input::placeholder {
-	text-align: center;
-	vertical-align: middle;
-	font-size: 3vh;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3vh;
 }
 
 #login-button {
-	background-color: #c91f37;
-	width: 8em;
-	height: 2em;
-	border-radius: 3vh;
-	font-size: 3vh;
-	color: white;
-	border-width: .25vh;
-}
-
-#blackjack-table {
-	border-radius: 3vmin;
-	border: outset;
-	border-width: 0.5em;
-	border-color: rgb(72, 72, 72);
-	background-color: #008000;
-	box-shadow: -50% 5%;
-	height: 80%;
-	width: 100%;
-	margin: 5%;
-	display: grid;
-	grid-template-rows: 10% 1fr 10% 1fr 10%;
+  background-color: #c91f37;
+  width: 8em;
+  height: 2em;
+  border-radius: 3vh;
+  font-size: 3vh;
+  color: white;
+  border-width: 0.25vh;
 }
 
 #main-section {
-	grid-row: 2;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #wager-grid {
-	height: 100%;
-	display: grid;
-	grid-template-rows: 10% 50% 40%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 10% 50% 40%;
 }
 
 .flex-center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #wager-title-div {
-	grid-row: 1;
+  grid-row: 1;
 }
 
 #wager-modifier-div {
-	grid-row: 2;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #wager-amount-div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #deal-hand-div {
-	grid-row: 3;
+  grid-row: 3;
 }
 
 #bet-input {
-	background-color: rgb(88, 88, 88);
-	width: 4em;
-	height: 2em;
-	border-radius: 3vh;
-	font-size: 3vh;
-	color: white;
-	border-width: .25vh;
-	text-align: center;
+  background-color: rgb(88, 88, 88);
+  width: 4em;
+  height: 2em;
+  border-radius: 3vh;
+  font-size: 3vh;
+  color: white;
+  border-width: 0.25vh;
+  text-align: center;
 }
 
 #bet-currency {
-	background-color: rgb(88, 88, 88);
-	font-size: 3vh;
-	color: white;
-	padding-right: 1vh;
+  background-color: rgb(88, 88, 88);
+  font-size: 3vh;
+  color: white;
+  padding-right: 1vh;
 }
 
 .bet-change-button {
-	background-color: #c91f37;
-	width: 4em;
-	height: 2em;
-	border-radius: 3vh;
-	font-size: 3vh;
-	color: white;
-	border-width: .25vh;
+  background-color: #c91f37;
+  width: 4em;
+  height: 2em;
+  border-radius: 3vh;
+  font-size: 3vh;
+  color: white;
+  border-width: 0.25vh;
 }
 
 .playing-card {
-	border-radius: 1vh;
-	background-image: url("img/logo.png");
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	border: solid black 1px;
-	width: 11vh;
-	height: 16vh;
-	margin-left: -10%;
-	display: inline-block;
-	position: relative;
-	background-color: white;
+  border-radius: 1vh;
+  background-image: url("img/logo.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: solid black 1px;
+  width: 11vh;
+  height: 16vh;
+  margin-left: -10%;
+  display: inline-block;
+  position: relative;
+  background-color: white;
 }
 
 #hidden-card {
-	background-image: url("img/playing_card.png");
-	background-size: cover;
-	border-radius: 1vh;
-	border: solid black 1px;
-	width: 11vh;
-	height: 16vh;
-	display: inline-block;
-	position: relative;
-	color: transparent;
-	margin-left: -10%;
+  background-image: url("img/playing_card.png");
+  background-size: cover;
+  border-radius: 1vh;
+  border: solid black 1px;
+  width: 11vh;
+  height: 16vh;
+  display: inline-block;
+  position: relative;
+  color: transparent;
+  margin-left: -10%;
 }
 
 .red {
-	color: red;
+  color: red;
 }
 
 .black {
-	color: black;
+  color: black;
 }
 
 .bottom-right {
-	font-size: 2.5vh;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	padding: 4px;
+  font-size: 2.5vh;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
 }
 
 .top-left {
-	font-size: 2.5vh;
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 4px;
+  font-size: 2.5vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
 }
 
 #bottom-right-hidden {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	padding: 4px;
-	color: transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
+  color: transparent;
 }
 
 #top-left-hidden {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 4px;
-	color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  color: transparent;
 }
 
 #dealer-cards {
-	grid-row: 2;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #player-cards {
-	grid-row: 4;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  grid-row: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #player-score {
-	grid-row: 5;
-	text-align: center;
+  grid-row: 5;
+  text-align: center;
 }
 #dealer-score {
-	grid-row: 1;
-	text-align: center;
+  grid-row: 1;
+  text-align: center;
 }
 
 #wager-title-div {
-	font-size: 4vh;
-	color: white;
+  font-size: 4vh;
+  color: white;
 }
 
 #deal-button {
-	background-color: #c91f37;
-	width: 8em;
-	height: 2em;
-	border-radius: 3vh;
-	font-size: 3vh;
-	color: white;
-	border-width: .25vh;
+  background-color: #c91f37;
+  width: 8em;
+  height: 2em;
+  border-radius: 3vh;
+  font-size: 3vh;
+  color: white;
+  border-width: 0.25vh;
 }
 
 #deal-hand-div {
-	display: flex;
-	justify-content: baseline;
+  display: flex;
+  justify-content: baseline;
 }
 
 .hit-stay {
-	background-color: #c91f37;
-	width: 3em;
-	height: 2em;
-	border-radius: 3vh;
-	font-size: 4vh;
-	color: white;
-	border-width: .25vh;
+  background-color: #c91f37;
+  width: 3em;
+  height: 2em;
+  border-radius: 3vh;
+  font-size: 4vh;
+  color: white;
+  border-width: 0.25vh;
 }
 
 #double-down-button {
-	background-color: rgb(233, 205, 47);
-	width: 4em;
-	height: 3em;
-	border-radius: 3vh;
-	font-size: 4vh;
-	color: white;
-	border-width: .25vh;
+  background-color: rgb(233, 205, 47);
+  width: 4em;
+  height: 3em;
+  border-radius: 3vh;
+  font-size: 4vh;
+  color: white;
+  border-width: 0.25vh;
 }
 
 #hit-stay-div {
-	height: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #result {
-	text-align: center;
-	margin: 3%;
+  text-align: center;
+  margin: 3%;
 }
 
 html {
-	background-color: rgb(88, 88, 88);
+  background-color: rgb(88, 88, 88);
+}
+
+@media only screen and (max-width: 900px) {
+  #blackjack-table {
+    border-radius: 3vmin;
+    border: outset;
+    border-width: 0.5em;
+    border-color: rgb(72, 72, 72);
+    background-color: #008000;
+    box-shadow: -50% 5%;
+    height: 80%;
+    width: 100%;
+    margin: 5%;
+    display: grid;
+    grid-template-rows: 10% 1fr 10% 1fr 10%;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  #blackjack-table {
+    border-radius: 3vmin;
+    border: outset;
+    border-width: 0.5em;
+    border-color: rgb(72, 72, 72);
+    background-color: #008000;
+    box-shadow: -50% 5%;
+    height: 80%;
+    width: 50%;
+    margin: 5%;
+    display: grid;
+    grid-template-rows: 10% 1fr 10% 1fr 10%;
+  }
 }
