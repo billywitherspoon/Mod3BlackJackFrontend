@@ -142,7 +142,7 @@ async function declareWinner(winType = '') {
 }
 
 function updateGames(serverResult) {
-	return fetch('https://playblackjackbackend.herokuapp.com/api/v1/hands', {
+	return fetch('https://localhost:3000/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
