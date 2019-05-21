@@ -2,14 +2,25 @@
 
 let DECK = shuffleDeck(createDeck());
 
-//START FORCE DOUBLE DOWN TEST CODE
+//START CARD FORCE TEST CODE
 
 // DECK.unshift(makeSix());
 // DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
 // DECK.unshift(makeFive());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
+DECK.unshift(makeTwo());
 
-//END FORCE DOUBLE DOWN TEST CODE
+//END CARD FORCE TEST CODE
 
 //Create a Global Player Hand Array and Global Dealer Hand Array
 

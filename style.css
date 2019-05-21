@@ -222,24 +222,32 @@ body {
 #dealer-cards {
   grid-row: 2;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-left: 15%;
+  width: 100%;
 }
 
 #player-cards {
   grid-row: 4;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-left: 15%;
+  width: 100%;
 }
 
 #player-score {
   grid-row: 5;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #dealer-score {
   grid-row: 1;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #wager-title-div {
@@ -290,8 +298,9 @@ body {
 }
 
 #result {
-  text-align: center;
-  margin: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 html {

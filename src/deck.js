@@ -51,6 +51,9 @@ function makeSix() {
 function makeFive() {
 	return new Card('5', '♠', 5);
 }
+function makeTwo() {
+	return new Card('2', '♠', 2);
+}
 
 function shuffleDeck(deckArray) {
 	let counter = deckArray.length;
