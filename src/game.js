@@ -1,18 +1,22 @@
-//Creates a new Deck and Shuffles it
+//Creates a new Deck as a global variable and Shuffles it
 
 let DECK = shuffleDeck(createDeck());
 
 //START FORCE DOUBLE DOWN TEST CODE
 
-DECK.unshift(makeSix());
-DECK.unshift(makeSix());
-DECK.unshift(makeTen());
-DECK.unshift(makeFive());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeSix());
+// DECK.unshift(makeTen());
+// DECK.unshift(makeFive());
 
 //END FORCE DOUBLE DOWN TEST CODE
 
+//Create a Global Player Hand Array and Global Dealer Hand Array
+
 let PLAYERHAND = [];
 let DEALERHAND = [];
+
+//Deals a new hand.  Is async due to intentional card dealing delay.  Checks for blackjacks and double downs.  Calls on reset game prior.
 
 async function newHand() {
 	resetGame();
@@ -52,6 +56,8 @@ async function newHand() {
 	}
 }
 
+//Clears previous dealer and player hands, creates a new deck if deck is too low.  PS: Mathematically we concluded 18 is the minimum number of cards necessary for a single player/dealer blackjack round.
+
 function resetGame() {
 	let result = document.getElementById('result');
 	result.textContent = '';
@@ -74,11 +80,15 @@ function resetGame() {
 	}
 }
 
+// Runs the player blackjack scenario
+
 async function blackJack() {
 	showDealer();
 	await timeout(550);
 	declareWinner('blackjack');
 }
+
+// Runs the dealer blackjack scenario
 
 async function dealerBlackJack() {
 	showDealer();
@@ -86,17 +96,20 @@ async function dealerBlackJack() {
 	declareWinner('dealer blackjack');
 }
 
+// Runs the dealer and player blackjack scenario
+
 async function doubleBlackJack() {
 	showDealer();
 	await timeout(550);
 	declareWinner('double blackjack');
 }
 
+// Takes in the winner as an argument and runs necessary logic.  For example: updates the player account based on win or loss.
+
 async function declareWinner(winType = '') {
 	clearBetActions();
 	await timeout(550);
 	renderBetCard();
-	// setTimeout(() => {
 	let result = document.getElementById('result');
 	let winner = whoWon();
 	let amount = parseInt(sessionStorage.getItem('amount'));
@@ -111,9 +124,7 @@ async function declareWinner(winType = '') {
 		serverResult = 'Dealer';
 		result.textContent = `Dealer Blackjack!`;
 		updateGames(serverResult).then(() => {
-			retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
-				// renderUserBar(userInfo);
-			});
+			retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {});
 		});
 		zeroBalance();
 	} else if (winType === 'double blackjack') {
@@ -133,9 +144,7 @@ async function declareWinner(winType = '') {
 			serverResult = 'Dealer';
 			result.textContent = `${winner} won!`;
 			updateGames(serverResult).then(() => {
-				retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {
-					// renderUserBar(userInfo);
-				});
+				retrieveUserInfo(sessionStorage.getItem('username')).then((userInfo) => {});
 			});
 			zeroBalance();
 		} else {
