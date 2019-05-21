@@ -111,7 +111,6 @@ function renderUserBar(userInfo) {
 	document.getElementById('page').appendChild(navBar);
 	let handsArray = userInfo.hands;
 	updateWinPercentage(handsArray);
-	// clearBetActions();
 	renderBetCard();
 	zeroBalance();
 }
@@ -162,7 +161,7 @@ function clearNavBar() {
 		navBar.firstChild.remove();
 	}
 }
-//useless, trying to fix heroku
+
 function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
@@ -179,7 +178,6 @@ function updateAccount(amount) {
 	})
 		.then((response) => response.json())
 		.then((json) => {
-			// let userBalance = document.getElementById('user-balance');
 			document.getElementById('user-information').textContent = `${json.username} $${json.balance}`;
 			sessionStorage.setItem('balance', `${json.balance}`);
 			console.log(json);
@@ -230,6 +228,8 @@ function updatePlayerTotalDisplay() {
 	document.getElementById('player-score').textContent = currentPlayerTotal;
 }
 
+// Updates the win percentage based on if the dealer or player won. Recalculates win percentage with the hands array passed through as an argument.
+
 function updateWinPercentage(array) {
 	let wins = 0;
 	let totalHands = 0;
@@ -239,11 +239,9 @@ function updateWinPercentage(array) {
 				wins++;
 				totalHands++;
 			} else if (array[i].winner == 'Dealer') {
-				wins++;
+				totalHands++;
 			}
 		}
-		console.log(wins);
-		console.log(totalHands);
 		if (totalHands) {
 			document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil(
 				wins / totalHands * 100
