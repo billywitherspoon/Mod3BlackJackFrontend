@@ -1,8 +1,15 @@
+//Creates a new Deck and Shuffles it
+
 let DECK = shuffleDeck(createDeck());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeSix());
-// DECK.unshift(makeTen());
-// DECK.unshift(makeFive());
+
+//START FORCE DOUBLE DOWN TEST CODE
+
+DECK.unshift(makeSix());
+DECK.unshift(makeSix());
+DECK.unshift(makeTen());
+DECK.unshift(makeFive());
+
+//END FORCE DOUBLE DOWN TEST CODE
 
 let PLAYERHAND = [];
 let DEALERHAND = [];
@@ -142,7 +149,7 @@ async function declareWinner(winType = '') {
 }
 
 function updateGames(serverResult) {
-	return fetch('https://localhost:3000/api/v1/hands', {
+	return fetch('http://localhost:3000/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',

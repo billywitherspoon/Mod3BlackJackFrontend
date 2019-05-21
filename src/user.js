@@ -29,7 +29,6 @@ function renderLogin() {
 		);
 		let inputGroup = createHtmlElement('form', 'input-group', '', 'input-group-1');
 		let loginInput = createHtmlElement('input', '', '', 'login-input');
-		// let inputGroupAppend = createHtmlElement("div", "", "", "");
 		let loginButton = createHtmlElement('input', 'button', 'Login / Sign Up', 'login-button');
 		let appInfo = createHtmlElement(
 			'div',
@@ -46,7 +45,6 @@ function renderLogin() {
 		loginContainer.appendChild(loginWelcomeText);
 		loginContainer.appendChild(inputGroup);
 		loginContainer.appendChild(appInfo);
-		// loginContainer.appendChild(inputGroup);
 		document.getElementById('page').appendChild(loginContainer);
 	}
 }
@@ -63,7 +61,7 @@ function signUp(event) {
 }
 
 function retrieveUserInfo(username) {
-	return fetch('https://localhost:3000/api/v1/users', {
+	return fetch('http://localhost:3000/api/v1/users', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -169,7 +167,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
-	return fetch(`https://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -205,7 +203,7 @@ function addChips() {
 	let user = sessionStorage.getItem('user');
 	let newBalance = 1000;
 
-	return fetch(`https://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
