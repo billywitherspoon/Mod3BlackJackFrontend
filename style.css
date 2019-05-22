@@ -332,8 +332,8 @@ html {
     background-color: #008000;
     box-shadow: -50% 5%;
     height: 80%;
-    width: 25%;
     margin: 5%;
+    width: 50%;
     display: grid;
     grid-template-rows: 10% 1fr 10% 1fr 10%;
   }
