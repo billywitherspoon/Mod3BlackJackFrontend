@@ -61,7 +61,7 @@ function signUp(event) {
 }
 
 function retrieveUserInfo(username) {
-	return fetch('http://localhost:3000/api/v1/users', {
+	return fetch('http://playblackjackbackend.herokuapp.com/api/v1/users', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ function updateAccount(amount) {
 	let user = sessionStorage.getItem('user');
 	let balance = parseInt(sessionStorage.getItem('balance'));
 	let newBalance = balance - amount;
-	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://playblackjackbackend.herokuapp.com/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ function addChips() {
 	let user = sessionStorage.getItem('user');
 	let newBalance = 1000;
 
-	return fetch(`http://localhost:3000/api/v1/users/${user}`, {
+	return fetch(`http://playblackjackbackend.herokuapp.com/api/v1/users/${user}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',

@@ -8,17 +8,7 @@ let DECK = shuffleDeck(createDeck());
 // DECK.unshift(makeSix());
 // DECK.unshift(makeTen());
 // DECK.unshift(makeFive());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
-DECK.unshift(makeTwo());
+// DECK.unshift(makeTwo());
 
 //END CARD FORCE TEST CODE
 
@@ -169,7 +159,7 @@ async function declareWinner(winType = '') {
 }
 
 function updateGames(serverResult) {
-	return fetch('http://localhost:3000/api/v1/hands', {
+	return fetch('http://playblackjackbackend.herokuapp.com/api/v1/hands', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
