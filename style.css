@@ -44,7 +44,6 @@ body {
   justify-content: space-around;
   align-items: center;
   color: white;
-  font-size: 3vw;
 }
 
 #input-group-1 {
@@ -106,17 +105,11 @@ body {
   grid-row: 1;
 }
 
-#wager-modifier-div {
-  grid-row: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 #wager-amount-div {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 2%;
 }
 
 #deal-hand-div {
@@ -160,7 +153,7 @@ body {
   border: solid black 1px;
   width: 11vh;
   height: 16vh;
-  margin-left: -10%;
+  margin-left: -5.5vh;
   display: inline-block;
   position: relative;
   background-color: white;
@@ -176,7 +169,7 @@ body {
   display: inline-block;
   position: relative;
   color: transparent;
-  margin-left: -10%;
+  margin-left: -5.5vh;
 }
 
 .red {
@@ -307,34 +300,45 @@ html {
   background-color: rgb(88, 88, 88);
 }
 
+#blackjack-table {
+  border-radius: 3vmin;
+  border: outset;
+  border-width: 0.5em;
+  border-color: rgb(72, 72, 72);
+  background-color: #008000;
+  box-shadow: -50% 5%;
+  height: 80%;
+  width: 100%;
+  margin: 5%;
+  display: grid;
+  grid-template-rows: 10% 1fr 10% 1fr 10%;
+}
+
+#wager-modifier-div {
+  grid-row: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @media only screen and (max-width: 900px) {
+  #nav-bar {
+    font-size: 4vw;
+  }
   #blackjack-table {
-    border-radius: 3vmin;
-    border: outset;
-    border-width: 0.5em;
-    border-color: rgb(72, 72, 72);
-    background-color: #008000;
-    box-shadow: -50% 5%;
-    height: 80%;
     width: 100%;
-    margin: 5%;
-    display: grid;
-    grid-template-rows: 10% 1fr 10% 1fr 10%;
   }
 }
 
 @media only screen and (min-width: 901px) {
+  #nav-bar {
+    font-size: 4vh;
+  }
   #blackjack-table {
-    border-radius: 3vmin;
-    border: outset;
-    border-width: 0.5em;
-    border-color: rgb(72, 72, 72);
-    background-color: #008000;
-    box-shadow: -50% 5%;
-    height: 80%;
-    margin: 5%;
-    width: 50%;
-    display: grid;
-    grid-template-rows: 10% 1fr 10% 1fr 10%;
+    width: 40%;
+  }
+  #wager-modifier-div {
+    margin-left: 30%;
+    margin-right: 30%;
   }
 }

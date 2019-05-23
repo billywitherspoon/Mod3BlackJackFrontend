@@ -243,9 +243,7 @@ function updateWinPercentage(array) {
 			}
 		}
 		if (totalHands) {
-			document.getElementById('win-percentage').textContent = `Win Percentage ${Math.ceil(
-				wins / totalHands * 100
-			)}%`;
+			document.getElementById('win-percentage').textContent = `Win Rate ${Math.ceil(wins / totalHands * 100)}%`;
 		}
 	}
 }
